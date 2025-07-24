@@ -1,0 +1,32 @@
+<!--aplicativo\templates\assunto01\capitulo01\titulos\base.html-->
+{% extends 'assunto03/base.html' %}
+{% load static %}
+
+{% block conteudox %}
+
+
+
+<!-- Sidebar (Menu Lateral) -->
+<div class="leftSide sidebar">
+
+  <ul class="links">
+    <li><span><i class="fas fa-home"></i></span><a href="{% url 'assunto03:assunto03_capitulo01_View_inicio' %}">capitulo01_inicio</a></li>
+
+    <li><span> <i class="fas fa-edit"></i></span><a href="{% url 'assunto03:assunto03_capitulo01_cadastro_View' %}">Cadastro 1</a></li>
+    <li><span> <i class="fas fa-list-alt"></i> </i></span><a href="{% url 'assunto03:assunto03_capitulo01_visualizar_View' %}">Visualizar 01</a></li>
+
+    <li><span> <i class="fas fa-edit"></i></span><a href="{% url 'assunto03:assunto03_capitulo01_cadastro_TabelaSis2_View' %}">Cadastro 2</a></li>
+    <li><span> <i class="fas fa-list-alt"></i> </i></span><a href="{% url 'assunto03:assunto03_capitulo01_visualizar2_View' %}">Visualizar 02</a></li>  
+
+      <hr>
+    <li class="logout-link">
+      <span><i class="fas fa-sign-out-alt"></i></span>
+      <a href="#">Sair</a>
+    </li>
+  </ul>
+</div>
+
+
+{% block titudos %}
+{% endblock titudos %}
+{% endblock conteudox %}

@@ -1,0 +1,27 @@
+<!--aplicativo\templates\assunto01\capitulo01\titulos\inicio.html-->
+{% extends 'assunto01/capitulo01/titulos/base.html' %}
+{% load static %} <!-- Carregar arquivos estáticos -->
+
+{% block titudos %}
+<!-- Link para o arquivo CSS externo -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+<!-- conteúdo da página -->
+<div class="body">
+    <div class="container">
+        <h1>ASSUNTO 01</h1>
+        <h1>CAPITULO 01</h1>
+        <h1>TITULO 01</h1>
+        <p>
+            Esta área agora está estilizada com o design glassmorphism. Veja como o conteúdo fica mais atraente e moderno.
+        </p>
+        <pre>
+            <u>models.py</u>
+            <code>
+                código
+            </code>
+        </pre>
+    </div>
+</div>
+
+{% endblock titudos %}

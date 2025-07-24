@@ -1,0 +1,150 @@
+/*-dirprojeto\aplicativo\static\css\forms3.css-*/
+
+.wrapper {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+h1, h2 {
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #fff;
+}
+
+p {
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-field {
+  position: relative;
+  border-bottom: 2px solid #aaa;
+  padding: 10px 0;
+}
+
+.input-field input,
+.input-field select,
+.input-field textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #ffffff;
+  padding: 5px;
+}
+
+.input-field textarea {
+  resize: vertical;
+  height: 80px;
+  min-height: 40px;
+}
+
+.input-field label {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  font-size: 14px;
+  color: #fcfafa;
+  transition: all 0.2s ease;
+}
+
+.input-field input:focus ~ label,
+.input-field input:valid ~ label,
+.input-field textarea:focus ~ label,
+.input-field textarea:valid ~ label,
+.input-field select:focus ~ label,
+.input-field select:valid ~ label {
+  font-size: 12px;
+  top: -10px;
+  color: #ffffff;
+}
+
+.input-field select {
+  appearance: none;
+  padding-right: 25px;
+}
+
+.input-field.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: none;
+  padding: 10px 0;
+}
+
+.input-field.checkbox label {
+  position: static;
+  transform: none;
+  pointer-events: all;
+  order: 2;
+}
+
+.input-field.checkbox input {
+  width: 18px;
+  height: 18px;
+  accent-color: #ff8383;
+  order: 1;
+}
+
+button {
+  background: #fff;
+  color: #222;
+  font-weight: 600;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: 0.3s ease;
+  margin-right: 10px;
+}
+
+button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+small.form-text {
+  display: block;
+  margin-top: 5px;
+  font-size: 13px;
+  color: #ccc;
+}
+
+ul.errorlist {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0;
+}
+
+ul.errorlist li {
+  color: #ffaaaa;
+  font-size: 13px;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+  .wrapper {
+    width: 95%;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+}

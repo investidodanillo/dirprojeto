@@ -1,0 +1,32 @@
+<!-- dirprojeto/aplicativo/templates/assunto02/capitulo01/titulos/assunto02_update_delete.html -->
+{% extends 'assunto02/capitulo01/titulos/base.html' %}
+{% load static %}
+
+{% block titudos %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/forms2.css' %}">
+<div class="body">
+    <div class="container">
+        <h1>Assunto 02 - Capítulo 01 Cadastro</h1>
+        <p>Preencha os campos abaixo para atualizar ou excluir o registro.</p>
+        
+        <div class="wrapper">
+            <form method="post" action="">
+                {% csrf_token %}
+                
+                <div class="input-field">{{ form.campo1 }} <label>Campo1:</label></div>
+                <div class="input-field">{{ form.campo2 }} <label>Campo2:</label></div>
+                <div class="input-field select">{{ form.campo3 }} <label>Campo3:</label></div>
+                <div class="input-field checkbox">{{ form.campo4 }} <label>Campo4:</label></div>
+                <div class="input-field textarea">{{ form.campo5 }} <label>Campo5:</label></div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn btn-primary" name="action" value="salvar">Salvar</button>
+                    <button type="submit" class="btn btn-danger" name="action" value="deletar"
+                        onclick="return confirm('Tem certeza que deseja deletar este registro?');">Deletar</button>
+                    <button type="submit" class="btn btn-secondary" name="action" value="novo">Novo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

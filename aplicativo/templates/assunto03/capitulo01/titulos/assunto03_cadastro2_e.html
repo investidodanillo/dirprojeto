@@ -1,0 +1,59 @@
+<!--dirprojeto\aplicativo\templates\assunto02\capitulo01\titulos\assunto02_cadastro.html-->
+{% extends 'assunto03/capitulo01/titulos/base.html' %}
+{% load static %} <!-- Carregar arquivos estáticos -->
+
+{% block titudos %}
+<!-- Link para o arquivo CSS externo -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/forms6.css' %}">
+<div class="body">
+    <div class="container">
+        <h1>Assunto 03 - Capítulo 01 Cadastro</h1>
+        <p>Preencha os campos abaixo para realizar o cadastro.</p>
+        <div class="wrapper">
+            <form method="post">
+                
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                  <!-- Botões -->
+                   <!-- Botões -->
+                   <div class="assunto03-form">
+                    <div class="button-group destaque-botoes">
+                        <button type="submit" class="btn btn-glass btn-salvar" aria-label="Salvar Formulário">
+                            <i class="fas fa-save"></i> Salvar
+                        </button>
+
+                        <button type="submit" class="btn btn-glass btn-novo" aria-label="Criar Novo Registro">
+                            <i class="fas fa-plus"></i> Novo
+                        </button>
+
+                        <button type="reset" class="btn btn-glass btn-limpar" aria-label="Limpar Formulário">
+                            <i class="fas fa-undo"></i> Limpar
+                        </button>
+                    </div>
+                </div>
+                <!-- Botões -->
+                <!-- Botões -->
+
+            </form>
+
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block js %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            'use strict';
+            const form = document.querySelector('.needs-validation');
+
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    </script>
+    {% endblock %}

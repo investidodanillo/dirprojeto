@@ -1,0 +1,224 @@
+/* forms2.css - Versão Melhorada */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --primary-color: #6a8fff;
+  --secondary-color: #ff8383;
+  --background: rgba(35, 35, 35, 0.9);
+  --text-color: #ffffff;
+  --border-color: rgba(255, 255, 255, 0.3);
+}
+
+.wrapper {
+  background: var(--background);
+  backdrop-filter: blur(12px) saturate(180%);
+  padding: 2.5rem;
+  border-radius: 1rem;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  
+  margin: 2rem auto;
+  transition: all 0.3s ease;
+}
+
+h1, h2 {
+  color: var(--text-color);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1.5rem;
+}
+
+p {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+form {
+  display: grid;
+  gap: 1.8rem;
+}
+
+.input-field {
+  position: relative;
+  border-bottom: 2px solid var(--border-color);
+  padding-top: 1.2rem;
+  transition: border-color 0.3s ease;
+}
+
+.input-field:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.input-field input,
+.input-field select,
+.input-field textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: var(--text-color);
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+}
+
+.input-field label {
+  position: absolute;
+  top: 1.4rem;
+  left: 0;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Efeito de label flutuante */
+.input-field input:focus ~ label,
+.input-field input:not(:placeholder-shown) ~ label,
+.input-field select:focus ~ label,
+.input-field select:valid ~ label,
+.input-field textarea:focus ~ label,
+.input-field textarea:not(:placeholder-shown) ~ label {
+  transform: translateY(-1.5rem);
+  font-size: 0.85rem;
+  color: var(--primary-color);
+}
+
+.input-field select {
+  appearance: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E") no-repeat right 0.8rem center/1.2rem;
+  padding-right: 2.5rem !important;
+}
+
+.input-field textarea {
+  resize: vertical;
+  min-height: 100px;
+  max-height: 200px;
+  line-height: 1.5;
+  padding: 0.8rem 0;
+}
+
+/* Estilo para Checkbox Moderno */
+.input-field.checkbox {
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.input-field.checkbox label {
+  position: static;
+  transform: none;
+  order: 2;
+  cursor: pointer;
+}
+
+.input-field.checkbox input[type='checkbox'] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.4rem;
+  height: 1.4rem;
+  border: 2px solid var(--border-color);
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  order: 1;
+  position: relative;
+}
+
+.input-field.checkbox input[type='checkbox']:checked {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.input-field.checkbox input[type='checkbox']:checked::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  width: 0.4rem;
+  height: 0.7rem;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* Botões Melhorados */
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 0.9rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+button[type='submit'] {
+  background: var(--primary-color);
+  color: white;
+}
+
+button[type='reset'] {
+  background: transparent;
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+button[type='submit']:hover {
+  background: #5978e6;
+}
+
+button[type='reset']:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Animações */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Responsividade Aprimorada */
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 1.5rem;
+    margin: 1rem;
+    border-radius: 0.8rem;
+  }
+  
+  h1 {
+    font-size: 1.6rem;
+  }
+  
+  h2 {
+    font-size: 1.3rem;
+  }
+  
+  button {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+/* Scrollbar Personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}

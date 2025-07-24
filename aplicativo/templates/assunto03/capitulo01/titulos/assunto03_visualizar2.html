@@ -1,0 +1,62 @@
+<!--dirprojeto\aplicativo\templates\assunto02\capitulo01\titulos\assunto02_visualizar.html-->
+{% extends 'assunto03/capitulo01/titulos/base.html' %}
+{% load static %} <!-- Carregar arquivos estáticos -->
+
+{% block titudos %}
+<!-- Link para o arquivo CSS externo -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/tables.css' %}">
+<div class="body">
+    <div class="container">   
+        <h1>TABELA1</h1>
+        <p>{{ mensagem }}</p>
+        <!-- Tabela de Produtos -->
+        <table class="tabela-form">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Campo 1</th>
+                    <th>Campo 2</th>                 
+                    <th>Editar</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for Campo in TabelaSis2_list %}
+                <tr>
+                    <td data-label="ID">{{ Campo.id }}</td>
+                    <td data-label="Campo 1">{{ Campo.campo1 }}</td>
+                    <td data-label="Campo 2">{{ Campo.campo2 }}</td>                                       
+                    <td data-label="Editar"><a href="{% url 'assunto03:assunto03_Capitulo01_Update2_View' Campo.id %}"target="_blank" rel="noopener noreferrer" class="glass-button"><i class="fas fa-edit"></i></a></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="no-data">Nenhum produto encontrado.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+        <!-- Paginação -->
+        <div class="pagination">
+            {% if is_paginated %}
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+                {% endif %}
+                
+                <span>Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+                
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">Próxima</a>
+                {% endif %}
+            {% endif %}
+        </div>
+
+
+    </div>
+
+</div>
+<!-- Fim do conteúdo -->
+
+
+    {% endblock titudos %}
+

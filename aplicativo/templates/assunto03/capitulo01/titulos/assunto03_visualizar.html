@@ -1,0 +1,102 @@
+<!--dirprojeto\aplicativo\templates\assunto02\capitulo01\titulos\assunto02_visualizar.html-->
+{% extends 'assunto03/capitulo01/titulos/base.html' %}
+{% load static %} <!-- Carregar arquivos estáticos -->
+
+{% block titudos %}
+<!-- Link para o arquivo CSS externo -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/tables.css' %}">
+<div class="body">
+    <div class="container">
+        <h1>TABELA1</h1>
+        <p>{{ mensagem }}</p>
+        <!-- Tabela de Produtos -->
+        <table class="tabela-form">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Campo 1 </th>
+                    <th>Campo 2 </th>
+                    <th>Campo 3 </th>
+                    <th>Campo 4 </th>
+                    <th>Campo 5 </th>
+                    <th>Campo 6 </th>
+                    <th>Campo 7 </th>
+                    <th>Campo 8 </th>
+                    <th>Campo 9 </th>
+                    <th>Campo 10 </th>
+                    <th>Campo 11 </th>
+                    <th>Campo 12 </th>
+                    <th>Campo 13 </th>
+                    <th>Campo 14 </th>
+                    <th>Campo 15 </th>
+                    <th>Campo 16 </th>
+                    <th>Campo 17 </th>
+                    <th>Campo 18 </th>
+                    <th>Campo 19 </th>
+                    <th>Campo 20 </th>
+                    <th>Campo 21 </th>
+                    <th>Campo 22 </th>
+
+                    <th>Editar</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for Campo in TabelaSis1_list %}
+                <tr>
+                    <td data-label="ID">{{ Campo.id }}</td>
+                    <td data-label="Campo 1">{{ Campo.campo1 }}</td>
+                    <td data-label="Campo 1">{{ Campo.campo2 }}</td>
+                    <td data-label="Campo 1">{{ Campo.campo3 }}</td>
+                    <td data-label="Campo 1">{{ Campo.campo4 }}</td>
+                    <td data-label="Campo 1">{{ Campo.campo5 }}</td>
+                    <td data-label="Campo 1">{{ Campo.campo6 }}</td>
+                    <td data-label="Campo 1">{{ Campo.campo7 }}</td>
+                    <td data-label="Campo 1">{{ Campo.campo8 }}</td>
+                    <td data-label="Campo 1">{{ Campo.campo9 }}</td>
+                    <td data-label="Campo 1">{{ Campo.campo10 }}</td>
+                    <td data-label="Campo 1">{{ Campo.campo11 }}</td>
+                    <td data-label="Campo 1">{{ Campo.campo12 }}</td>
+                    <td data-label="Campo 1">{{ Campo.campo13 }}</td>
+                    <td data-label="Campo 1">{{ Campo.campo14 }}</td>
+                    <td data-label="Campo 1">{{ Campo.campo15 }}</td>
+                    <td data-label="Campo 1">{{ Campo.campo16 }}</td>
+                    <td data-label="Campo 1">{{ Campo.campo17 }}</td>
+                    <td data-label="Campo 1">{{ Campo.campo18 }}</td>
+                    <td data-label="Campo 1">{{ Campo.campo19 }}</td>
+                    <td data-label="Campo 1">{{ Campo.campo20 }}</td>
+                    <td data-label="Campo 1">{{ Campo.campo21 }}</td>
+                    <td data-label="Campo 1">{{ Campo.campo22 }}</td>
+                    <td data-label="Editar"><a href="{% url 'assunto03:assunto03_Capitulo01_Update_View' Campo.id %}"target="_blank" rel="noopener noreferrer" class="glass-button"><i class="fas fa-edit"></i></a></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="no-data">Nenhum produto encontrado.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Paginação -->
+        <div class="pagination">
+            {% if is_paginated %}
+            {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+            {% endif %}
+
+            <span>Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Próxima</a>
+            {% endif %}
+            {% endif %}
+        </div>
+
+
+    </div>
+
+</div>
+<!-- Fim do conteúdo -->
+
+
+{% endblock titudos %}

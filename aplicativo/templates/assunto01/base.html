@@ -1,0 +1,27 @@
+<!--aplicativo\templates\assunto01\base.html-->
+{% extends 'base.html' %}
+{% load static %}  <!-- Carregar arquivos estáticos -->
+
+{% block content %}
+<!-- Header B (Título e Subtítulo) -->
+
+<div class="headerb">
+  <nav class="navbar">
+    <div class="index">
+     
+    <h3><a class="nav-link" href="{% url 'assunto01:assunto01_index' %}"><i class="fas fa-home fa-globe fa-3x"> <!-- Casa --> </i></a></h3>
+  </div>
+    
+    <div class="menu">
+        <a class="nav-link menu-item" href="{% url 'assunto01:assunto01_inicio' %}">CAPITULO01</a>
+       
+        
+    </div>
+</nav>
+</div>
+{% block conteudox %}
+
+
+{% endblock conteudox %}
+
+{% endblock content %}

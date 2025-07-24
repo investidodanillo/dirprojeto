@@ -1,0 +1,57 @@
+<!--dirprojeto\aplicativo\templates\assunto02\capitulo01\titulos\assunto02_cadastro.html-->
+{% extends 'assunto02/capitulo01/titulos/base.html' %}
+{% load static %} <!-- Carregar arquivos estáticos -->
+
+{% block titudos %}
+<!-- Link para o arquivo CSS externo -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/forms2.css' %}">
+<div class="body">
+    <div class="container">
+        <h1>Assunto 02 - Capítulo 01 Cadastro</h1>
+
+
+        <p>Preencha os campos abaixo para realizar o cadastro.</p>
+        <div class="wrapper">
+            <form method="post">
+                {% csrf_token %}
+                <div class="input-field">{{ form.campo1 }}<label>Campo1:</label></div>
+                <div class="input-field">{{ form.campo2 }}<label>Campo2:</label></div>
+                <div class="input-field select">{{ form.campo3 }}<label>Campo3:</label>
+                </div>
+                <div class="input-field checkbox">{{ form.campo4 }}
+                    <label>Campo4:</label>
+                </div>
+                <div class="input-field textarea">{{ form.campo5 }}<label>Campo5:</label></div>
+
+                <div class="#">
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <button type="submit" class="btn btn-primary">Novo</button>
+
+                    <button type="reset" class="btn btn-outline-secondary" aria-label="Limpar Formulário">
+                        <i class="fas fa-undo mr-2"></i> Limpar
+                    </button>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block js %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            'use strict';
+            const form = document.querySelector('.needs-validation');
+
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    </script>
+    {% endblock %}

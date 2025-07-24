@@ -1,0 +1,80 @@
+<!--dirprojeto\aplicativo\templates\assunto02\capitulo01\titulos\assunto02_cadastro.html-->
+{% extends 'assunto03/capitulo01/titulos/base.html' %}
+{% load static %} <!-- Carregar arquivos estáticos -->
+
+{% block titudos %}
+<!-- Link para o arquivo CSS externo -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/forms7.css' %}">
+<div class="body">
+    <div class="container">
+        <h1>Assunto 03 - Capítulo 01 Cadastro</h1>
+        <p>Preencha os campos abaixo para realizar o cadastro.</p>
+        <div class="wrapper">
+            <form method="post">
+                {% csrf_token %}
+                <div class="input-field input">{{ form.campo1 }}<label> Campo 1 :</label></div>
+                <div class="input-field textarea">{{ form.campo2 }}<label> Campo 2 :</label></div>
+                <div class="input-field glass-input_number">{{ form.campo3 }}<label for="{{ form.campo3.id_for_label }}">Campo 3:</label></div>
+                <div class="input-field glass-input_decimal">{{ form.campo4 }}<label> Campo 4 :</label></div>
+                <div class="input-field glass-input_number">{{ form.campo5 }}<label> Campo 5 :</label></div>
+                <div class="input-field checkbox"><label class="input-field.checkbox" for="{{ form.campo6.id_for_label }}">Campo 6:</label>{{ form.campo6 }}</div>
+                <div class="input-field date">{{ form.campo7 }}<label> Campo 7 :</label></div>
+                <div class="input-field">{{ form.campo8 }}<label> Campo 8 :</label></div>
+                <div class="input-field">{{ form.campo9 }}<label> Campo 9 :</label></div>
+                <div class="input-field">{{ form.campo10 }}<label> Campo 10 :</label></div>
+                <div class="input-field">{{ form.campo11 }}<label> Campo 11 :</label></div>
+                <div class="input-field">{{ form.campo12 }}<label> Campo 12 :</label></div>
+                <div class="input-field">{{ form.campo13 }}<label> Campo 13 :</label></div>
+                <div class="input-field">{{ form.campo14 }}<label> Campo 14 :</label></div>
+                <div class="input-field">{{ form.campo15 }}<label> Campo 15 :</label></div>
+                <div class="input-field">{{ form.campo16 }}<label> Campo 16 :</label></div>
+                <div class="input-field">{{ form.campo17 }}<label> Campo 17 :</label></div>
+                <div class="input-field">{{ form.campo18 }}<label> Campo 18 :</label></div>
+                <div class="input-field textarea">{{ form.campo19 }}<label> Campo 19 :</label></div>
+                <div class="input-field">{{ form.campo20 }}<label> Campo 20 :</label></div>
+                <div class="input-field">{{ form.campo21 }}<label> Campo 21 :</label></div>
+                <div class="input-field">{{ form.campo22 }}<label> Campo 22 :</label></div>
+
+                 <!-- Botões -->
+                   <!-- Botões -->
+                <div class="assunto03-form">
+                    <div class="button-group destaque-botoes">
+                        <button type="submit" class="btn btn-glass btn-salvar" aria-label="Salvar Formulário">
+                            <i class="fas fa-save"></i> Salvar
+                        </button>
+
+                        <button type="submit" class="btn btn-glass btn-novo" aria-label="Criar Novo Registro">
+                            <i class="fas fa-plus"></i> Novo
+                        </button>
+
+                        <button type="reset" class="btn btn-glass btn-limpar" aria-label="Limpar Formulário">
+                            <i class="fas fa-undo"></i> Limpar
+                        </button>
+                    </div>
+                </div>
+                <!-- Botões -->
+                <!-- Botões -->
+
+
+            </form>
+
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block js %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            'use strict';
+            const form = document.querySelector('.needs-validation');
+
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    </script>
+    {% endblock %}
