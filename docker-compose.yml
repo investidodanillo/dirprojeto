@@ -1,0 +1,26 @@
+# docker-compose.yml
+version: '3.9'
+
+services:
+  djangoapp:
+    container_name: djangoapp
+    build:
+      context: projeto              # Atenção: contexto da build é a pasta 'projeto'
+    ports:
+      - 8000:8000                  # Porta mapeada para acessar o Django externamente
+    volumes:
+      - ./djangoapp:/djangoapp     # Mapeia código local para dentro do container
+      - ./data/web/static:/data/web/static/    # Mapeia arquivos estáticos
+      - ./data/web/media:/data/web/media/      # Mapeia mídia enviada pelo usuário
+    env_file:
+      - dotenv_files/.env          # Arquivo com variáveis de ambiente
+    depends_on:
+      - psql                      # Depende do serviço psql estar ativo
+
+  psql:
+    container_name: psql
+    image: postgres:13-alpine      # Imagem leve do PostgreSQL 13
+    volumes:
+      - ./data/postgres/data:/var/lib/postgresql/data/  # Persistência dos dados do banco
+    env_file:
+      - dotenv_files/.env          # Mesmas variáveis de ambiente para o banco

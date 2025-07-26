@@ -1,0 +1,56 @@
+# .dockerignore
+# Bytecode e caches Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyc
+*.egg-info
+*.mo
+
+# Banco de dados local
+*.db
+*.sqlite3
+*.sql.gz
+
+# Logs e estatísticas
+*.log
+logs/
+stats/
+
+# Ambientes virtuais
+env/
+.venv/
+ENV/
+venv/
+
+# Ferramentas e IDEs
+.project
+.idea/
+.pydevproject
+.vscode/
+.idea/workspace.xml
+
+# Cache de pacotes e outros
+.cache/
+.sass-cache/
+dist/
+build/
+
+# Arquivos específicos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Controle de versão
+.git/
+.gitignore
+
+# Docker local
+../Dockerfile
+.dockerignore
+
+# Códigos temporários ou locais
+__localcode/
+.vagrant/
+
+# Arquivos de CSS não minificados
+*.css.map
