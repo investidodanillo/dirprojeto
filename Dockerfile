@@ -36,11 +36,11 @@ RUN mkdir -p /data/web/static /data/web/media && \
     chmod -R 755 /data/web
 
 # Copia o projeto Django e os scripts
-COPY djangoapp /djangoapp
-COPY scripts /scripts
+COPY projeto .projeto
+COPY dotenv_files /dotenv_files
 
 # Define o diretório de trabalho
-WORKDIR /djangoapp
+WORKDIR /projeto
 
 # Expõe a porta 8000 para o servidor Django
 EXPOSE 8000
@@ -49,4 +49,5 @@ EXPOSE 8000
 USER duser
 
 # Define o comando padrão de inicialização
-CMD ["commands.sh"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+

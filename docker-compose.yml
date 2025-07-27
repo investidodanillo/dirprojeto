@@ -2,14 +2,15 @@
 version: '3.9'
 
 services:
-  djangoapp:
-    container_name: djangoapp
+  projeto:
+    container_name: container_projeto
+    image: djangoapp:latest          # Nome da imagem do Django
     build:
       context: projeto              # Atenção: contexto da build é a pasta 'projeto'
     ports:
       - 8000:8000                  # Porta mapeada para acessar o Django externamente
     volumes:
-      - ./djangoapp:/djangoapp     # Mapeia código local para dentro do container
+      - ./projeto:/projeto     # Mapeia código local para dentro do container
       - ./data/web/static:/data/web/static/    # Mapeia arquivos estáticos
       - ./data/web/media:/data/web/media/      # Mapeia mídia enviada pelo usuário
     env_file:
