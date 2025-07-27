@@ -96,3 +96,7 @@ junit.xml
 Pipfile.lock
 poetry.lock
 requirements.lock
+
+# Arquivos de configuração de IDEs
+*.code-workspace
+*.sublime-workspace
