@@ -1,145 +1,98 @@
-
-# .gitignore
-/djangoapp/static/
-/djangoapp/media/
-/djangoapp/project/local_settings.py
-gunicorn-error-log
-__localcode
-/data/
-
-# Django #
+# Django
 *.log
 *.pot
-*.pyc
-__pycache__
-../db.sqlite3
-
-# Backup files #
-*.bak
-
-# If you are using PyCharm #
-# User-specific stuff
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
-
-# AWS User-specific
-.idea/**/aws.xml
-
-# Generated files
-.idea/**/contentModel.xml
-
-# Sensitive or high-churn files
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-.idea/**/dbnavigator.xml
-
-# Gradle
-.idea/**/gradle.xml
-.idea/**/libraries
-
-# File-based project format
-*.iws
-
-# IntelliJ
-out/
-
-# JIRA plugin
-atlassian-ide-plugin.xml
-
-# Python #
 *.py[cod]
-*$py.class
+__pycache__/
+db.sqlite3*
+*.sql.gz
+*.sqlite3
+*.db
 
-# Distribution / packaging
-.Python build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-.pytest_cache/
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# pyenv
-.python-version
-
-# celery
-celerybeat-schedule.*
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
-venv/
+# Arquivos de ambiente
+venv*/
+.venv*/
 ENV/
-env.bak/
+env/
 venv.bak/
+.venv.bak/
 
-# mkdocs documentation
-/site
+# Diretórios de build/distribuição
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
 
-# mypy
-.mypy_cache/
+# Ambientes virtuais
+venv*/
+.venv*/
+ENV/
+env/
+venv.bak/
+.venv.bak/
 
-# Sublime Text #
-*.tmlanguage.cache
-*.tmPreferences.cache
-*.stTheme.cache
-*.sublime-workspace
-*.sublime-project
-
-# sftp configuration file
-sftp-config.json
-
-# Package control specific files Package
-Control.last-run
-Control.ca-list
-Control.ca-bundle
-Control.system-ca-bundle
-GitHub.sublime-settings
-
-# Visual Studio Code #
-.vscode/*
+# IDEs
+.vscode/
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-.history
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws
+
+# Backups e arquivos temporários
+*.bak
+*.tmp
+*.swp
+*~
+~$*
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Arquivos de mídia/static gerados localmente
+/media/
+staticfiles/
+static/
+static_root/
+static_cdn/
+media_root/
+
+# Arquivos de configuração local
+/local_settings.py
+*/local_settings.py
+projeto/settings/local.py
+
+# Docker
+docker-compose.override.yml
+docker-compose.prod.yml
+
+# Testes e cobertura
+.coverage
+htmlcov/
+.pytest_cache/
+.nox/
+.tox/
+test-results/
+junit.xml
+
+# Migrações (opcional, se não versiona)
+**/migrations/*.pyc
+**/migrations/*.pyo
+**/migrations/__pycache__/
+**/migrations/*.bak
+
+# Arquivos de dump de banco de dados
+*.dump
+*.backup
+*.sql
+
+# Arquivos de lock de dependências (opcional)
+Pipfile.lock
+poetry.lock
+requirements.lock

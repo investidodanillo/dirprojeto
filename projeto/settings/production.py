@@ -1,12 +1,10 @@
 # projeto\settings\production.py
-# Configurações para ambiente de produção
 from .base import *
 
-DEBUG = False
-
+DEBUG = os.getenv("DEBUG", "0") == "1"
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
-
-ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'erp.empresa.com.br').split(',')
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "meusite.com").split(",")
+print(f"[INFO] Ambiente: PRODUCTION | DEBUG={DEBUG} | ALLOWED_HOSTS={ALLOWED_HOSTS}")
 
 DATABASES = {
     'default': {

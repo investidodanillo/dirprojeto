@@ -1,12 +1,11 @@
-# projeto\settings\base.py
-# Configurações comuns a todos os ambientes
 from pathlib import Path
 import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+# Variável global com nome do settings
+ENV_NAME = os.getenv("DJANGO_SETTINGS_MODULE", "desconhecido")
 
-
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')  # fallback para dev/testes
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'dummy-secret-key')  # fallback para dev/testes
 
 INSTALLED_APPS = [
     'django.contrib.admin',

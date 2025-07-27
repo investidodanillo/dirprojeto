@@ -1,11 +1,12 @@
-# projeto\settings\development.py
-# Configurações para ambiente de desenvolvimento
 from .base import *
 
-DEBUG = True
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'dev-secret-key')
+DEBUG = os.getenv("DEBUG", "1") == "1"
+if os.getenv("FORCE_PRODUCTION", "0") == "1":
+    DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+
+print(f"[INFO] Ambiente: DEVELOPMENT | DEBUG={DEBUG} | ALLOWED_HOSTS={ALLOWED_HOSTS}")
 
 DATABASES = {
     'default': {
@@ -21,4 +22,3 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
     }
 }
-
