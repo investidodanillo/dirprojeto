@@ -2,9 +2,12 @@
 from .base import *
 
 DEBUG = os.getenv("DEBUG", "0") == "1"
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+if os.getenv("FORCE_PRODUCTION", "0") == "1":
+    DEBUG = False
+    
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "meusite.com").split(",")
 print(f"[INFO] Ambiente: PRODUCTION | DEBUG={DEBUG} | ALLOWED_HOSTS={ALLOWED_HOSTS}")
+
 
 DATABASES = {
     'default': {

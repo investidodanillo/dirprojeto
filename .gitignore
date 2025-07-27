@@ -1,3 +1,4 @@
+
 # Django
 *.log
 *.pot
@@ -7,6 +8,7 @@ db.sqlite3*
 *.sql.gz
 *.sqlite3
 *.db
+*.db_production.sqlite3
 
 # Arquivos de ambiente
 venv*/
@@ -15,6 +17,7 @@ ENV/
 env/
 venv.bak/
 .venv.bak/
+dotenv_files*/
 
 # Diretórios de build/distribuição
 build/
@@ -22,14 +25,6 @@ dist/
 *.egg-info/
 .eggs/
 pip-wheel-metadata/
-
-# Ambientes virtuais
-venv*/
-.venv*/
-ENV/
-env/
-venv.bak/
-.venv.bak/
 
 # IDEs
 .vscode/
@@ -97,6 +92,14 @@ Pipfile.lock
 poetry.lock
 requirements.lock
 
-# Arquivos de configuração de IDEs
-*.code-workspace
-*.sublime-workspace
+# Arquivos de IDE específicos
+.idea/workspace.xml
+.idea/modules.xml
+
+# Arquivos de log do Docker
+docker-compose.log
+*.dockerlog
+
+# Arquivos de migração local (em dev)
+*/migrations/*.py
+!*/migrations/__init__.py

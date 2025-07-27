@@ -4,7 +4,11 @@ DEBUG = os.getenv("DEBUG", "1") == "1"
 if os.getenv("FORCE_PRODUCTION", "0") == "1":
     DEBUG = False
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+ALLOWED_HOSTS = [
+    h.strip() for h in os.getenv('ALLOWED_HOSTS', '').split(',')
+    if h.strip()
+]
+
 
 print(f"[INFO] Ambiente: DEVELOPMENT | DEBUG={DEBUG} | ALLOWED_HOSTS={ALLOWED_HOSTS}")
 

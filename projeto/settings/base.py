@@ -1,11 +1,17 @@
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-# Variável global com nome do settings
+
+# Carrega variáveis do .env
+load_dotenv(BASE_DIR / 'dotenv_files' / '.env')
+
+# Qual settings está rodando
 ENV_NAME = os.getenv("DJANGO_SETTINGS_MODULE", "desconhecido")
 
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'dummy-secret-key')  # fallback para dev/testes
+# SECRET_KEY agora lê certo do .env
+SECRET_KEY = os.getenv('SECRET_KEY', 'dummy-secret-key')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
