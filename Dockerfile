@@ -3,8 +3,10 @@
 FROM python:3.11.3-alpine3.18
 LABEL maintainer="investidordanillo@gmail.com"
 
-# Variáveis de ambiente do Python
+# VARIÁVEIS DE AMBIENTE
+# Essa variável de ambiente é usada para controlar se o Python deve gravar arquivos de bytecode (.pyc) no disco. 1 = Não, 0 = Sim
 ENV PYTHONDONTWRITEBYTECODE=1 \
+    # Define que a saída do Python será exibida imediatamente no console ou em outros dispositivos de saída, sem ser armazenada em buffer.
     PYTHONUNBUFFERED=1 \
     PATH="/scripts:/venv/bin:$PATH"
 
