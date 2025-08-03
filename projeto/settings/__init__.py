@@ -1,3 +1,4 @@
+# projeto\settings\__init__.py
 # Arquivo de inicialização do pacote settings
 
 import os

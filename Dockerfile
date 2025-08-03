@@ -1,55 +1,54 @@
 # Dockerfile
-# Usa uma imagem base leve do Python com Alpine
 FROM python:3.11.3-alpine3.18
 LABEL maintainer="investidordanillo@gmail.com"
 
-# VARIÁVEIS DE AMBIENTE
-# Essa variável de ambiente é usada para controlar se o Python deve gravar arquivos de bytecode (.pyc) no disco. 1 = Não, 0 = Sim
+# Variáveis de ambiente
 ENV PYTHONDONTWRITEBYTECODE=1 \
-    # Define que a saída do Python será exibida imediatamente no console ou em outros dispositivos de saída, sem ser armazenada em buffer.
     PYTHONUNBUFFERED=1 \
-    PATH="/scripts:/venv/bin:$PATH"
+    PATH="/venv/bin:$PATH" \
+    DJANGO_SETTINGS_MODULE="projeto.settings.production"
 
-# Instala dependências do sistema necessárias para compilar dependências Python
+# Instala dependências (agrupadas por tipo para melhor cache)
 RUN apk update && apk add --no-cache \
+    # Dependências de compilação
     build-base \
-    libffi-dev \
-    postgresql-dev \
-    musl-dev \
-    python3-dev \
     gcc \
-    py3-pip \
-    bash
+    python3-dev \
+    musl-dev \
+    # Dependências de banco de dados
+    postgresql-dev \
+    libffi-dev \
+    # Utilitários
+    bash \
+    gettext
 
-# Cria o ambiente virtual
+# Cria e ativa o ambiente virtual
 RUN python -m venv /venv
 
-# Copia os arquivos de dependência primeiro para usar cache de camadas
+# Instala dependências Python (com cache otimizado)
 COPY requirements.txt /tmp/requirements.txt
-
-# Instala as dependências do projeto dentro do virtualenv
 RUN /venv/bin/pip install --upgrade pip && \
-    /venv/bin/pip install -r /tmp/requirements.txt
+    /venv/bin/pip install --no-cache-dir -r /tmp/requirements.txt && \
+    /venv/bin/pip install gunicorn psycopg2-binary
 
-# Cria diretórios para arquivos estáticos e mídias
-RUN mkdir -p /data/web/static /data/web/media && \
-    adduser -D duser && \
-    chown -R duser:duser /data/web && \
-    chmod -R 755 /data/web
+# Cria estrutura de diretórios e usuário não-root
+RUN mkdir -p /app && \
+    adduser -D -u 1000 duser && \
+    mkdir -p /app/static /app/media /app/logs && \
+    chown -R duser:duser /app && \
+    chmod -R 755 /app
 
-# Copia o projeto Django e os scripts
-COPY projeto .projeto
-COPY dotenv_files /dotenv_files
+# Copia o projeto (excluindo o que não é necessário via .dockerignore)
+COPY --chown=duser:duser . /app
 
-# Define o diretório de trabalho
-WORKDIR /projeto
+WORKDIR /app
 
-# Expõe a porta 8000 para o servidor Django
-EXPOSE 8000
-
-# Altera o usuário para duser (não-root)
+# Configurações finais
 USER duser
 
-# Define o comando padrão de inicialização
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Healthcheck (para integração com docker-compose)
+HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8000/health/ || exit 1
 
+# Comando de inicialização com Gunicorn (produção)
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "3", "--log-file", "-", "projeto.wsgi:application"]

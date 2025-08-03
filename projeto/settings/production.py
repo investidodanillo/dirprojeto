@@ -5,7 +5,7 @@ DEBUG = os.getenv("DEBUG", "0") == "1"
 if os.getenv("FORCE_PRODUCTION", "0") == "1":
     DEBUG = False
     
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "meusite.com").split(",")
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "http://177.153.60.142/").split(",")
 print(f"[INFO] Ambiente: PRODUCTION | DEBUG={DEBUG} | ALLOWED_HOSTS={ALLOWED_HOSTS}")
 
 

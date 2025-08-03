@@ -1,27 +1,46 @@
-# docker-compose.yml
-version: '3.9'
+version: '3.8'
 
 services:
   projeto:
     container_name: container_projeto
-    image: djangoapp:latest          # Nome da imagem do Django
     build:
-      context: projeto              # Atenção: contexto da build é a pasta 'projeto'
+      context: .
+      dockerfile: Dockerfile
+    image: djangoapp:latest
+    restart: unless-stopped  # Adicionado para reinício automático
     ports:
-      - 8000:8000                  # Porta mapeada para acessar o Django externamente
+      - "8000:8000"
     volumes:
-      - ./projeto:/projeto     # Mapeia código local para dentro do container
-      - ./data/web/static:/data/web/static/    # Mapeia arquivos estáticos
-      - ./data/web/media:/data/web/media/      # Mapeia mídia enviada pelo usuário
+      - ./projeto:/projeto
+      - static_volume:/data/web/static  # Alterado para volume nomeado
+      - media_volume:/data/web/media    # Alterado para volume nomeado
     env_file:
-      - dotenv_files/.env          # Arquivo com variáveis de ambiente
+      - dotenv_files/.env
     depends_on:
-      - psql                      # Depende do serviço psql estar ativo
+      psql:
+        condition: service_healthy  # Espera até o Postgres estar pronto
+    healthcheck:  # Adicionado healthcheck para o Django
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   psql:
     container_name: psql
-    image: postgres:13-alpine      # Imagem leve do PostgreSQL 13
+    image: postgres:13-alpine
+    restart: unless-stopped
     volumes:
-      - ./data/postgres/data:/var/lib/postgresql/data/  # Persistência dos dados do banco
+      - postgres_data:/var/lib/postgresql/data/  # Alterado para volume nomeado
     env_file:
-      - dotenv_files/.env          # Mesmas variáveis de ambiente para o banco
+      - dotenv_files/.env
+    healthcheck:  # Adicionado healthcheck para o Postgres
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:  # Volume persistente para o PostgreSQL
+  static_volume:  # Volume para arquivos estáticos
+  media_volume:   # Volume para uploads de mídia
+  
