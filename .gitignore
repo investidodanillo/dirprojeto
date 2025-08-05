@@ -9,6 +9,7 @@ db.sqlite3*
 *.sqlite3
 *.db
 *.db_production.sqlite3
+*.db.sqlite3
 
 # Arquivos de ambiente
 venv*/
@@ -104,4 +105,4 @@ docker-compose.log
 */migrations/*.py
 !*/migrations/__init__.py
 
-# TESTE 27/07/2025   1
+# TESTE 05/08/2025   2

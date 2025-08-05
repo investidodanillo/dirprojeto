@@ -1,46 +1,47 @@
-version: '3.8'
+version: '3.9'
 
 services:
-  projeto:
+  psql:
+    image: postgres:13-alpine
+    container_name: psql
+    restart: always
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
     container_name: container_projeto
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: djangoapp:latest
-    restart: unless-stopped  # Adicionado para reinício automático
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - psql
+    command: gunicorn projeto.wsgi:application --bind 0.0.0.0:8000
     ports:
       - "8000:8000"
     volumes:
-      - ./projeto:/projeto
-      - static_volume:/data/web/static  # Alterado para volume nomeado
-      - media_volume:/data/web/media    # Alterado para volume nomeado
-    env_file:
-      - dotenv_files/.env
-    depends_on:
-      psql:
-        condition: service_healthy  # Espera até o Postgres estar pronto
-    healthcheck:  # Adicionado healthcheck para o Django
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+      - .:/app
 
-  psql:
-    container_name: psql
-    image: postgres:13-alpine
-    restart: unless-stopped
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
     volumes:
-      - postgres_data:/var/lib/postgresql/data/  # Alterado para volume nomeado
-    env_file:
-      - dotenv_files/.env
-    healthcheck:  # Adicionado healthcheck para o Postgres
-      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./staticfiles:/app/static
+      - ./media:/app/media
+    depends_on:
+      - web
 
 volumes:
-  postgres_data:  # Volume persistente para o PostgreSQL
-  static_volume:  # Volume para arquivos estáticos
-  media_volume:   # Volume para uploads de mídia
-  
+  postgres_data:

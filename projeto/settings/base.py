@@ -1,8 +1,9 @@
+#projeto\settings\base.py
 from pathlib import Path
 import os
 from dotenv import load_dotenv
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # Carrega variáveis do .env
 load_dotenv(BASE_DIR / 'dotenv_files' / '.env')
@@ -67,7 +68,9 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_DIRS = [
+    BASE_DIR / 'aplicativo' / 'static',  # aqui apontando para o static do app
+]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
