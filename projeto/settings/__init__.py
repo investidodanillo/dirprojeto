@@ -3,6 +3,16 @@
 
 import os
 
-# Se não especificar, usa development por padrão
-default_settings = 'projeto.settings.development'
+# Define o ambiente baseado na variável de ambiente
+environment = os.environ.get('DJANGO_ENV', 'development')
+
+if environment == 'production':
+    default_settings = 'projeto.settings.producao'
+else:
+    default_settings = 'projeto.settings.development'
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', default_settings)
+
+# Se não especificar, usa development por padrão
+#default_settings = 'projeto.settings.development'
+#os.environ.setdefault('DJANGO_SETTINGS_MODULE', default_settings)

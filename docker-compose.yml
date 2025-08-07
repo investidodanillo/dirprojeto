@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   psql:
     image: postgres:13-alpine
@@ -18,6 +16,8 @@ services:
 
   web:
     build: .
+    environment:
+      - DJANGO_ENV=producao
     container_name: container_projeto
     restart: always
     env_file:
