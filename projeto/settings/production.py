@@ -1,3 +1,4 @@
+#projeto\settings\production.py
 from .base import *
 from pathlib import Path
 import os
@@ -9,8 +10,9 @@ DEBUG = os.getenv("DEBUG", "0") == "1"
 if os.getenv("FORCE_PRODUCTION", "0") == "1":
     DEBUG = False
 
-ALLOWED_HOSTS = os.getenv(
-    "ALLOWED_HOSTS", "d13100s.vps-kinghost.net,177.153.60.142").split(",")
+ALLOWED_HOSTS = [host.strip() for host in os.getenv(
+    "ALLOWED_HOSTS", "d13100s.vps-kinghost.net,177.153.60.142").split(",")]
+
 
 print(f"[INFO] Ambiente: PRODUCTION | DEBUG={DEBUG} | ALLOWED_HOSTS={ALLOWED_HOSTS}")
 

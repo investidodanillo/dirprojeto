@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # Carrega variáveis do .env
-load_dotenv(BASE_DIR / 'dotenv_files' / '.env')
+load_dotenv(os.path.join(BASE_DIR / 'dotenv_files' / '.env'))
 
 # Qual settings está rodando
 ENV_NAME = os.getenv("DJANGO_SETTINGS_MODULE", "desconhecido")
