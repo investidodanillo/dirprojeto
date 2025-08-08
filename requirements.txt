@@ -32,4 +32,6 @@ urllib3==2.2.3
 # pip install -r requirements.txt
 # pip freeze > requirements.txt
 # pip install --upgrade pip setuptools wheel
+# apt install python3-pip
+# pip install --upgrade pip
 
