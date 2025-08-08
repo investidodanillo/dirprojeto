@@ -7,7 +7,7 @@ import os
 environment = os.environ.get('DJANGO_ENV', 'development')
 
 if environment == 'production':
-    default_settings = 'projeto.settings.producao'
+    default_settings = 'projeto.settings.production'
 else:
     default_settings = 'projeto.settings.development'
 
