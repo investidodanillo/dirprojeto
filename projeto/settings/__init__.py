@@ -4,7 +4,7 @@
 import os
 
 # Define o ambiente baseado na variável de ambiente
-environment = os.environ.get('DJANGO_ENV', 'development')
+environment = os.environ.get('DJANGO_ENV', 'production')
 
 if environment == 'production':
     default_settings = 'projeto.settings.production'

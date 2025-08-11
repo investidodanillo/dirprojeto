@@ -44,7 +44,7 @@ COPY --chown=duser:duser . /app
 WORKDIR /app
 
 # Configurações finais
-USER duser
+USER root
 
 # Healthcheck (para integração com docker-compose)
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \

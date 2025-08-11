@@ -4,12 +4,12 @@ upstream django {
 
 server {
     listen 80;
-    server_name d13100s.vps-kinghost.net 177.153.60.142 localhost;
+    server_name d13100s.vps-kinghost.net 177.153.60.142 localhost _;
 
     client_max_body_size 100M;
 
     location / {
-        proxy_pass http://django;
+        proxy_pass 177.153.60.142;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

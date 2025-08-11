@@ -29,6 +29,9 @@ services:
     command: gunicorn projeto.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/app
+    networks:
+      - django-net
+      - nginx-net
 
   nginx:
     image: nginx:stable-alpine
@@ -42,7 +45,9 @@ services:
       - ./media:/app/media
     depends_on:
       - web
-
+    networks:
+      - nginx-net
+      - django-net
 volumes:
   postgres_data:
 

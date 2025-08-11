@@ -1,8 +1,8 @@
 from .base import *
 
-DEBUG = os.getenv("DEBUG", "1") == "1"
-if os.getenv("FORCE_PRODUCTION", "0") == "1":
-    DEBUG = False
+#DEBUG = os.getenv("DEBUG", "1") == "1"
+#if os.getenv("FORCE_PRODUCTION", "0") == "1":
+ #y   DEBUG = False
 
 ALLOWED_HOSTS = [
     h.strip() for h in os.getenv('ALLOWED_HOSTS', '').split(',')

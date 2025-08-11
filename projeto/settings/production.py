@@ -6,14 +6,13 @@ import os
 # =========================
 # Debug e Hosts Permitidos
 # =========================
-DEBUG = os.getenv("DEBUG", "0") == "1"
-if os.getenv("FORCE_PRODUCTION", "0") == "1":
-    DEBUG = False
-
-ALLOWED_HOSTS = [host.strip() for host in os.getenv(
-    "ALLOWED_HOSTS", "d13100s.vps-kinghost.net,177.153.60.142").split(",")]
-
-
+#DEBUG = os.getenv("DEBUG", "0") == "1"
+#if os.getenv("FORCE_PRODUCTION", "0") == "1":
+#    DEBUG = False
+DEBUG= True
+ALLOWED_HOSTS = [host.strip() for host in os.getenv("ALLOWED_HOSTS", "d13100s.vps-kinghost.net,177.153.60.142").split(",")]
+#ALLOWED_HOSTS =['*']
+#ALLOWED_HOSTS = ["ALLOWED_HOSTS","d13100s.vps-kinghost.net","177.153.60.142"]
 print(f"[INFO] Ambiente: PRODUCTION | DEBUG={DEBUG} | ALLOWED_HOSTS={ALLOWED_HOSTS}")
 
 # =========================
@@ -92,3 +91,10 @@ LOGGING = {
         },
     },
 }
+
+
+
+print("ALLOWED_HOSTS do .env:", os.getenv('ALLOWED_HOSTS'))
+ALLOWED_HOSTS = [h.strip() for h in os.getenv('ALLOWED_HOSTS', '').split(',') if h.strip()]
+print("ALLOWED_HOSTS final:", ALLOWED_HOSTS)
+print(f'ALLOWED_HOSTS_FROM_ENV: {os.getenv("ALLOWED_HOSTS")}')
