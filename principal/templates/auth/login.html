@@ -1,0 +1,55 @@
+{% extends 'base_home.html' %}
+{% load static %}  <!-- Carregar arquivos estáticos -->
+
+{% block content %}
+
+<div class="container">
+  <div class="wrapper">
+
+
+    <form method="post" action="">
+      {% csrf_token %}
+      <h2>Login</h2>
+
+    {% if form.errors %}
+        <div style="color:rgb(236, 135, 135);">
+            <h3>Usuário ou senha inválidos.</h3>
+            
+        </div>
+
+    {% endif %}
+      <!-- Campo Usuário -->
+      <div class="input-field">
+        {{ form.username }}
+        <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+        {% if form.username.errors %}
+          <div class="error">{{ form.username.errors }}</div>
+        {% endif %}
+      </div>
+
+      <!-- Campo Senha -->
+      <div class="input-field">
+        {{ form.password }}
+        <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+        {% if form.password.errors %}
+          <div class="error">{{ form.password.errors }}</div>
+        {% endif %}
+      </div>
+
+      <div class="forget">
+        <label for="remember">
+          <input type="checkbox" id="remember">
+          <p>Lembrar-me</p>
+        </label>
+        <a href="#">Esqueceu a senha?</a>
+      </div>
+
+      <button type="submit">Entrar</button>
+
+      <div class="register">
+        <p>Não tem uma conta? <a href="#">Registrar</a></p>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock content %}

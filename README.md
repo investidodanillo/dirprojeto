@@ -48,4 +48,4 @@ docker compose up -d --build
 docker compose exec web python manage.py makemigrations
 docker compose exec web python manage.py migrate
 
-# 14/08/2025
+# 30/08/2025

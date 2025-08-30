@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'projeto',
     'aplicativo',
+    'principal',
 ]
 
 MIDDLEWARE = [
@@ -31,9 +32,15 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'projeto.middleware.login_required.LoginRequiredMiddleware',  # Vírgula adicionada
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+LOGIN_URL = "auth:login"
+LOGIN_REDIRECT_URL = "/home_inicio_View/"  # Para onde vai após login
+LOGOUT_REDIRECT_URL = "/"  # Para onde vai após logout
 
 ROOT_URLCONF = 'projeto.urls'
 
@@ -69,7 +76,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / 'aplicativo' / 'static',  # aqui apontando para o static do app
+    BASE_DIR / 'static',  # aqui apontando para o static do app
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

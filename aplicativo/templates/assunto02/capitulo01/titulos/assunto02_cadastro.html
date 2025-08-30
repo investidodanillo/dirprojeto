@@ -4,34 +4,37 @@
 
 {% block titudos %}
 <!-- Link para o arquivo CSS externo -->
-<link rel="stylesheet" type="text/css" href="{% static 'css/forms2.css' %}">
+<!-- Link para o arquivo CSS externo -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/forms1.css' %}">
 <div class="body">
     <div class="container">
         <h1>Assunto 02 - Capítulo 01 Cadastro</h1>
-
-
         <p>Preencha os campos abaixo para realizar o cadastro.</p>
         <div class="wrapper">
             <form method="post">
+                
                 {% csrf_token %}
-                <div class="input-field">{{ form.campo1 }}<label>Campo1:</label></div>
-                <div class="input-field">{{ form.campo2 }}<label>Campo2:</label></div>
-                <div class="input-field select">{{ form.campo3 }}<label>Campo3:</label>
-                </div>
-                <div class="input-field checkbox">{{ form.campo4 }}
-                    <label>Campo4:</label>
-                </div>
-                <div class="input-field textarea">{{ form.campo5 }}<label>Campo5:</label></div>
+                {{ form.as_p }}
 
-                <div class="#">
-                    <button type="submit" class="btn btn-primary">Salvar</button>
-                    <button type="submit" class="btn btn-primary">Novo</button>
+                  <!-- Botões -->
+                   <!-- Botões -->
+                   <div class="assunto03-form">
+                    <div class="button-group destaque-botoes">
+                        <button type="submit" class="btn btn-glass btn-salvar" aria-label="Salvar Formulário">
+                            <i class="fas fa-save"></i> Salvar
+                        </button>
 
-                    <button type="reset" class="btn btn-outline-secondary" aria-label="Limpar Formulário">
-                        <i class="fas fa-undo mr-2"></i> Limpar
-                    </button>
+                        <button type="submit" class="btn btn-glass btn-novo" aria-label="Criar Novo Registro">
+                            <i class="fas fa-plus"></i> Novo
+                        </button>
+
+                        <button type="reset" class="btn btn-glass btn-limpar" aria-label="Limpar Formulário">
+                            <i class="fas fa-undo"></i> Limpar
+                        </button>
+                    </div>
                 </div>
-
+                <!-- Botões -->
+                <!-- Botões -->
 
             </form>
 

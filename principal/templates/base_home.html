@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>    
+    {% load static %}      
+   <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+   
+
+</head>
+
+<body>
+    <nav id="navbar">
+        <div class="logo">
+            <i class="fas fa-cube"></i><a href="{% url 'principal:principal_inicio_index_view' %}">INDEX</a>
+        </div>
+        
+        <div class="nav-links" id="navLinks">
+            <a href="javascript:void(0)" class="menu"><i class="fas fa-home"></i> INDEX</a>
+            <a href="{% url 'home:home_inicio_View' %}" class="menu"><i class="fas fa-user"></i>HOME</a>
+            <a href="#recursos" class="menu"><i class="fas fa-cog"></i> RECURSOS</a>
+            <a href="#contato" class="menu"><i class="fas fa-envelope"></i> CONTATO</a>
+        </div>       
+    </nav>
+
+        {% block content %}
+        {% endblock %}
+
+    
+
+</body>
+</html>

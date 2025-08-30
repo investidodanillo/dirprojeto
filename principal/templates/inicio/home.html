@@ -1,0 +1,104 @@
+{% extends 'base_home.html' %}
+{% load static %}  <!-- Carregar arquivos estáticos -->
+
+{% block content %}
+    <div class="container">
+        <div class="hero-section">
+            <h1 class="hero-title">HOME</h1>
+            <h3>Bem-vindo ao Futuro</h3>
+            <p>Explore nossa interface moderna e intuitiva. </p>
+            <p>Descubra funcionalidades avançadas com um design elegante e responsivo que se adapta perfeitamente às suas necessidades.</p>
+        </div>
+
+        <div class="stats-section">
+            <div class="stat-item">
+                <span class="stat-number">100+</span>
+                <span class="stat-label">Recursos</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">Suporte</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">99%</span>
+                <span class="stat-label">Uptime</span>
+            </div>
+        </div>
+
+        <div class="button-grid">
+            <a class="button primary" href="{% url 'aplicativo_index:aplicativo_index' %}">
+                <i class="fas fa-rocket"></i>
+                Assunto 01
+            </a>
+            <a class="button secondary" href="#">
+                <i class="fas fa-star"></i>
+                Assunto 02
+            </a>
+            <a class="button accent" href="#">
+                <i class="fas fa-bolt"></i>
+                Assunto 03
+            </a>
+            <a class="button primary" href="#recursos">
+                <i class="fas fa-tools"></i>
+                Recursos
+            </a>
+            <a class="button secondary" href="#contato">
+                <i class="fas fa-phone"></i>
+                Contato
+            </a>
+            <a class="button accent" href="javascript:void(0)">
+                <i class="fas fa-info-circle"></i>
+                Sobre
+            </a>
+        </div>
+
+        <div class="scroll-indicator" aria-hidden="true"></div>
+    
+    
+<div class="container">
+    <section id="recursos" class="content-section">
+        <h2 class="section-title">Nossos Recursos</h2>
+        <p class="hero-description">
+            Descubra todas as funcionalidades incríveis que preparamos para você. 
+            Interface intuitiva, desempenho excepcional e designs modernos.
+        </p>
+    </section>
+    
+
+    <section id="contato" class="content-section">
+        <h2 class="section-title">Entre em Contato</h2>
+        <p class="hero-description">
+            Tem dúvidas ou sugestões? Fique à vontade para entrar em contato conosco. 
+            Nossa equipe está sempre pronta para ajudar.
+        </p>
+    </section>
+</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navbar = document.getElementById('navbar');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const navLinks = document.getElementById('navLinks');
+
+            // Scroll effect for navbar
+            window.addEventListener('scroll', () => {
+                navbar.classList.toggle('scrolled', window.scrollY > 50);
+            });
+
+            // Mobile menu toggle
+            mobileMenu.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+            });
+
+            // Fechar menu ao clicar em um link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                });
+            });
+        });
+    </script>
+    </div>
+{% endblock content %}

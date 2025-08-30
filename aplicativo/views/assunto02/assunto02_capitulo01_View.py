@@ -2,25 +2,23 @@
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView
+from aplicativo.models.assunto02 import Tabela1
+from aplicativo.forms.assunto02.ModelForm import Tabela1Form
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
-
-from aplicativo.models.assunto02.models import Tabela1
-from aplicativo.forms.assunto02.ModelForm import Tabela1Form
-
 
 def assunto02_capitulo01_View_index(request):
     return render(request, 'assunto02/index.html')
 
 def assunto02_capitulo01_View_inicio(request):
     return render(request, 'assunto02/capitulo01/titulos/inicio.html')
+
 #
 class assunto02_capitulo01_cadastro_View(CreateView):
     model = Tabela1
     form_class = Tabela1Form
     template_name = 'assunto02/capitulo01/titulos/assunto02_cadastro.html'
-
     def get_success_url(self):
         return reverse('assunto02:assunto02_Capitulo01_Update_View', kwargs={'pk': self.object.pk})
 

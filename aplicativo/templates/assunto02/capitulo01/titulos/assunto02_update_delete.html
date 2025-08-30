@@ -3,30 +3,56 @@
 {% load static %}
 
 {% block titudos %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/forms2.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/forms1.css' %}">
 <div class="body">
     <div class="container">
         <h1>Assunto 02 - Capítulo 01 Cadastro</h1>
         <p>Preencha os campos abaixo para atualizar ou excluir o registro.</p>
         
         <div class="wrapper">
-            <form method="post" action="">
-                {% csrf_token %}
-                
-                <div class="input-field">{{ form.campo1 }} <label>Campo1:</label></div>
-                <div class="input-field">{{ form.campo2 }} <label>Campo2:</label></div>
-                <div class="input-field select">{{ form.campo3 }} <label>Campo3:</label></div>
-                <div class="input-field checkbox">{{ form.campo4 }} <label>Campo4:</label></div>
-                <div class="input-field textarea">{{ form.campo5 }} <label>Campo5:</label></div>
+            <form method="post">
 
-                <div class="button-group">
-                    <button type="submit" class="btn btn-primary" name="action" value="salvar">Salvar</button>
-                    <button type="submit" class="btn btn-danger" name="action" value="deletar"
-                        onclick="return confirm('Tem certeza que deseja deletar este registro?');">Deletar</button>
-                    <button type="submit" class="btn btn-secondary" name="action" value="novo">Novo</button>
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <!-- Botões -->
+                <!-- Botões -->
+                <div class="assunto03-form">
+                    <div class="button-group destaque-botoes">
+                        <button type="submit" class="btn btn-glass btn-salvar" aria-label="Salvar Formulário" name="action" value="salvar">
+                            <i class="fas fa-save"></i> Salvar</button>
+
+                        <button type="submit" class="btn btn-glass btn-novo" aria-label="Criar Novo Registro" name="action" value="novo">
+                            <i class="fas fa-plus"></i> Novo</button>
+
+                        <button type="submit" class="btn btn-glass btn-deletar" aria-label="Deletar Registro" name="action" value="deletar" onclick="return confirm('Tem certeza que deseja deletar este registro?');">
+                            <i class="fas fa-trash"></i> Deletar</button>
+
+                       
+                    </div>
                 </div>
+                <!-- Botões -->
+                <!-- Botões -->
+
             </form>
+
         </div>
     </div>
-</div>
-{% endblock %}
+    {% endblock %}
+
+    {% block js %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            'use strict';
+            const form = document.querySelector('.needs-validation');
+
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    </script>
+    {% endblock %}

@@ -8,7 +8,6 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 
-
 def assunto03_capitulo01_View_index(request):
     return render(request, 'assunto03/index.html')
 
@@ -19,8 +18,7 @@ def assunto03_capitulo01_View_inicio(request):
 class assunto03_capitulo01_cadastro_View(CreateView):
     model = TabelaSis1
     form_class = TabelaSis1Form
-    template_name = 'assunto03/capitulo01/titulos/assunto03_cadastro_e.html'
-
+    template_name = 'assunto03/capitulo01/titulos/assunto03_cadastro.html'
     def get_success_url(self):
         return reverse('assunto03:assunto03_Capitulo01_Update_View', kwargs={'pk': self.object.pk})
 
@@ -30,7 +28,7 @@ class assunto03_capitulo01_cadastro_View(CreateView):
 class assunto03_Capitulo01_Update_View(UpdateView):
     model = TabelaSis1
     form_class = TabelaSis1Form
-    template_name = 'assunto03/capitulo01/titulos/assunto03_update_delete_e.html'
+    template_name = 'assunto03/capitulo01/titulos/assunto03_update_delete.html'
 
     def get_object(self, queryset=None):
         return get_object_or_404(TabelaSis1, pk=self.kwargs.get("pk"))
@@ -71,7 +69,7 @@ class assunto03_capitulo01_visualizar_View(ListView):
 class assunto03_capitulo01_cadastro_TabelaSis2_View(CreateView):
     model = TabelaSis2
     form_class = TabelaSis2Form
-    template_name = 'assunto03/capitulo01/titulos/assunto03_cadastro2_e.html'
+    template_name = 'assunto03/capitulo01/titulos/assunto03_cadastro2.html'
 
     def get_success_url(self):
         return reverse('assunto03:assunto03_Capitulo01_Update2_View', kwargs={'pk': self.object.pk})
@@ -80,7 +78,7 @@ class assunto03_capitulo01_cadastro_TabelaSis2_View(CreateView):
 class assunto03_Capitulo01_Update2_View(UpdateView):
     model = TabelaSis2
     form_class = TabelaSis2Form
-    template_name = 'assunto03/capitulo01/titulos/assunto03_update_delete2_e.html'
+    template_name = 'assunto03/capitulo01/titulos/assunto03_update_delete2.html'
 
     def get_object(self, queryset=None):
         return get_object_or_404(TabelaSis2, pk=self.kwargs.get("pk"))

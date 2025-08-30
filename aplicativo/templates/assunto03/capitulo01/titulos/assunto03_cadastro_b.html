@@ -3,201 +3,78 @@
 {% load static %} <!-- Carregar arquivos estáticos -->
 
 {% block titudos %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/forms6.css' %}">
-
+<!-- Link para o arquivo CSS externo -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/forms7.css' %}">
 <div class="body">
     <div class="container">
         <h1>Assunto 03 - Capítulo 01 Cadastro</h1>
         <p>Preencha os campos abaixo para realizar o cadastro.</p>
-        
         <div class="wrapper">
-            <form method="post" enctype="multipart/form-data">
+            <form method="post">
                 {% csrf_token %}
-                
-                <!-- Campos do formulário -->
-                <div class="form-group">
-                    <label for="{{ form.campo1.id_for_label }}">{{ form.campo1.label }}</label>
-                    {{ form.campo1 }}
-                    <small class="form-text text-muted">{{ form.campo1.help_text }}</small>
-                    {{ form.campo1.errors }}
-                </div>
+                <div class="input-field input">{{ form.campo1 }}<label> Campo 1 :</label></div>
+                <div class="input-field textarea">{{ form.campo2 }}<label> Campo 2 :</label></div>
+                <div class="input-field glass-input_number">{{ form.campo3 }}<label for="{{ form.campo3.id_for_label }}">Campo 3:</label></div>
+                <div class="input-field glass-input_decimal">{{ form.campo4 }}<label> Campo 4 :</label></div>
+                <div class="input-field glass-input_number">{{ form.campo5 }}<label> Campo 5 :</label></div>
+                <div class="input-field checkbox"><label class="input-field.checkbox" for="{{ form.campo6.id_for_label }}">Campo 6:</label>{{ form.campo6 }}</div>
+                <div class="input-field date">{{ form.campo7 }}<label> Campo 7 :</label></div>
+                <div class="input-field">{{ form.campo8 }}<label> Campo 8 :</label></div>
+                <div class="input-field">{{ form.campo9 }}<label> Campo 9 :</label></div>
+                <div class="input-field">{{ form.campo10 }}<label> Campo 10 :</label></div>
+                <div class="input-field">{{ form.campo11 }}<label> Campo 11 :</label></div>
+                <div class="input-field">{{ form.campo12 }}<label> Campo 12 :</label></div>
+                <div class="input-field">{{ form.campo13 }}<label> Campo 13 :</label></div>
+                <div class="input-field">{{ form.campo14 }}<label> Campo 14 :</label></div>
+                <div class="input-field">{{ form.campo15 }}<label> Campo 15 :</label></div>
+                <div class="input-field">{{ form.campo16 }}<label> Campo 16 :</label></div>
+                <div class="input-field">{{ form.campo17 }}<label> Campo 17 :</label></div>
+                <div class="input-field">{{ form.campo18 }}<label> Campo 18 :</label></div>
+                <div class="input-field textarea">{{ form.campo19 }}<label> Campo 19 :</label></div>
+                <div class="input-field">{{ form.campo20 }}<label> Campo 20 :</label></div>
+                <div class="input-field">{{ form.campo21 }}<label> Campo 21 :</label></div>
+                <div class="input-field">{{ form.campo22 }}<label> Campo 22 :</label></div>
 
-                <div class="form-group">
-                    <label for="{{ form.campo2.id_for_label }}">{{ form.campo2.label }}</label>
-                    {{ form.campo2 }}
-                    <small class="form-text text-muted">{{ form.campo2.help_text }}</small>
-                    {{ form.campo2.errors }}
-                </div>
+                 <!-- Botões -->
+                   <!-- Botões -->
+                <div class="assunto03-form">
+                    <div class="button-group destaque-botoes">
+                        <button type="submit" class="btn btn-glass btn-salvar" aria-label="Salvar Formulário">
+                            <i class="fas fa-save"></i> Salvar
+                        </button>
 
-                <div class="form-group">
-                    <label for="{{ form.campo3.id_for_label }}">{{ form.campo3.label }}</label>
-                    {{ form.campo3 }}
-                    <small class="form-text text-muted">{{ form.campo3.help_text }}</small>
-                    {{ form.campo3.errors }}
-                </div>
+                        <button type="submit" class="btn btn-glass btn-novo" aria-label="Criar Novo Registro">
+                            <i class="fas fa-plus"></i> Novo
+                        </button>
 
-                <div class="form-group">
-                    <label for="{{ form.campo4.id_for_label }}">{{ form.campo4.label }}</label>
-                    {{ form.campo4 }}
-                    <small class="form-text text-muted">{{ form.campo4.help_text }}</small>
-                    {{ form.campo4.errors }}
+                        <button type="reset" class="btn btn-glass btn-limpar" aria-label="Limpar Formulário">
+                            <i class="fas fa-undo"></i> Limpar
+                        </button>
+                    </div>
                 </div>
+                <!-- Botões -->
+                <!-- Botões -->
 
-                <div class="form-group">
-                    <label for="{{ form.campo5.id_for_label }}">{{ form.campo5.label }}</label>
-                    {{ form.campo5 }}
-                    <small class="form-text text-muted">{{ form.campo5.help_text }}</small>
-                    {{ form.campo5.errors }}
-                </div>
 
-                <div class="form-group checkbox-group">
-                    <label for="{{ form.campo6.id_for_label }}">{{ form.campo6.label }}</label>
-                    {{ form.campo6 }}
-                    <small class="form-text text-muted">{{ form.campo6.help_text }}</small>
-                    {{ form.campo6.errors }}
-                </div>
-
-                <div class="form-group">
-                    <label for="{{ form.campo7.id_for_label }}">{{ form.campo7.label }}</label>
-                    {{ form.campo7 }}
-                    <small class="form-text text-muted">{{ form.campo7.help_text }}</small>
-                    {{ form.campo7.errors }}
-                </div>
-
-                <div class="form-group">
-                    <label for="{{ form.campo8.id_for_label }}">{{ form.campo8.label }}</label>
-                    {{ form.campo8 }}
-                    <small class="form-text text-muted">{{ form.campo8.help_text }}</small>
-                    {{ form.campo8.errors }}
-                </div>
-
-                <div class="form-group">
-                    <label for="{{ form.campo9.id_for_label }}">{{ form.campo9.label }}</label>
-                    {{ form.campo9 }}
-                    <small class="form-text text-muted">{{ form.campo9.help_text }}</small>
-                    {{ form.campo9.errors }}
-                </div>
-
-                <div class="form-group">
-                    <label for="{{ form.campo10.id_for_label }}">{{ form.campo10.label }}</label>
-                    {{ form.campo10 }}
-                    <small class="form-text text-muted">{{ form.campo10.help_text }}</small>
-                    {{ form.campo10.errors }}
-                </div>
-
-                <div class="form-group">
-                    <label for="{{ form.campo11.id_for_label }}">{{ form.campo11.label }}</label>
-                    {{ form.campo11 }}
-                    <small class="form-text text-muted">{{ form.campo11.help_text }}</small>
-                    {{ form.campo11.errors }}
-                </div>
-
-                <div class="form-group">
-                    <label for="{{ form.campo12.id_for_label }}">{{ form.campo12.label }}</label>
-                    {{ form.campo12 }}
-                    <small class="form-text text-muted">{{ form.campo12.help_text }}</small>
-                    {{ form.campo12.errors }}
-                </div>
-
-                <div class="form-group">
-                    <label for="{{ form.campo13.id_for_label }}">{{ form.campo13.label }}</label>
-                    {{ form.campo13 }}
-                    <small class="form-text text-muted">{{ form.campo13.help_text }}</small>
-                    {{ form.campo13.errors }}
-                </div>
-
-                <div class="form-group">
-                    <label for="{{ form.campo14.id_for_label }}">{{ form.campo14.label }}</label>
-                    {{ form.campo14 }}
-                    <small class="form-text text-muted">{{ form.campo14.help_text }}</small>
-                    {{ form.campo14.errors }}
-                </div>
-
-                <div class="form-group">
-                    <label for="{{ form.campo15.id_for_label }}">{{ form.campo15.label }}</label>
-                    {{ form.campo15 }}
-                    <small class="form-text text-muted">{{ form.campo15.help_text }}</small>
-                    {{ form.campo15.errors }}
-                </div>
-
-                <div class="form-group">
-                    <label for="{{ form.campo16.id_for_label }}">{{ form.campo16.label }}</label>
-                    {{ form.campo16 }}
-                    <small class="form-text text-muted">{{ form.campo16.help_text }}</small>
-                    {{ form.campo16.errors }}
-                </div>
-
-                <div class="form-group">
-                    <label for="{{ form.campo17.id_for_label }}">{{ form.campo17.label }}</label>
-                    {{ form.campo17 }}
-                    <small class="form-text text-muted">{{ form.campo17.help_text }}</small>
-                    {{ form.campo17.errors }}
-                </div>
-
-                <div class="form-group">
-                    <label for="{{ form.campo18.id_for_label }}">{{ form.campo18.label }}</label>
-                    {{ form.campo18 }}
-                    <small class="form-text text-muted">{{ form.campo18.help_text }}</small>
-                    {{ form.campo18.errors }}
-                </div>
-
-                <div class="form-group">
-                    <label for="{{ form.campo19.id_for_label }}">{{ form.campo19.label }}</label>
-                    {{ form.campo19 }}
-                    <small class="form-text text-muted">{{ form.campo19.help_text }}</small>
-                    {{ form.campo19.errors }}
-                </div>
-
-                <div class="form-group">
-                    <label for="{{ form.campo20.id_for_label }}">{{ form.campo20.label }}</label>
-                    {{ form.campo20 }}
-                    <small class="form-text text-muted">{{ form.campo20.help_text }}</small>
-                    {{ form.campo20.errors }}
-                </div>
-
-                <div class="form-group">
-                    <label for="{{ form.campo21.id_for_label }}">{{ form.campo21.label }}</label>
-                    {{ form.campo21 }}
-                    <small class="form-text text-muted">{{ form.campo21.help_text }}</small>
-                    {{ form.campo21.errors }}
-                </div>
-
-                <div class="form-group">
-                    <label for="{{ form.Campo22.id_for_label }}">{{ form.Campo22.label }}</label>
-                    {{ form.campo21.errors }}
-                    
-                   
-                    <small class="form-text text-muted">{{ form.Campo22.help_text }}</small>
-                    {{ form.Campo22.errors }}
-                </div>
-
-                <!-- Botões de ação -->
-                <div class="btn-group">
-                    <button type="submit" class="btn btn-primary">Salvar</button>
-                    <button type="submit" class="btn btn-primary">Novo</button>
-                    <button type="reset" class="btn btn-outline-secondary">
-                        <i class="fas fa-undo mr-2"></i> Limpar
-                    </button>
-                </div>
             </form>
+
         </div>
     </div>
-</div>
-{% endblock %}
+    {% endblock %}
 
-{% block js %}
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        'use strict';
-        const form = document.querySelector('form');
-        
-        form.addEventListener('submit', function (event) {
-            if (!form.checkValidity()) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-        }, false);
-    });
-</script>
-{% endblock %}
+    {% block js %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            'use strict';
+            const form = document.querySelector('.needs-validation');
+
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    </script>
+    {% endblock %}
