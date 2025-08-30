@@ -43,7 +43,7 @@ services:
       - "80:80"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./staticfiles:/app/static
+      - ./staticfiles:/app/taticfiles
       - ./media:/app/media
     depends_on:
       - web
