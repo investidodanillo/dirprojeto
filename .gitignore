@@ -52,12 +52,7 @@ Thumbs.db
 desktop.ini
 
 # Arquivos de mídia/static gerados localmente
-/media/
-staticfiles/
-static/
-static_root/
-static_cdn/
-media_root/
+
 
 # Arquivos de configuração local
 /local_settings.py
