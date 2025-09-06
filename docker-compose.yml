@@ -31,6 +31,7 @@ services:
     command: gunicorn projeto.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/app
+      - ./staticfiles:/app/staticfiles     
     networks:
       - django-net
       - nginx-net
@@ -43,7 +44,7 @@ services:
       - "80:80"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./staticfiles:/app/taticfiles
+      - ./staticfiles:/app/staticfiles
       - ./media:/app/media
     depends_on:
       - web

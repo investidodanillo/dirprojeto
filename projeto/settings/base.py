@@ -12,7 +12,7 @@ load_dotenv(os.path.join(BASE_DIR /'.env'))
 ENV_NAME = os.getenv("DJANGO_SETTINGS_MODULE", "desconhecido")
 
 # SECRET_KEY agora lê certo do .env
-SECRET_KEY = os.getenv('SECRET_KEY', 'dummy-secret-key')
+SECRET_KEY = os.getenv('SECRET_KEY','dummy-secret-key')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -76,7 +76,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',  # aqui apontando para o static do app
+    BASE_DIR / 'projeto' / 'static',
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

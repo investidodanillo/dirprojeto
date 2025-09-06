@@ -1,6 +1,5 @@
 # requirements.txt
 asgiref==3.8.1
-
 certifi==2025.6.15
 cffi==1.17.1
 charset-normalizer==3.4.2
@@ -13,7 +12,6 @@ idna==3.10
 oauthlib==3.3.1
 packaging==25.0
 pillow==10.4.0
-
 psycopg2-binary==2.9.10
 pycparser==2.22
 PyJWT==2.9.0
@@ -26,12 +24,15 @@ social-auth-core==4.5.4
 sqlparse==0.5.3
 typing_extensions==4.13.1
 tzdata==2025.2
-urllib3==2.2.3
+urllib3==2.2.
+whitenoise==6.6.0
 
 # COMANDOS:
+# apt install python3-pip
 # pip install -r requirements.txt
+# apt install docker.io
+# apt install docker-compose
 # pip freeze > requirements.txt
 # pip install --upgrade pip setuptools wheel
-# apt install python3-pip
 # pip install --upgrade pip
 

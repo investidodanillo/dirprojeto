@@ -35,7 +35,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 # 8 Verifique a instalação:
 docker-compose --version
-Opcional: rodar Docker sem sudo
+# Opcional: rodar Docker sem sudo
 
 # 9 Adicione seu usuário ao grupo docker (troque seu_usuario pelo seu user):
 sudo usermod -aG docker $USER
