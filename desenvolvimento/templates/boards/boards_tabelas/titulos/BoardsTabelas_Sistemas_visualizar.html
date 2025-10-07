@@ -1,0 +1,85 @@
+{% extends 'boards\boards_tabelas\titulos\base.html' %}
+{% load static %}
+
+{% block titudos %}
+<main class="main-content">
+<h2>Cadastro de Sistemas</h2>
+            <p data-end="192" data-start="94">
+                Representa um <strong data-end="133" data-start="108">sistema ou aplicativo</strong> que ser&aacute;
+                desenvolvido e gerenciado dentro da plataforma.</p>
+            <ul data-end="409" data-start="194">
+                <li data-end="306" data-start="196">
+                    <strong data-end="208" data-start="196">Objetivo</strong>: servir como unidade principal de
+                    organiza&ccedil;&atilde;o para os Itens de Evolu&ccedil;&atilde;o, Releases e Checklists.
+                </li>
+                <li data-end="324" data-start="309">
+                    <strong data-end="321" data-start="309">Exemplos</strong>:
+                    <ul>
+                        <li data-end="338" data-start="329">
+                            <em data-end="336" data-start="329">MOLDE</em>
+                        </li>
+                        <li data-end="360" data-start="343">
+                            <em data-end="358" data-start="343">Contabilidade</em>
+                        </li>
+                        <li data-end="390" data-start="365">
+                            <em data-end="388" data-start="365">Recursos Humanos (RH)</em>
+                        </li>
+                        <li data-end="409" data-start="395">
+                            <em data-end="407" data-start="395">Financeiro</em>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+    <h1>TABELA1</h1>
+    <p>{{ mensagem }}</p>
+
+    <div class="table-container">
+        <table class="table table-striped table-hover">
+            <thead class="table-header">
+                <tr class="table-row">
+                    <th>ID</th>
+                    <th>NOME</th>
+                    <th>DESCRIÇÃO</th>
+
+                    <th>Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for Campo in Sistema_list %}
+                <tr>
+                    <td data-label="ID">{{ Campo.id }}</td>
+                    <td data-label="Campo 1">{{ Campo.nome }}</td>
+                    <td data-label="Campo 2">{{ Campo.descricao }}</td>
+
+                    <td data-label="Editar">
+                        <a href="{% url 'boards:boardsTabelas_Sistemas_UpdateDelete_View' Campo.id %}"
+                           target="_blank" rel="noopener noreferrer" class="btn btn-warning btn-sm">
+                           <i class="fas fa-edit"></i>Editar
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="no-data">Nenhum produto encontrado.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Paginação -->
+        {% if is_paginated %}
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+            {% endif %}
+
+            <span>Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Próxima</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</main>
+{% endblock titudos %}

@@ -1,0 +1,73 @@
+<!--controles\templates\usuarios\titulos\usuarios_cadastro.html-->
+{% extends 'usuarios/titulos/base.html' %}
+{% load static %}
+
+{% block titudos %}
+<main class="main-content">
+    <h1>Usuários - Cadastro</h1>
+    
+    <div class="card-xl">
+        <form method="post">
+            {% csrf_token %}
+            
+            <!-- Renderize os campos manualmente para melhor controle -->
+            <div class="form-group">
+                {% for field in form %}
+                    <div class="form-field">
+                        <label for="{{ field.id_for_label }}" class="form-label">
+                            {{ field.label }}
+                            {% if field.field.required %}<span class="required">*</span>{% endif %}
+                        </label>
+                        {{ field }}
+                        {% if field.help_text %}
+                            <small class="form-text">{{ field.help_text }}</small>
+                        {% endif %}
+                        {% if field.errors %}
+                            <div class="form-errors">
+                                {% for error in field.errors %}
+                                    <span class="error">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Botões -->
+            <div class="assunto03-form">
+                <div class="button-group destaque-botoes">
+                    <button type="submit" name="action" value="salvar" class="btn btn-glass btn-salvar"
+                        aria-label="Salvar Formulário">
+                        <i class="fas fa-save"></i> SALVAR
+                    </button>
+
+                    <button type="submit" name="action" value="novo" class="btn btn-glass btn-novo"
+                        aria-label="Criar Novo Registro">
+                        <i class="fas fa-plus"></i> NOVO
+                    </button>
+
+                    <button type="button" id="btn-limpar" class="btn btn-glass btn-limpar"
+                        aria-label="Limpar Formulário">
+                        <i class="fas fa-undo"></i> LIMPAR
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+{% endblock %}
+
+{% block js %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector('form');
+        const btnLimpar = document.getElementById('btn-limpar');
+
+        if (btnLimpar) {
+            btnLimpar.addEventListener('click', function () {
+                form.reset();
+            });
+        }
+    });
+</script>
+{% endblock %}

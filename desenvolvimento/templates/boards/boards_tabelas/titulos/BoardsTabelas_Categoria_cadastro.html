@@ -1,0 +1,77 @@
+<!--aplicativo\templates\assunto02\capitulo01\titulos\assunto02_cadastro.html-->
+{% extends 'boards\boards_tabelas\titulos\base.html' %}
+{% load static %}
+
+{% block titudos %}
+<main class="main-content">
+   <h2>Cadastro de Categoria</h2>
+			<p data-end="257" data-start="103">
+				Representa uma <strong data-end="144" data-start="118">classifica&ccedil;&atilde;o auxiliar</strong> utilizada para <strong data-end="201" data-start="160">organizar e agrupar Itens de Evolu&ccedil;&atilde;o</strong> de acordo com sua &aacute;rea ou natureza dentro do sistema.</p>
+			<ul>
+				<li data-end="345" data-start="261">
+					<strong data-end="273" data-start="261">Objetivo</strong>: facilitar a categoriza&ccedil;&atilde;o e an&aacute;lise das demandas de desenvolvimento.</li>
+				<li data-end="363" data-start="348">
+					<strong data-end="360" data-start="348">Exemplos</strong>:
+					<ul>
+						<li data-end="379" data-start="368">
+							<em data-end="377" data-start="368">Backend</em></li>
+						<li data-end="396" data-start="384">
+							<em data-end="394" data-start="384">Frontend</em></li>
+						<li data-end="419" data-start="401">
+							<em data-end="417" data-start="401">Banco de Dados</em></li>
+						<li data-end="439" data-start="424">
+							<em data-end="437" data-start="424">Performance</em></li>
+					</ul>
+				</li>
+			</ul>
+    <div class="card-xl">
+        <div class="">
+            <form method="post">
+
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <!-- Botões -->
+                <!-- Botões -->
+                <div class="assunto03-form">
+                    <div class="button-group destaque-botoes">
+                        <button type="submit" name="action" value="salvar" class="btn btn-glass btn-salvar"
+                            aria-label="Salvar Formulário">
+                            <i class="fas fa-save"></i> SALVAR
+                        </button>
+
+                        <button type="submit" name="action" value="novo" class="btn btn-glass btn-novo"
+                            aria-label="Criar Novo Registro">
+                            <i class="fas fa-plus"></i> NOVO
+                        </button>
+
+                        <button type="button" id="btn-limpar" class="btn btn-glass btn-limpar"
+                            aria-label="Limpar Formulário">
+                            <i class="fas fa-undo"></i> LIMPAR
+                        </button>
+                    </div>
+                </div>
+                <!-- Botões -->
+                <!-- Botões -->
+
+            </form>
+
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block js %}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector('form');
+            const btnLimpar = document.getElementById('btn-limpar');
+
+            if (btnLimpar) {
+                btnLimpar.addEventListener('click', function () {
+                    form.reset();
+                });
+            }
+        });
+    </script>
+    {% endblock %}

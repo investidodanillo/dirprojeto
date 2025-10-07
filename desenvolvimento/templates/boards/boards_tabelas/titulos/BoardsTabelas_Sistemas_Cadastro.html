@@ -1,0 +1,83 @@
+{% extends 'boards\boards_tabelas\titulos\base.html' %}
+{% load static %}
+
+{% block titudos %}
+<main class="main-content">
+<h2>Cadastro de Sistemas</h2>
+            <p data-end="192" data-start="94">
+                Representa um <strong data-end="133" data-start="108">sistema ou aplicativo</strong> que ser&aacute;
+                desenvolvido e gerenciado dentro da plataforma.</p>
+            <ul data-end="409" data-start="194">
+                <li data-end="306" data-start="196">
+                    <strong data-end="208" data-start="196">Objetivo</strong>: servir como unidade principal de
+                    organiza&ccedil;&atilde;o para os Itens de Evolu&ccedil;&atilde;o, Releases e Checklists.
+                </li>
+                <li data-end="324" data-start="309">
+                    <strong data-end="321" data-start="309">Exemplos</strong>:
+                    <ul>
+                        <li data-end="338" data-start="329">
+                            <em data-end="336" data-start="329">MOLDE</em>
+                        </li>
+                        <li data-end="360" data-start="343">
+                            <em data-end="358" data-start="343">Contabilidade</em>
+                        </li>
+                        <li data-end="390" data-start="365">
+                            <em data-end="388" data-start="365">Recursos Humanos (RH)</em>
+                        </li>
+                        <li data-end="409" data-start="395">
+                            <em data-end="407" data-start="395">Financeiro</em>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+    <div class="card-xl">
+        <div class="">
+            <form method="post">
+
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <!-- Botões -->
+                <!-- Botões -->
+                <div class="assunto03-form">
+                    <div class="button-group destaque-botoes">
+                        <button type="submit" name="action" value="salvar" class="btn btn-glass btn-salvar"
+                            aria-label="Salvar Formulário">
+                            <i class="fas fa-save"></i> SALVAR
+                        </button>
+
+                        <button type="submit" name="action" value="novo" class="btn btn-glass btn-novo"
+                            aria-label="Criar Novo Registro">
+                            <i class="fas fa-plus"></i> NOVO
+                        </button>
+
+                        <button type="button" id="btn-limpar" class="btn btn-glass btn-limpar"
+                            aria-label="Limpar Formulário">
+                            <i class="fas fa-undo"></i> LIMPAR
+                        </button>
+                    </div>
+                </div>
+                <!-- Botões -->
+                <!-- Botões -->
+
+            </form>
+
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block js %}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector('form');
+            const btnLimpar = document.getElementById('btn-limpar');
+
+            if (btnLimpar) {
+                btnLimpar.addEventListener('click', function () {
+                    form.reset();
+                });
+            }
+        });
+    </script>
+    {% endblock %}

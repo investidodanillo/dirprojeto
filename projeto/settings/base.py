@@ -2,6 +2,7 @@
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+from django.conf.locale.pt_BR import formats as pt_formats
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
@@ -21,9 +22,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #terceiros
+    'django_tables2',
+    'django_filters',
+
+    #meus aplicativos
     'projeto',
     'aplicativo',
     'principal',
+    'desing',
+    'controles',
+    'desenvolvimento',
 ]
 
 MIDDLEWARE = [
@@ -83,3 +92,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+pt_formats.DATE_FORMAT = "d/m/Y"

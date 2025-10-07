@@ -1,24 +1,28 @@
 <!--aplicativo\templates\assunto01\base.html-->
-{% extends 'base.html' %}
+{% extends 'aplicativo_base.html' %}
 {% load static %}  <!-- Carregar arquivos estáticos -->
 
 {% block content %}
-<!-- Header B (Título e Subtítulo) -->
+<!-- Header B - Navbar de Navegação -->
+    <header class="headerb">
+        <nav class="main-menu">
+            <a class="menu-item active" href="{% url 'assunto03:assunto03_capitulo01_View_inicio' %}"><i class="fas fa-book"></i>Capitulo 01</a>
+            <a class="menu-item" href="#"><i class="fas fa-money-bill-wave"></i>Financeiro</a>
+            <a class="menu-item" href="#"><i class="fas fa-users"></i>--</a>
+            <a class="menu-item" href="#"><i class="fas fa-boxes"></i>--</a>
+            <a class="menu-item" href="{% url 'home:home_inicio_View' %}"><i class="fas fa-chart-bar"></i>--</a>
 
-<div class="headerb">
-  <nav class="navbar">
-    <div class="index">
-     
-    <h3><a class="nav-link" href="{% url 'assunto03:assunto03_capitulo01_View_index' %}"><i class="fas fa-home fa-globe fa-3x"> <!-- Casa --> </i></a></h3>
-  </div>
-    
-    <div class="menu">
-        <a class="nav-link menu-item" href="{% url 'assunto03:assunto03_capitulo01_View_inicio' %}">CAPITULO01</a>
-       
-        
-    </div>
-</nav>
-</div>
+        </nav>
+        <div class="submenu">
+           
+            <a class="submenu-item" href="#">
+                <i class="fas fa-headset"></i>
+                Suporte
+            </a>
+            
+        </div>
+    </header>
+
 {% block conteudox %}
 
 

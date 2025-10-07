@@ -1,23 +1,21 @@
-<!--dirprojeto\aplicativo\templates\assunto02\capitulo01\titulos\assunto02_cadastro.html-->
+<!--aplicativo\templates\assunto03\capitulo01\titulos\assunto03_cadastro.html-->
 {% extends 'assunto03/capitulo01/titulos/base.html' %}
-{% load static %} <!-- Carregar arquivos estáticos -->
+{% load static %}
 
 {% block titudos %}
-<!-- Link para o arquivo CSS externo -->
-<link rel="stylesheet" type="text/css" href="{% static 'css/forms1.css' %}">
-<div class="body">
-    <div class="container">
+<main class="main-content">
         <h1>Assunto 03 - Capítulo 01 Cadastro</h1>
-        <p>Preencha os campos abaixo para realizar o cadastro.</p>
-        <div class="wrapper">
+        <p>Cadastro 02</p>
+        <div class="card-xl">
+            <div class="">
             <form method="post">
-                
+
                 {% csrf_token %}
                 {{ form.as_p }}
 
-                  <!-- Botões -->
-                   <!-- Botões -->
-                   <div class="assunto03-form">
+                <!-- Botões -->
+                <!-- Botões -->
+                <div class="assunto03-form">
                     <div class="button-group destaque-botoes">
                         <button type="submit" class="btn btn-glass btn-salvar" aria-label="Salvar Formulário">
                             <i class="fas fa-save"></i> Salvar
@@ -37,8 +35,7 @@
 
             </form>
 
-        </div>
-    </div>
+</div></div>
     {% endblock %}
 
     {% block js %}

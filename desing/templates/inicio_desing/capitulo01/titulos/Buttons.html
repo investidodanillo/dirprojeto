@@ -1,0 +1,728 @@
+<!--aplicativo\templates\assunto01\capitulo01\titulos\inicio.html-->
+{% extends 'inicio_desing\capitulo01\titulos\base.html' %}
+{% load static %} <!-- Carregar arquivos estáticos -->
+
+{% block titudos %}
+
+<!-- conteúdo da página -->
+<main class="main-content">
+    <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demonstração de Botões - ERP Contábil</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* ========== VARIÁVEIS CSS ========== */
+        :root {
+            /* Cores principais */
+            --glass-bg-light: rgba(255, 255, 255, 0.15);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border-light: rgba(255, 255, 255, 0.3);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            
+            /* Cores de texto */
+            --text-primary: #ffffff;
+            --text-secondary: #e2e8f0;
+            --text-muted: #94a3b8;
+            
+            /* Cores de destaque */
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --info-color: #06b6d4;
+            
+            /* Cores de fundo */
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            
+            /* Tipografia */
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            
+            /* Espaçamento */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            
+            /* Bordas */
+            --border-radius-sm: 0.375rem;
+            --border-radius-md: 0.5rem;
+            --border-radius-lg: 0.75rem;
+            --border-radius-xl: 1rem;
+            
+            /* Sombras */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* ========== RESET E BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Open Sans", sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            padding: var(--spacing-xl);
+        }
+
+        /* ========== LAYOUT ========== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .page-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .page-subtitle {
+            color: var(--text-secondary);
+            font-size: var(--font-size-lg);
+            font-weight: 300;
+        }
+
+        .section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+            border: 1px solid var(--glass-border);
+        }
+
+        .section-title {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .section-title i {
+            color: var(--info-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-lg);
+            border: 1px solid var(--glass-border);
+        }
+
+        .card-title {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+        }
+
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .button-group.vertical {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .code {
+            font-family: 'Courier New', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius-sm);
+            font-size: var(--font-size-sm);
+            overflow-x: auto;
+            margin-top: var(--spacing-md);
+            color: var(--text-secondary);
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--glass-border);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: var(--spacing-2xl);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            font-size: var(--font-size-sm);
+        }
+
+        /* ========== COMPONENTES: BUTTONS ========== */
+        /* Estilo base para todos os botões */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+            font-weight: 500;
+            font-size: var(--font-size-sm);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Botão primário - para ações principais */
+        .btn-primary {
+            background: var(--glass-bg-light);
+            border-color: var(--glass-border-light);
+            color: var(--text-primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--glass-bg);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Botão secundário - para ações menos importantes */
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--glass-border);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Botão de sucesso - para ações positivas */
+        .btn-success {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: rgba(16, 185, 129, 0.3);
+            color: var(--success-color);
+        }
+
+        .btn-success:hover {
+            background: rgba(16, 185, 129, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Botão de alerta - para ações que requerem atenção */
+        .btn-warning {
+            background: rgba(245, 158, 11, 0.2);
+            border-color: rgba(245, 158, 11, 0.3);
+            color: var(--warning-color);
+        }
+
+        .btn-warning:hover {
+            background: rgba(245, 158, 11, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Botão de erro - para ações destrutivas */
+        .btn-error {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: rgba(239, 68, 68, 0.3);
+            color: var(--error-color);
+        }
+
+        .btn-error:hover {
+            background: rgba(239, 68, 68, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Tamanhos de botões */
+        .btn-sm {
+            padding: var(--spacing-xs) var(--spacing-md);
+            font-size: var(--font-size-xs);
+        }
+
+        .btn-lg {
+            padding: var(--spacing-md) var(--spacing-xl);
+            font-size: var(--font-size-base);
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        /* Estado desabilitado */
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* ========== RESPONSIVIDADE ========== */
+        @media (max-width: 768px) {
+            body {
+                padding: var(--spacing-md);
+            }
+            
+            .section {
+                padding: var(--spacing-lg);
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .button-group {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="page-title">Demonstração de Botões</h1>
+            <p class="page-subtitle">Visualize todos os estilos de botões disponíveis no sistema ERP Contábil</p>
+        </header>
+
+        <!-- Seção de Botões por Tipo -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-palette"></i> Botões por Tipo</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title">Botão Primário</h3>
+                    <p class="text-muted">Para ações principais e mais importantes</p>
+                    <div class="button-group">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-save"></i>
+                            Salvar
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-check"></i>
+                            Confirmar
+                        </button>
+                    </div>
+                    <div class="code">
+                        &lt;button class="btn btn-primary"&gt;
+                            &lt;i class="fas fa-save"&gt;&lt;/i&gt;
+                            Salvar
+                        &lt;/button&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Botão Secundário</h3>
+                    <p class="text-muted">Para ações secundárias e menos importantes</p>
+                    <div class="button-group">
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-times"></i>
+                            Cancelar
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i>
+                            Voltar
+                        </button>
+                    </div>
+                    <div class="code">
+                        &lt;button class="btn btn-secondary"&gt;
+                            &lt;i class="fas fa-times"&gt;&lt;/i&gt;
+                            Cancelar
+                        &lt;/button&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Botão Success</h3>
+                    <p class="text-muted">Para ações positivas e bem-sucedidas</p>
+                    <div class="button-group">
+                        <button class="btn btn-success">
+                            <i class="fas fa-check-circle"></i>
+                            Aprovar
+                        </button>
+                        <button class="btn btn-success">
+                            <i class="fas fa-plus"></i>
+                            Adicionar
+                        </button>
+                    </div>
+                    <div class="code">
+                        &lt;button class="btn btn-success"&gt;
+                            &lt;i class="fas fa-check-circle"&gt;&lt;/i&gt;
+                            Aprovar
+                        &lt;/button&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Botão Warning</h3>
+                    <p class="text-muted">Para ações que requerem atenção ou cuidado</p>
+                    <div class="button-group">
+                        <button class="btn btn-warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            Aviso
+                        </button>
+                        <button class="btn btn-warning">
+                            <i class="fas fa-edit"></i>
+                            Editar
+                        </button>
+                    </div>
+                    <div class="code">
+                        &lt;button class="btn btn-warning"&gt;
+                            &lt;i class="fas fa-exclamation-triangle"&gt;&lt;/i&gt;
+                            Aviso
+                        &lt;/button&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Botão Error</h3>
+                    <p class="text-muted">Para ações destrutivas ou de remoção</p>
+                    <div class="button-group">
+                        <button class="btn btn-error">
+                            <i class="fas fa-trash"></i>
+                            Excluir
+                        </button>
+                        <button class="btn btn-error">
+                            <i class="fas fa-ban"></i>
+                            Cancelar
+                        </button>
+                    </div>
+                    <div class="code">
+                        &lt;button class="btn btn-error"&gt;
+                            &lt;i class="fas fa-trash"&gt;&lt;/i&gt;
+                            Excluir
+                        &lt;/button&gt;
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Botões por Tamanho -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-arrows-alt-v"></i> Botões por Tamanho</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title">Botão Pequeno</h3>
+                    <p class="text-muted">Para espaços limitados ou ações menos importantes</p>
+                    <div class="button-group">
+                        <button class="btn btn-primary btn-sm">
+                            <i class="fas fa-cog"></i>
+                            Configurar
+                        </button>
+                        <button class="btn btn-secondary btn-sm">
+                            <i class="fas fa-eye"></i>
+                            Visualizar
+                        </button>
+                    </div>
+                    <div class="code">
+                        &lt;button class="btn btn-primary btn-sm"&gt;
+                            &lt;i class="fas fa-cog"&gt;&lt;/i&gt;
+                            Configurar
+                        &lt;/button&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Botão Médio</h3>
+                    <p class="text-muted">Tamanho padrão para a maioria das ações</p>
+                    <div class="button-group">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-save"></i>
+                            Salvar Alterações
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-times"></i>
+                            Cancelar
+                        </button>
+                    </div>
+                    <div class="code">
+                        &lt;button class="btn btn-primary"&gt;
+                            &lt;i class="fas fa-save"&gt;&lt;/i&gt;
+                            Salvar Alterações
+                        &lt;/button&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Botão Grande</h3>
+                    <p class="text-muted">Para ações importantes ou destaque especial</p>
+                    <div class="button-group">
+                        <button class="btn btn-primary btn-lg">
+                            <i class="fas fa-download"></i>
+                            Baixar Relatório
+                        </button>
+                        <button class="btn btn-success btn-lg">
+                            <i class="fas fa-check"></i>
+                            Finalizar Processo
+                        </button>
+                    </div>
+                    <div class="code">
+                        &lt;button class="btn btn-primary btn-lg"&gt;
+                            &lt;i class="fas fa-download"&gt;&lt;/i&gt;
+                            Baixar Relatório
+                        &lt;/button&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Botão em Bloco</h3>
+                    <p class="text-muted">Ocupa toda a largura disponível</p>
+                    <div class="button-group vertical">
+                        <button class="btn btn-primary btn-block">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Entrar no Sistema
+                        </button>
+                        <button class="btn btn-success btn-block">
+                            <i class="fas fa-file-export"></i>
+                            Exportar Dados
+                        </button>
+                    </div>
+                    <div class="code">
+                        &lt;button class="btn btn-primary btn-block"&gt;
+                            &lt;i class="fas fa-sign-in-alt"&gt;&lt;/i&gt;
+                            Entrar no Sistema
+                        &lt;/button&gt;
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Estados dos Botões -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-toggle-on"></i> Estados dos Botões</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title">Botões Ativos</h3>
+                    <p class="text-muted">Estados normais com efeito hover</p>
+                    <div class="button-group">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-save"></i>
+                            Salvar
+                        </button>
+                        <button class="btn btn-success">
+                            <i class="fas fa-check"></i>
+                            Confirmar
+                        </button>
+                        <button class="btn btn-warning">
+                            <i class="fas fa-edit"></i>
+                            Editar
+                        </button>
+                    </div>
+                    <p class="text-muted">Passe o mouse sobre os botões para ver os efeitos</p>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Botões Desabilitados</h3>
+                    <p class="text-muted">Para ações indisponíveis no momento</p>
+                    <div class="button-group">
+                        <button class="btn btn-primary" disabled>
+                            <i class="fas fa-save"></i>
+                            Salvar
+                        </button>
+                        <button class="btn btn-success" disabled>
+                            <i class="fas fa-check"></i>
+                            Confirmar
+                        </button>
+                        <button class="btn btn-error" disabled>
+                            <i class="fas fa-trash"></i>
+                            Excluir
+                        </button>
+                    </div>
+                    <div class="code">
+                        &lt;button class="btn btn-primary" disabled&gt;
+                            &lt;i class="fas fa-save"&gt;&lt;/i&gt;
+                            Salvar
+                        &lt;/button&gt;
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Exemplos Práticos -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-laptop-code"></i> Exemplos Práticos</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title">Formulário de Contato</h3>
+                    <div class="button-group vertical">
+                        <button class="btn btn-primary btn-block">
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar Mensagem
+                        </button>
+                        <button class="btn btn-secondary btn-block">
+                            <i class="fas fa-times"></i>
+                            Cancelar
+                        </button>
+                    </div>
+                    <div class="code">
+                        &lt;button class="btn btn-primary btn-block"&gt;
+                            &lt;i class="fas fa-paper-plane"&gt;&lt;/i&gt;
+                            Enviar Mensagem
+                        &lt;/button&gt;
+                        &lt;button class="btn btn-secondary btn-block"&gt;
+                            &lt;i class="fas fa-times"&gt;&lt;/i&gt;
+                            Cancelar
+                        &lt;/button&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Painel de Controle</h3>
+                    <div class="button-group">
+                        <button class="btn btn-success btn-sm">
+                            <i class="fas fa-plus"></i>
+                            Novo
+                        </button>
+                        <button class="btn btn-warning btn-sm">
+                            <i class="fas fa-edit"></i>
+                            Editar
+                        </button>
+                        <button class="btn btn-error btn-sm">
+                            <i class="fas fa-trash"></i>
+                            Excluir
+                        </button>
+                    </div>
+                    <div class="code">
+                        &lt;button class="btn btn-success btn-sm"&gt;
+                            &lt;i class="fas fa-plus"&gt;&lt;/i&gt;
+                            Novo
+                        &lt;/button&gt;
+                        &lt;button class="btn btn-warning btn-sm"&gt;
+                            &lt;i class="fas fa-edit"&gt;&lt;/i&gt;
+                            Editar
+                        &lt;/button&gt;
+                        &lt;button class="btn btn-error btn-sm"&gt;
+                            &lt;i class="fas fa-trash"&gt;&lt;/i&gt;
+                            Excluir
+                        &lt;/button&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Relatório Financeiro</h3>
+                    <div class="button-group">
+                        <button class="btn btn-primary btn-lg">
+                            <i class="fas fa-download"></i>
+                            Exportar PDF
+                        </button>
+                        <button class="btn btn-success btn-lg">
+                            <i class="fas fa-file-excel"></i>
+                            Exportar Excel
+                        </button>
+                    </div>
+                    <div class="code">
+                        &lt;button class="btn btn-primary btn-lg"&gt;
+                            &lt;i class="fas fa-download"&gt;&lt;/i&gt;
+                            Exportar PDF
+                        &lt;/button&gt;
+                        &lt;button class="btn btn-success btn-lg"&gt;
+                            &lt;i class="fas fa-file-excel"&gt;&lt;/i&gt;
+                            Exportar Excel
+                        &lt;/button&gt;
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>ERP Contábil - Sistema de Demonstração de Botões</p>
+            <p class="text-muted">Use esta página como referência para implementar botões em todo o sistema</p>
+        </footer>
+    </div>
+
+    <script>
+        // Adicionando interatividade básica para melhorar a experiência
+        document.addEventListener('DOMContentLoaded', function() {
+            // Adiciona classe de destaque quando o mouse passa sobre os cards
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Adiciona feedback visual ao clicar nos botões
+            const buttons = document.querySelectorAll('.btn:not(:disabled)');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Evita comportamento padrão em botões de demonstração
+                    e.preventDefault();
+                    
+                    // Feedback visual
+                    const originalTransform = this.style.transform;
+                    this.style.transform = 'scale(0.95)';
+                    
+                    setTimeout(() => {
+                        this.style.transform = originalTransform;
+                    }, 150);
+                });
+            });
+            
+            // Adiciona tooltip para os códigos
+            const codeElements = document.querySelectorAll('.code');
+            codeElements.forEach(code => {
+                code.addEventListener('click', function() {
+                    const textArea = document.createElement('textarea');
+                    textArea.value = this.textContent;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    
+                    // Feedback visual
+                    const originalText = this.textContent;
+                    this.textContent = 'Código copiado!';
+                    this.style.background = 'rgba(16, 185, 129, 0.2)';
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.background = 'rgba(0, 0, 0, 0.3)';
+                    }, 1500);
+                });
+                
+                code.title = 'Clique para copiar o código';
+            });
+        });
+    </script>
+</body>
+</html>
+</main>
+
+{% endblock titudos %}

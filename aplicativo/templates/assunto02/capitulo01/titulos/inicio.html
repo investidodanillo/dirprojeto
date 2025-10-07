@@ -1,28 +1,52 @@
 <!--aplicativo\templates\assunto01\capitulo01\titulos\inicio.html-->
-{% extends 'assunto02/capitulo01/titulos/base.html' %}
+{% extends 'assunto02\capitulo01\titulos\base.html' %}
 {% load static %} <!-- Carregar arquivos estáticos -->
 
 {% block titudos %}
-<!-- Link para o arquivo CSS externo -->
-<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-
 <!-- conteúdo da página -->
-<div class="body">
-    <div class="container">
-        <h1>ASSUNTO 02</h1>
-        <h1>CAPITULO 01</h1>
-        <h1>TÍTULO 01</h1>
-        <p>
-            Esta área agora está estilizada com o design glassmorphism. Veja como o conteúdo fica mais atraente e
-            moderno.
-        </p>
-        <pre>
-            <u>models.py</u>
-            <code>
-                código
-            </code>
-        </pre>
-    </div>
-</div>
+<main class="main-content">
+<h1>capitulo INDEX</h1>
+<div>
+<pre>
+<u>main.css</u>
+<code>
+/* Base */
+@import url('base/_base.css');
+@import url('base/_reset.css');
+@import url('base/_typography.css');
+@import url('base/_utilities.css');
+@import url('base/_variables.css');
+
+/* Components */
+@import url('components/_alerts.css');
+@import url('components/_badges.css');
+@import url('components/_buttons.css');
+@import url('components/_cards.css');
+@import url('components/_charts.css');
+@import url('components/_footer.css');
+@import url('components/_forms.css');
+@import url('components/_modals.css');
+@import url('components/_navbars.css');
+@import url('components/_progressbars.css');
+@import url('components/_sidebar.css');
+@import url('components/_tables.css');
+@import url('components/_utilities.css');
+
+/* Layouts */
+@import url('layouts/_dashboard.css');
+@import url('layouts/_auth.css');
+@import url('layouts/_grid.css');
+@import url('layouts/_responsive.css');
+
+/* Vendors */
+@import url('vendors/_dataTables.css');
+@import url('vendors/_chartjs.css');
+
+/* Themes */
+@import url('themes/_default.css');
+@import url('themes/_dark.css');
+@import url('themes/_high-contrast.css');
 
 {% endblock titudos %}
+
+</code>

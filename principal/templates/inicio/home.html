@@ -1,104 +1,297 @@
 {% extends 'base_home.html' %}
-{% load static %}  <!-- Carregar arquivos estáticos -->
+{% load static %}
 
 {% block content %}
-    <div class="container">
-        <div class="hero-section">
-            <h1 class="hero-title">HOME</h1>
-            <h3>Bem-vindo ao Futuro</h3>
-            <p>Explore nossa interface moderna e intuitiva. </p>
-            <p>Descubra funcionalidades avançadas com um design elegante e responsivo que se adapta perfeitamente às suas necessidades.</p>
+<main class="main-content">
+    <!-- Seção Hero da Home -->
+    <section class="hero-home" style="min-height: 60vh; display: flex; align-items: center; position: relative; overflow: hidden; padding: 40px 0;">
+        <div class="hero-background">
+            <div class="floating-shape shape-7"></div>
+            <div class="floating-shape shape-8"></div>
+            <div class="floating-shape shape-9"></div>
         </div>
-
-        <div class="stats-section">
-            <div class="stat-item">
-                <span class="stat-number">100+</span>
-                <span class="stat-label">Recursos</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">24/7</span>
-                <span class="stat-label">Suporte</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">99%</span>
-                <span class="stat-label">Uptime</span>
+        <div class="hero-content" style="text-align: center; width: 100%; z-index: 2;">
+            <h1 class="page-title" style="font-size: 3rem; margin-bottom: 1rem; line-height: 1.2;">
+                Bem-vindo ao <span class="gradient-text">ERP Contábil</span>
+            </h1>
+            <p class="page-subtitle" style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem;">
+                Sistema completo de gestão empresarial. Acesse os módulos e comece a gerenciar sua empresa.
+            </p>
+            
+            <!-- Status do Sistema -->
+            <div class="system-status" style="display: inline-flex; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 10px 20px; margin-bottom: 30px;">
+                <div class="status-item" style="display: flex; align-items: center; margin-right: 20px;">
+                    <i class="fas fa-circle text-success" style="margin-right: 8px; font-size: 0.8rem;"></i>
+                    <span style="font-size: 0.9rem;">Sistema Online</span>
+                </div>
+                <div class="status-item" style="display: flex; align-items: center;">
+                    <i class="fas fa-database text-info" style="margin-right: 8px; font-size: 0.8rem;"></i>
+                    <span style="font-size: 0.9rem;">Última atualização: {% now "d/m/Y" %}</span>
+                </div>
             </div>
         </div>
-
-        <div class="button-grid">
-            <a class="button primary" href="{% url 'aplicativo_index:aplicativo_index' %}">
-                <i class="fas fa-rocket"></i>
-                Assunto 01
-            </a>
-            <a class="button secondary" href="#">
-                <i class="fas fa-star"></i>
-                Assunto 02
-            </a>
-            <a class="button accent" href="#">
-                <i class="fas fa-bolt"></i>
-                Assunto 03
-            </a>
-            <a class="button primary" href="#recursos">
-                <i class="fas fa-tools"></i>
-                Recursos
-            </a>
-            <a class="button secondary" href="#contato">
-                <i class="fas fa-phone"></i>
-                Contato
-            </a>
-            <a class="button accent" href="javascript:void(0)">
-                <i class="fas fa-info-circle"></i>
-                Sobre
-            </a>
-        </div>
-
-        <div class="scroll-indicator" aria-hidden="true"></div>
-    
-    
-<div class="container">
-    <section id="recursos" class="content-section">
-        <h2 class="section-title">Nossos Recursos</h2>
-        <p class="hero-description">
-            Descubra todas as funcionalidades incríveis que preparamos para você. 
-            Interface intuitiva, desempenho excepcional e designs modernos.
-        </p>
     </section>
-    
 
-    <section id="contato" class="content-section">
-        <h2 class="section-title">Entre em Contato</h2>
-        <p class="hero-description">
-            Tem dúvidas ou sugestões? Fique à vontade para entrar em contato conosco. 
-            Nossa equipe está sempre pronta para ajudar.
-        </p>
+    <!-- Seção de Módulos -->
+    <section class="modules-section" style="padding: 60px 0;">
+        <div class="section-header" style="text-align: center; margin-bottom: 60px;">
+            <h2 style="font-size: 2.2rem; margin-bottom: 15px; position: relative; display: inline-block;">
+                Módulos do Sistema
+                <span style="position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: var(--primary-color); border-radius: 2px;"></span>
+            </h2>
+            <p class="text-muted" style="font-size: 1.1rem; max-width: 500px; margin: 0 auto;">Acesse todas as funcionalidades do ERP Contábil</p>
+        </div>
+        
+        <div class="modules-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
+            <!-- Módulo Controles -->
+            <a href="{% url 'controles_index:controles_index' %}" class="module-card" style="display: block; text-decoration: none;">
+                <div class="dashboard-card card-hover" style="height: 100%; transition: all 0.3s ease; position: relative; overflow: hidden;">
+                    <div class="module-badge" style="position: absolute; top: 20px; right: 20px; background: var(--primary-color); color: white; padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">PRINCIPAL</div>
+                    <div class="card-header">
+                        <h3 class="card-title" style="font-size: 1.5rem;">Controles</h3>
+                        <div class="card-icon" style="background: rgba(59, 130, 246, 0.2); width: 60px; height: 60px;">
+                            <i class="fas fa-sliders-h" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="margin-bottom: 20px;">Controles gerais do sistema.</p>
+                        
+                        <div class="module-features" style="margin-top: 25px;">
+                            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                                <i class="fas fa-check-circle text-success" style="margin-right: 10px;"></i>
+                                <span>Pessoas</span>
+                            </div>
+                            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                                <i class="fas fa-check-circle text-success" style="margin-right: 10px;"></i>
+                                <span>Usuários</span>
+                            </div>
+                            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                                <i class="fas fa-check-circle text-success" style="margin-right: 10px;"></i>
+                                <span>Tabelas</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer" style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="color: var(--text-muted); font-size: 0.9rem;">Clique para acessar</span>
+                        <i class="fas fa-arrow-right" style="color: var(--primary-color);"></i>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Módulo Aplicativo -->
+            <a href="{% url 'aplicativo_index:aplicativo_index' %}" class="module-card" style="display: block; text-decoration: none;">
+                <div class="dashboard-card card-hover" style="height: 100%; transition: all 0.3s ease; position: relative; overflow: hidden;">
+                    <div class="module-badge" style="position: absolute; top: 20px; right: 20px; background: var(--success-color); color: white; padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">MOBILE</div>
+                    <div class="card-header">
+                        <h3 class="card-title" style="font-size: 1.5rem;">Aplicativo</h3>
+                        <div class="card-icon" style="background: rgba(16, 185, 129, 0.2); width: 60px; height: 60px;">
+                            <i class="fas fa-mobile-alt" style="color: var(--success-color); font-size: 1.5rem;"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="margin-bottom: 20px;">Molde básico para desenvolvimento.</p>
+                        
+                        <div class="module-features" style="margin-top: 25px;">
+                            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                                <i class="fas fa-check-circle text-success" style="margin-right: 10px;"></i>
+                                <span>Assunto 01</span>
+                            </div>
+                            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                                <i class="fas fa-check-circle text-success" style="margin-right: 10px;"></i>
+                                <span>Assunto 02</span>
+                            </div>
+                            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                                <i class="fas fa-check-circle text-success" style="margin-right: 10px;"></i>
+                                <span>Assunto 03</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer" style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="color: var(--text-muted); font-size: 0.9rem;">Clique para acessar</span>
+                        <i class="fas fa-arrow-right" style="color: var(--success-color);"></i>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Módulo Desing -->
+            <a href="{% url 'desing_index:desing_index' %}" class="module-card" style="display: block; text-decoration: none;">
+                <div class="dashboard-card card-hover" style="height: 100%; transition: all 0.3s ease; position: relative; overflow: hidden;">
+                    <div class="module-badge" style="position: absolute; top: 20px; right: 20px; background: var(--accent-color); color: white; padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">PERSONALIZAR</div>
+                    <div class="card-header">
+                        <h3 class="card-title" style="font-size: 1.5rem;">Desing</h3>
+                        <div class="card-icon" style="background: rgba(139, 92, 246, 0.2); width: 60px; height: 60px;">
+                            <i class="fas fa-palette" style="color: var(--accent-color); font-size: 1.5rem;"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="margin-bottom: 20px;">Personalize a aparência do sistema, relatórios e dashboards conforme suas preferências.</p>
+                        
+                        <div class="module-features" style="margin-top: 25px;">
+                            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                                <i class="fas fa-check-circle text-success" style="margin-right: 10px;"></i>
+                                <span>Temas Personalizáveis</span>
+                            </div>
+                            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                                <i class="fas fa-check-circle text-success" style="margin-right: 10px;"></i>
+                                <span>Layouts de Relatórios</span>
+                            </div>
+                            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                                <i class="fas fa-check-circle text-success" style="margin-right: 10px;"></i>
+                                <span>Configurações Visuais</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer" style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="color: var(--text-muted); font-size: 0.9rem;">Clique para acessar</span>
+                        <i class="fas fa-arrow-right" style="color: var(--accent-color);"></i>
+                    </div>
+                </div>
+            </a>
+<!--Módulo Desenvolvimento-->
+           <a href="{% url 'desenvolvimento_index:desenvolvimento_index' %}" class="module-card" style="display: block; text-decoration: none;">
+                <div class="dashboard-card card-hover" style="height: 100%; transition: all 0.3s ease; position: relative; overflow: hidden;">
+                    <div class="module-badge" style="position: absolute; top: 20px; right: 20px; background: var(--accent-color); color: rgb(255, 255, 255); padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">PERSONALIZAR</div>
+                    <div class="card-header">
+                        <h3 class="card-title" style="font-size: 1.5rem;">Desenvolvimento</h3>
+                        <div class="card-icon" style="background: rgba(113, 3, 3, 0.2); width: 60px; height: 60px;">
+                            <i class="fas fa-laptop-code" style="color: var(--accent-color); font-size: 1.5rem;"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="margin-bottom: 20px;">Sistematizar e organizar o processo de evolução.</p>
+                        
+                        <div class="module-features" style="margin-top: 25px;">
+                            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                                <i class="fas fa-check-circle text-success" style="margin-right: 10px;"></i>
+                                <span>Sistema</span>
+                            </div>
+                            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                                <i class="fas fa-check-circle text-success" style="margin-right: 10px;"></i>
+                                <span>Item de Evolução</span>
+                            </div>
+                            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                                <i class="fas fa-check-circle text-success" style="margin-right: 10px;"></i>
+                                <span>Release</span>
+                            </div>
+                            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                                <i class="fas fa-check-circle text-success" style="margin-right: 10px;"></i>
+                                <span>Checklist</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer" style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="color: var(--text-muted); font-size: 0.9rem;">Clique para acessar</span>
+                        <i class="fas fa-arrow-right" style="color: var(--accent-color);"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
     </section>
-</div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const navbar = document.getElementById('navbar');
-            const mobileMenu = document.getElementById('mobileMenu');
-            const navLinks = document.getElementById('navLinks');
+    <!-- Seção de Atividade Recente -->
+    <section class="activity-section" style="padding: 60px 0; background: rgba(255, 255, 255, 0.02);">
+        <div class="card-xl">
+            <div class="section-header" style="margin-bottom: 40px;">
+                <h2 style="font-size: 2rem; margin-bottom: 10px; display: flex; align-items: center;">
+                    <i class="fas fa-history" style="margin-right: 15px; color: var(--primary-color);"></i>
+                    Atividade Recente
+                </h2>
+                <p class="text-muted" style="font-size: 1rem;">Últimas ações realizadas no sistema</p>
+            </div>
+            
+            <div class="activity-list">
+                <div class="activity-item" style="display: flex; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                    <div class="activity-icon" style="background: rgba(59, 130, 246, 0.2); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                        <i class="fas fa-file-invoice-dollar text-primary"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; margin-bottom: 5px;">Novo lançamento contábil</div>
+                        <div style="color: var(--text-muted); font-size: 0.9rem;">Há 2 horas</div>
+                    </div>
+                    <div class="badge badge-primary">Controles</div>
+                </div>
+                
+                <div class="activity-item" style="display: flex; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                    <div class="activity-icon" style="background: rgba(16, 185, 129, 0.2); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                        <i class="fas fa-sync-alt text-success"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; margin-bottom: 5px;">Sincronização realizada</div>
+                        <div style="color: var(--text-muted); font-size: 0.9rem;">Há 5 horas</div>
+                    </div>
+                    <div class="badge badge-success">Aplicativo</div>
+                </div>
+                
+                <div class="activity-item" style="display: flex; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                    <div class="activity-icon" style="background: rgba(139, 92, 246, 0.2); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                        <i class="fas fa-palette text-accent"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; margin-bottom: 5px;">Tema personalizado aplicado</div>
+                        <div style="color: var(--text-muted); font-size: 0.9rem;">Ontem</div>
+                    </div>
+                    <div class="badge badge-accent">Desing</div>
+                </div>
+                
+                <div class="activity-item" style="display: flex; align-items: center; padding: 15px 0;">
+                    <div class="activity-icon" style="background: rgba(245, 158, 11, 0.2); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                        <i class="fas fa-chart-line text-warning"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; margin-bottom: 5px;">Relatório financeiro gerado</div>
+                        <div style="color: var(--text-muted); font-size: 0.9rem;">2 dias atrás</div>
+                    </div>
+                    <div class="badge badge-warning">Controles</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            // Scroll effect for navbar
-            window.addEventListener('scroll', () => {
-                navbar.classList.toggle('scrolled', window.scrollY > 50);
-            });
+    <!-- Seção de Estatísticas Rápidas -->
+    <section class="stats-section" style="padding: 60px 0;">
+        <div class="section-header" style="text-align: center; margin-bottom: 50px;">
+            <h2 style="font-size: 2.2rem; margin-bottom: 15px; position: relative; display: inline-block;">
+                Resumo do Sistema
+                <span style="position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: var(--info-color); border-radius: 2px;"></span>
+            </h2>
+            <p class="text-muted" style="font-size: 1.1rem; max-width: 500px; margin: 0 auto;">Visão geral das operações e dados do sistema</p>
+        </div>
+        
+        <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px;">
+            <div class="stat-card" style="background: var(--glass-bg); backdrop-filter: blur(10px); border-radius: 16px; padding: 25px; border: 1px solid var(--glass-border); text-align: center;">
+                <div class="stat-icon" style="background: rgba(59, 130, 246, 0.2); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+                    <i class="fas fa-file-invoice-dollar text-primary" style="font-size: 1.5rem;"></i>
+                </div>
+                <div class="stat-number" style="font-size: 2rem; font-weight: 700; margin-bottom: 5px;">142</div>
+                <div class="stat-label" style="color: var(--text-muted);">Lançamentos Hoje</div>
+            </div>
+            
+            <div class="stat-card" style="background: var(--glass-bg); backdrop-filter: blur(10px); border-radius: 16px; padding: 25px; border: 1px solid var(--glass-border); text-align: center;">
+                <div class="stat-icon" style="background: rgba(16, 185, 129, 0.2); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+                    <i class="fas fa-check-circle text-success" style="font-size: 1.5rem;"></i>
+                </div>
+                <div class="stat-number" style="font-size: 2rem; font-weight: 700; margin-bottom: 5px;">98%</div>
+                <div class="stat-label" style="color: var(--text-muted);">Processos Concluídos</div>
+            </div>
+            
+            <div class="stat-card" style="background: var(--glass-bg); backdrop-filter: blur(10px); border-radius: 16px; padding: 25px; border: 1px solid var(--glass-border); text-align: center;">
+                <div class="stat-icon" style="background: rgba(139, 92, 246, 0.2); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+                    <i class="fas fa-users text-accent" style="font-size: 1.5rem;"></i>
+                </div>
+                <div class="stat-number" style="font-size: 2rem; font-weight: 700; margin-bottom: 5px;">24</div>
+                <div class="stat-label" style="color: var(--text-muted);">Usuários Ativos</div>
+            </div>
+            
+            <div class="stat-card" style="background: var(--glass-bg); backdrop-filter: blur(10px); border-radius: 16px; padding: 25px; border: 1px solid var(--glass-border); text-align: center;">
+                <div class="stat-icon" style="background: rgba(245, 158, 11, 0.2); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+                    <i class="fas fa-chart-bar text-warning" style="font-size: 1.5rem;"></i>
+                </div>
+                <div class="stat-number" style="font-size: 2rem; font-weight: 700; margin-bottom: 5px;">15</div>
+                <div class="stat-label" style="color: var(--text-muted);">Relatórios Gerados</div>
+            </div>
+        </div>
+    </section>
+</main>
 
-            // Mobile menu toggle
-            mobileMenu.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
-            });
 
-            // Fechar menu ao clicar em um link
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    mobileMenu.classList.remove('active');
-                });
-            });
-        });
-    </script>
-    </div>
 {% endblock content %}

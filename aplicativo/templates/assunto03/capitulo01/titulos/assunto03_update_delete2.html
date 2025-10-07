@@ -1,51 +1,49 @@
-<!--dirprojeto\aplicativo\templates\assunto02\capitulo01\titulos\assunto02_cadastro.html-->
-{% extends 'assunto03/capitulo01/titulos/base.html' %}
-{% load static %} <!-- Carregar arquivos estáticos -->
+<!-- aplicativo\templates\assunto03\capitulo01\titulos\assunto03_cadastro.html -->
+{% extends 'assunto02/capitulo01/titulos/base.html' %}
+{% load static %}
 
 {% block titudos %}
-<!-- Link para o arquivo CSS externo -->
-<link rel="stylesheet" type="text/css" href="{% static 'css/forms1.css' %}">
-<div class="body">
-    <div class="container">
-        <h1>Assunto 03 - Capítulo 01 Cadastro</h1>
-        <p>Preencha os campos abaixo para realizar o cadastro.</p>
-        <div class="wrapper">
-            <form method="post">
+<main class="main-content">
+    <h1>Assunto 03 - Capítulo 01 Cadastro</h1>
+    <p>Cadastro 02</p>
 
+    <div class="card-xl">
+        <div>
+            <form method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
 
                 <!-- Botões -->
-                <!-- Botões -->
                 <div class="assunto03-form">
                     <div class="button-group destaque-botoes">
-                        <button type="submit" class="btn btn-glass btn-salvar" aria-label="Salvar Formulário" name="action" value="salvar">
-                            <i class="fas fa-save"></i> Salvar</button>
+                        <button type="submit" name="action" value="salvar" class="btn btn-glass btn-salvar" aria-label="Salvar Formulário">
+                            <i class="fas fa-save"></i> Salvar
+                        </button>
 
-                        <button type="submit" class="btn btn-glass btn-novo" aria-label="Criar Novo Registro" name="action" value="novo">
-                            <i class="fas fa-plus"></i> Novo</button>
+                        <button type="submit" name="action" value="novo" class="btn btn-glass btn-novo" aria-label="Criar Novo Registro">
+                            <i class="fas fa-plus"></i> Novo
+                        </button>
 
-                        <button type="submit" class="btn btn-glass btn-deletar" aria-label="Deletar Registro" name="action" value="deletar" onclick="return confirm('Tem certeza que deseja deletar este registro?');">
-                            <i class="fas fa-trash"></i> Deletar</button>
-
-                        
+                        <button type="submit" name="action" value="deletar" class="btn btn-glass btn-deletar" aria-label="Deletar Registro"
+                            onclick="return confirm('Tem certeza que deseja deletar este registro?');">
+                            <i class="fas fa-trash"></i> Deletar
+                        </button>
                     </div>
                 </div>
-                <!-- Botões -->
-                <!-- Botões -->
-
+                <!-- Fim Botões -->
             </form>
-
         </div>
     </div>
-    {% endblock %}
+</main>
+{% endblock %}
 
-    {% block js %}
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            'use strict';
-            const form = document.querySelector('.needs-validation');
+{% block js %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        'use strict';
+        const form = document.querySelector('form.needs-validation') || document.querySelector('form');
 
+        if (form) {
             form.addEventListener('submit', function (event) {
                 if (!form.checkValidity()) {
                     event.preventDefault();
@@ -53,7 +51,7 @@
                 }
                 form.classList.add('was-validated');
             }, false);
-        });
-    </script>
-    
-    {% endblock %}
+        }
+    });
+</script>
+{% endblock %}

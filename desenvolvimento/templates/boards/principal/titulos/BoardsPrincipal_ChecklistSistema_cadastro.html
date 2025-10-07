@@ -1,0 +1,83 @@
+<!--aplicativo\templates\assunto02\capitulo01\titulos\assunto02_cadastro.html-->
+{% extends 'boards/principal/titulos/base.html' %}
+{% load static %}
+
+{% block titudos %}
+<main class="main-content">
+ <h1>Boards: ChecklistSistema</h1>
+        <div>
+            <p data-end="251" data-start="110">
+                <strong>Representa uma <strong data-end="183" data-start="125">lista de verifica&ccedil;&atilde;o
+                        associada a uma entrega (release)</strong>, utilizada para garantir a qualidade e a conformidade
+                    do sistema.</strong>
+            </p>
+            <ul data-end="608" data-start="390">
+                <li data-end="362" data-start="255">
+                    <strong data-end="267" data-start="255">Objetivo</strong>: assegurar que todos os passos
+                    cr&iacute;ticos foram executados antes da publica&ccedil;&atilde;o ou homologa&ccedil;&atilde;o.
+                </li>
+                <li data-end="387" data-start="365">
+                    <strong data-end="384" data-start="365">Exemplos de uso</strong>:
+                    <ul>
+                        <li data-end="493" data-start="392">
+                            <em data-end="417" data-start="392">Checklist de Publica&ccedil;&atilde;o</em> (ex.: validar
+                            migra&ccedil;&otilde;es, configurar vari&aacute;veis de ambiente, revisar logs).
+                        </li>
+                        <li data-end="608" data-start="498">
+                            <em data-end="532" data-start="498">Checklist de Testes de Seguran&ccedil;a</em> (ex.:
+                            validar autentica&ccedil;&atilde;o, checar permiss&otilde;es, revisar vulnerabilidades).
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+    <div class="card-xl">
+        <div class="">
+            <form method="post">
+
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <!-- Botões -->
+                <!-- Botões -->
+                <div class="assunto03-form">
+                    <div class="button-group destaque-botoes">
+                        <button type="submit" name="action" value="salvar" class="btn btn-glass btn-salvar"
+                            aria-label="Salvar Formulário">
+                            <i class="fas fa-save"></i> SALVAR
+                        </button>
+
+                        <button type="submit" name="action" value="novo" class="btn btn-glass btn-novo"
+                            aria-label="Criar Novo Registro">
+                            <i class="fas fa-plus"></i> NOVO
+                        </button>
+
+                        <button type="button" id="btn-limpar" class="btn btn-glass btn-limpar"
+                            aria-label="Limpar Formulário">
+                            <i class="fas fa-undo"></i> LIMPAR
+                        </button>
+                    </div>
+                </div>
+                <!-- Botões -->
+                <!-- Botões -->
+
+            </form>
+
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block js %}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector('form');
+            const btnLimpar = document.getElementById('btn-limpar');
+
+            if (btnLimpar) {
+                btnLimpar.addEventListener('click', function () {
+                    form.reset();
+                });
+            }
+        });
+    </script>
+    {% endblock %}

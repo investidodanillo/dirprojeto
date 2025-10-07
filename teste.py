@@ -1,14 +1,18 @@
-# teste.py
+import os
 
-import projeto.settings.development as dev
+# Caminho base da pasta
+base_path = r"projeto\static"  # ou use os.path.join para compatibilidade multiplataforma
 
-def teste():
-    print("Iniciando o teste de configuração...")
-    print(f"DEBUG: {dev.DEBUG}")
-    print(f"ALLOWED_HOSTS: {dev.ALLOWED_HOSTS}")
-    print(f"DATABASES: {dev.DATABASES}")
-    print(f"EMAIL_BACKEND: {dev.EMAIL_BACKEND}")
-    print(f"CACHES: {dev.CACHES}")
+for root, dirs, files in os.walk(base_path):
+    # Calcula nível de profundidade (para identação)
+    level = root.replace(base_path, '').count(os.sep)
+    indent = '    ' * level
 
-if __name__ == "__main__":
-    teste()
+    # Nome da pasta atual
+    folder_name = os.path.basename(root)
+    print(f"{indent}[DIR] {folder_name}")
+
+    # Lista os arquivos dentro da pasta atual
+    sub_indent = '    ' * (level + 1)
+    for f in files:
+        print(f"{sub_indent}- {f}")

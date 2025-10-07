@@ -1,0 +1,110 @@
+/*--projeto\static\css2\Components\_forms.css--*/
+
+.form-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.form-label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: var(--font-size-sm);
+}
+
+.form-control {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--glass-bg-dark);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius-md);
+    color: var(--text-primary);
+    font-size: var(--font-size-sm);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--glass-border-light);
+    background: var(--glass-bg);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+}
+
+.form-text {
+    display: block;
+    margin-top: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+}
+/* Estilo para o select */
+
+.form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ffffff'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--spacing-md) center;
+    background-size: 16px;
+    padding-right: var(--spacing-2xl);
+}
+/* Estilo para as opções dentro dos selects */
+.form-select option {
+    background-color: #504a8b;  /* Fundo escuro do dropdown */
+    color: #ffffff;            /* Texto branco */
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.form-check-input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary-color);
+}
+
+.form-check-label {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+/* Adicione ao seu _forms.css */
+.form-field {
+    margin-bottom: var(--spacing-lg);
+}
+
+.form-label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: var(--font-size-sm);
+}
+
+.form-label .required {
+    color: #ff6b6b;
+}
+
+.form-text {
+    display: block;
+    margin-top: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+}
+
+.form-errors {
+    margin-top: var(--spacing-xs);
+}
+
+.form-errors .error {
+    display: block;
+    color: #ff6b6b;
+    font-size: var(--font-size-xs);
+}

@@ -1,0 +1,502 @@
+<!--aplicativo\templates\assunto01\capitulo01\titulos\inicio.html-->
+{% extends 'inicio_desing\capitulo01\titulos\base.html' %}
+{% load static %} <!-- Carregar arquivos estáticos -->
+
+{% block titudos %}
+
+<!-- conteúdo da página -->
+<main class="main-content">
+<h1>capitulo INDEX</h1>
+<div>
+<pre>
+<u>main.css</u>
+<code>
+/* Base */
+@import url('base/_base.css');
+@import url('base/_reset.css');
+@import url('base/_typography.css');
+@import url('base/_utilities.css');
+@import url('base/_variables.css');
+
+/* Components */
+@import url('components/_alerts.css');
+@import url('components/_badges.css');
+@import url('components/_buttons.css');
+@import url('components/_cards.css');
+@import url('components/_charts.css');
+@import url('components/_footer.css');
+@import url('components/_forms.css');
+@import url('components/_modals.css');
+@import url('components/_navbars.css');
+@import url('components/_progressbars.css');
+@import url('components/_sidebar.css');
+@import url('components/_tables.css');
+@import url('components/_utilities.css');
+
+/* Layouts */
+@import url('layouts/_dashboard.css');
+@import url('layouts/_auth.css');
+@import url('layouts/_grid.css');
+@import url('layouts/_responsive.css');
+
+/* Vendors */
+@import url('vendors/_dataTables.css');
+@import url('vendors/_chartjs.css');
+
+/* Themes */
+@import url('themes/_default.css');
+@import url('themes/_dark.css');
+@import url('themes/_high-contrast.css');
+
+</code>
+</pre>
+</div>
+
+ <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <h1 class="page-title">Dashboard Financeiro</h1>
+        <p class="page-subtitle">Vis&atilde;o geral do desempenho financeiro da empresa</p>
+        
+        <!-- Seção de Alertas -->
+        <section style="margin: 20px 0;">
+            <div class="alert alert-success">
+                <strong>Sucesso!</strong> As alterações foram salvas com sucesso.
+            </div>
+            <div class="alert alert-warning alert-dismissible">
+                <strong>Atenção!</strong> Existem documentos pendentes de aprovação.
+                <button class="close">&times;</button>
+            </div>
+            <div class="alert alert-error">
+                <strong>Erro!</strong> Não foi possível processar a solicitação.
+            </div>
+            <div class="alert alert-info">
+                <strong>Informação!</strong> O sistema será atualizado hoje às 22h.
+            </div>
+        </section>
+        
+        <!-- Dashboard com Cards -->
+        <div class="dashboard-grid">
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3 class="card-title">Receita Total</h3>
+                    <div class="card-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                </div>
+                <div class="card-value">R$ 245.680,00</div>
+                <div class="card-footer">
+                    <span>Este m&ecirc;s</span>
+                    <span class="positive">
+                        <i class="fas fa-arrow-up"></i>
+                        +12.5%
+                    </span>
+                </div>
+            </div>
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3 class="card-title">Lucro L&iacute;quido</h3>
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                </div>
+                <div class="card-value">R$ 117.340,00</div>
+                <div class="card-footer">
+                    <span>Este m&ecirc;s</span>
+                    <span class="positive">
+                        <i class="fas fa-arrow-up"></i>
+                        +18.3%
+                    </span>
+                </div>
+            </div>
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3 class="card-title">Despesas</h3>
+                    <div class="card-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                </div>
+                <div class="card-value">R$ 128.340,00</div>
+                <div class="card-footer">
+                    <span>Este m&ecirc;s</span>
+                    <span class="negative">
+                        <i class="fas fa-arrow-up"></i>
+                        +8.2%
+                    </span>
+                </div>
+            </div>
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3 class="card-title">Clientes Ativos</h3>
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+                <div class="card-value">142</div>
+                <div class="card-footer">
+                    <span>Total</span>
+                    <span class="positive">
+                        <i class="fas fa-arrow-up"></i>
+                        +5.6%
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção de Badges -->
+        <section class="card-lg" style="margin: 40px 0;">
+            <h2>Componentes de Badges</h2>
+            <p class="text-muted">Indicadores visuais para status e categorias</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0;">
+                <span class="badge badge-primary">Primário</span>
+                <span class="badge badge-secondary">Secundário</span>
+                <span class="badge badge-success">Sucesso</span>
+                <span class="badge badge-warning">Alerta</span>
+                <span class="badge badge-error">Erro</span>
+                <span class="badge badge-primary badge-pill">12</span>
+                <span class="badge badge-success badge-pill">Novo</span>
+            </div>
+        </section>
+
+        <!-- Seção de Barras de Progresso -->
+        <section class="card-lg" style="margin: 40px 0;">
+            <h2>Barras de Progresso</h2>
+            <p class="text-muted">Indicadores visuais de progresso e completude</p>
+            
+            <div style="margin: 20px 0;">
+                <div class="d-flex justify-content-between">
+                    <span>Meta de Vendas</span>
+                    <span>75%</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-primary" style="width: 75%"></div>
+                </div>
+            </div>
+            
+            <div style="margin: 20px 0;">
+                <div class="d-flex justify-content-between">
+                    <span>Implementação do Sistema</span>
+                    <span>90%</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+                </div>
+            </div>
+            
+            <div style="margin: 20px 0;">
+                <div class="d-flex justify-content-between">
+                    <span>Capacidade de Armazenamento</span>
+                    <span>45%</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-warning" style="width: 45%"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Botões -->
+        <section class="card-lg" style="margin: 40px 0;">
+            <h2>Componentes de Bot&otilde;es</h2>
+            <p class="text-muted">Diferentes estilos e tamanhos de bot&otilde;es para uso no sistema</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0;">
+                <button class="btn btn-primary">
+                    <i class="fas fa-save"></i>
+                    Bot&atilde;o Prim&aacute;rio
+                </button>
+                <button class="btn btn-secondary">
+                    <i class="fas fa-times"></i>
+                    Bot&atilde;o Secund&aacute;rio
+                </button>
+                <button class="btn btn-success">
+                    <i class="fas fa-check"></i>
+                    Bot&atilde;o Sucesso
+                </button>
+                <button class="btn btn-warning">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Bot&atilde;o Alerta
+                </button>
+                <button class="btn btn-error">
+                    <i class="fas fa-times-circle"></i>
+                    Bot&atilde;o Erro
+                </button>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0;">
+                <button class="btn btn-primary btn-sm">Pequeno</button>
+                <button class="btn btn-primary">M&eacute;dio</button>
+                <button class="btn btn-primary btn-lg">Grande</button>
+                <button class="btn btn-primary btn-block">Bot&atilde;o em Bloco</button>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+                <button class="btn btn-primary" disabled="disabled">
+                    <i class="fas fa-ban"></i>
+                    Bot&atilde;o Desativado
+                </button>
+            </div>
+        </section>
+
+        <!-- Seção de Formulários -->
+        <section class="card-lg" style="margin: 40px 0;">
+            <h2>Componentes de Formul&aacute;rios</h2>
+            <p class="text-muted">Formul&aacute;rios para coleta de dados no sistema</p>
+            <form id="sample-form">
+                <div class="form-group">
+                    <label class="form-label" for="nome">Nome Completo</label>
+                    <input class="form-control" id="nome" placeholder="Digite seu nome completo" type="text" />
+                    <div class="form-text">Este campo &eacute; obrigat&oacute;rio</div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="email">E-mail</label>
+                    <input class="form-control" id="email" placeholder="seu@email.com" type="email" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="empresa">Empresa</label>
+                    <select class="form-control form-select" id="empresa">
+                        <option value="">Selecione uma empresa</option>
+                        <option value="1">Empresa A</option>
+                        <option value="2">Empresa B</option>
+                        <option value="3">Empresa C</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="mensagem">Mensagem</label>
+                    <textarea class="form-control" id="mensagem" placeholder="Digite sua mensagem" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" id="termos" type="checkbox" />
+                        <label class="form-check-label" for="termos">Aceito os termos e condi&ccedil;&otilde;es</label>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 15px; margin-top: 30px;">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-paper-plane"></i>
+                        Enviar Formul&aacute;rio
+                    </button>
+                    <button class="btn btn-secondary" type="reset">
+                        <i class="fas fa-undo"></i>
+                        Limpar
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Seção de Tabelas -->
+        <section class="card-lg" style="margin: 40px 0;">
+            <h2>Componentes de Tabelas</h2>
+            <p class="text-muted">Tabelas para exibi&ccedil;&atilde;o de dados tabulares</p>
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Cliente</th>
+                            <th>Valor</th>
+                            <th>Status</th>
+                            <th>Data</th>
+                            <th>A&ccedil;&otilde;es</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#001</td>
+                            <td>Jo&atilde;o Silva</td>
+                            <td>R$ 1.250,00</td>
+                            <td><span class="badge badge-success">Pago</span></td>
+                            <td>15/12/2024</td>
+                            <td>
+                                <button class="btn btn-sm btn-primary">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-sm btn-error">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#002</td>
+                            <td>Maria Santos</td>
+                            <td>R$ 2.580,00</td>
+                            <td><span class="badge badge-warning">Pendente</span></td>
+                            <td>14/12/2024</td>
+                            <td>
+                                <button class="btn btn-sm btn-primary">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-sm btn-error">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#003</td>
+                            <td>Pedro Oliveira</td>
+                            <td>R$ 3.750,00</td>
+                            <td><span class="badge badge-success">Pago</span></td>
+                            <td>13/12/2024</td>
+                            <td>
+                                <button class="btn btn-sm btn-primary">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-sm btn-error">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4 style="margin-top: 40px;">Tabela com Listras</h4>
+            <div class="table-container">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Categoria</th>
+                            <th>Estoque</th>
+                            <th>Pre&ccedil;o</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Notebook Dell</td>
+                            <td>Inform&aacute;tica</td>
+                            <td>15</td>
+                            <td>R$ 2.899,00</td>
+                        </tr>
+                        <tr>
+                            <td>Mouse Sem Fio</td>
+                            <td>Perif&eacute;ricos</td>
+                            <td>42</td>
+                            <td>R$ 89,90</td>
+                        </tr>
+                        <tr>
+                            <td>Teclado Mec&acirc;nico</td>
+                            <td>Perif&eacute;ricos</td>
+                            <td>28</td>
+                            <td>R$ 249,00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Seção de Cards com Diferentes Tamanhos -->
+        <section style="margin: 40px 0;">
+            <h2>Cards com Diferentes Tamanhos</h2>
+            <p class="text-muted">4 tamanhos diferentes de cards para uso no sistema</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0;">
+                <!-- Card Pequeno -->
+                <div class="card-sm card-hover">
+                    <div class="card-header">
+                        <h5 class="card-title">Card Pequeno</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Este &eacute; um card de tamanho pequeno, ideal para informa&ccedil;&otilde;es compactas.</p>
+                    </div>
+                </div>
+                <!-- Card Médio -->
+                <div class="card-md card-hover">
+                    <div class="card-header">
+                        <h5 class="card-title">Card M&eacute;dio</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Este &eacute; um card de tamanho m&eacute;dio, perfeito para a maioria dos conte&uacute;dos.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-sm btn-primary">A&ccedil;&atilde;o</button>
+                    </div>
+                </div>
+                <!-- Card Grande -->
+                <div class="card-lg card-hover">
+                    <div class="card-header">
+                        <h5 class="card-title">Card Grande</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Este &eacute; um card de tamanho grande, com bastante espa&ccedil;o para conte&uacute;do detalhado.</p>
+                        <p>Ideal para formul&aacute;rios, listas extensas ou informa&ccedil;&otilde;es complexas.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary">A&ccedil;&atilde;o Principal</button>
+                        <button class="btn btn-secondary">A&ccedil;&atilde;o Secund&aacute;ria</button>
+                    </div>
+                </div>
+                <!-- Card Extra Grande -->
+                <div class="card-xl card-hover">
+                    <div class="card-header">
+                        <h5 class="card-title">Card Extra Grande</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Este &eacute; um card de tamanho extra grande, perfeito para dashboards e visualiza&ccedil;&otilde;es completas.</p>
+                        <p>Oferece m&aacute;ximo espa&ccedil;o para conte&uacute;do rico e complexo.</p>
+                        <p>Pode conter gr&aacute;ficos, tabelas e m&uacute;ltiplas se&ccedil;&otilde;es de informa&ccedil;&atilde;o.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-lg btn-primary">A&ccedil;&atilde;o Prim&aacute;ria</button>
+                        <button class="btn btn-lg btn-secondary">A&ccedil;&atilde;o Secund&aacute;ria</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Botão para acionar o Modal -->
+        <div style="text-align: center; margin: 40px 0;">
+            <button class="btn btn-primary btn-lg" id="openModalBtn">
+                <i class="fas fa-external-link-alt"></i>
+                Abrir Modal de Exemplo
+            </button>
+        </div>
+
+        <!-- Conteúdo adicional para demonstrar o scroll -->
+        <div style="height: 500px; padding: 20px; text-align: center;">
+            <h3>Conte&uacute;do adicional para demonstrar o scroll</h3>
+            <p>Role a p&aacute;gina para ver as headers fixas no topo e o footer fixo na base</p>
+            <p>Passe o mouse na sidebar &agrave; esquerda para expandir</p>
+        </div>
+<!----lista fim-->
+
+    <nav>
+        <h2>Seções</h2>
+        <ul>
+            
+            <li><a href="#alerts">Alerts</a></li>
+            <li><a href="#badges">Badges</a></li>
+            <li><a href="#buttons">Botões</a></li>
+            <li><a href="#cards">Cards</a></li>
+            <li><a href="#forms">Formulários</a></li>
+            <li><a href="#tables">Tabelas</a></li>
+            <li><a href="#grid">Grid Layout</a></li>
+            <li><a href="#temas">Temas</a></li>
+            <li><a href="#charts">Gráficos (Chart.js)</a></li>
+            <li><a href="#datatables">DataTables</a></li>
+        </ul>
+    </nav>
+
+
+<!----lista fim-->
+
+    </main>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Modal de Exemplo</h3>
+                <button class="modal-close" id="closeModalBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Este &eacute; um exemplo de modal no estilo glassmorphism. Modais s&atilde;o usados para exibir conte&uacute;do importante sem sair da p&aacute;gina atual.</p>
+                <p>Eles podem conter formul&aacute;rios, informa&ccedil;&otilde;es adicionais, confirma&ccedil;&otilde;es ou qualquer conte&uacute;do que necessite de aten&ccedil;&atilde;o focada.</p>
+                <div class="form-group" style="margin-top: 20px;">
+                    <label class="form-label" for="modalInput">Campo de Exemplo</label>
+                    <input class="form-control" id="modalInput" placeholder="Digite algo..." type="text" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelModalBtn">Cancelar</button>
+                <button class="btn btn-primary">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+{% endblock titudos %}

@@ -3,13 +3,13 @@
 
 {% block content %}
 
-<div class="container">
-  <div class="wrapper">
+<div class="card-md-center">
+ 
 
 
     <form method="post" action="">
       {% csrf_token %}
-      <h2>Login</h2>
+      <h2>Entrar</h2>
 
     {% if form.errors %}
         <div style="color:rgb(236, 135, 135);">
@@ -36,20 +36,13 @@
         {% endif %}
       </div>
 
-      <div class="forget">
-        <label for="remember">
-          <input type="checkbox" id="remember">
-          <p>Lembrar-me</p>
-        </label>
-        <a href="#">Esqueceu a senha?</a>
-      </div>
 
       <button type="submit">Entrar</button>
 
       <div class="register">
-        <p>Não tem uma conta? <a href="#">Registrar</a></p>
+        <p><u><h3><a href="{% url 'usuarios:controles_usuarios_cadastro' %}">Retornar</a></h3></u></p>
       </div>
     </form>
-  </div>
+  
 </div>
 {% endblock content %}

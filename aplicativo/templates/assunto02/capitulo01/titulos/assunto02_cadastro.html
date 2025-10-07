@@ -1,35 +1,35 @@
-<!--dirprojeto\aplicativo\templates\assunto02\capitulo01\titulos\assunto02_cadastro.html-->
+<!--aplicativo\templates\assunto02\capitulo01\titulos\assunto02_cadastro.html-->
 {% extends 'assunto02/capitulo01/titulos/base.html' %}
-{% load static %} <!-- Carregar arquivos estáticos -->
+{% load static %}
 
 {% block titudos %}
-<!-- Link para o arquivo CSS externo -->
-<!-- Link para o arquivo CSS externo -->
-<link rel="stylesheet" type="text/css" href="{% static 'css/forms1.css' %}">
-<div class="body">
-    <div class="container">
-        <h1>Assunto 02 - Capítulo 01 Cadastro</h1>
-        <p>Preencha os campos abaixo para realizar o cadastro.</p>
-        <div class="wrapper">
+<main class="main-content">
+    <h1>Assunto 02 - Capítulo 01 Cadastro</h1>
+    <p>Preencha os campos abaixo para realizar o cadastro.</p>
+    <div class="card-xl">
+        <div class="">
             <form method="post">
-                
+
                 {% csrf_token %}
                 {{ form.as_p }}
 
-                  <!-- Botões -->
-                   <!-- Botões -->
-                   <div class="assunto03-form">
+                <!-- Botões -->
+                <!-- Botões -->
+                <div class="assunto03-form">
                     <div class="button-group destaque-botoes">
-                        <button type="submit" class="btn btn-glass btn-salvar" aria-label="Salvar Formulário">
-                            <i class="fas fa-save"></i> Salvar
+                        <button type="submit" name="action" value="salvar" class="btn btn-glass btn-salvar"
+                            aria-label="Salvar Formulário">
+                            <i class="fas fa-save"></i> SALVAR
                         </button>
 
-                        <button type="submit" class="btn btn-glass btn-novo" aria-label="Criar Novo Registro">
-                            <i class="fas fa-plus"></i> Novo
+                        <button type="submit" name="action" value="novo" class="btn btn-glass btn-novo"
+                            aria-label="Criar Novo Registro">
+                            <i class="fas fa-plus"></i> NOVO
                         </button>
 
-                        <button type="reset" class="btn btn-glass btn-limpar" aria-label="Limpar Formulário">
-                            <i class="fas fa-undo"></i> Limpar
+                        <button type="button" id="btn-limpar" class="btn btn-glass btn-limpar"
+                            aria-label="Limpar Formulário">
+                            <i class="fas fa-undo"></i> LIMPAR
                         </button>
                     </div>
                 </div>
@@ -43,18 +43,17 @@
     {% endblock %}
 
     {% block js %}
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            'use strict';
-            const form = document.querySelector('.needs-validation');
+            const form = document.querySelector('form');
+            const btnLimpar = document.getElementById('btn-limpar');
 
-            form.addEventListener('submit', function (event) {
-                if (!form.checkValidity()) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            }, false);
+            if (btnLimpar) {
+                btnLimpar.addEventListener('click', function () {
+                    form.reset();
+                });
+            }
         });
     </script>
     {% endblock %}

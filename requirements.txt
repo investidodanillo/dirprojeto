@@ -26,6 +26,8 @@ typing_extensions==4.13.1
 tzdata==2025.2
 urllib3==2.2.
 whitenoise==6.6.0
+django-tables2==2
+django-filter==24
 
 # COMANDOS:
 # apt install python3-pip

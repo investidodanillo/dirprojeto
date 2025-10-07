@@ -1,0 +1,25 @@
+<!--aplicativo\templates\assunto01\capitulo01\titulos\base.html-->
+{% extends 'boards\base.html' %}
+{% load static %}
+
+{% block conteudox %}
+    <!-- Sidebar - Menu Lateral -->
+    <div class="sidebar">        
+        <ul class="links">
+    <!-- TECNOLOGIA E COMPUTAÇÃO -->
+    <h4>Inicio</h4>
+    <li><span><i class="fas fa-laptop-code"></i></span><a href="{% url 'boards:boards_tabelas_inicio_Views' %}">Inicio</a></li>
+    <h4>Categoria</h4>
+    <li><span><i class="fas fa-edit"></i></span><a href="{% url 'boards:boardsTabelas_Categoria_cadastro_Views' %}">Categoria</a></li>
+    <li><span><i class="fas fa-list-alt"></i></span><a href="{% url 'boards:boardsTabelas_Categoria_visualizar_View' %}">Visualizar Categoria</a></li>
+    <h4>Sistemas</h4>
+    <li><span><i class="fas fa-edit"></i></span><a href="{% url 'boards:boards_tabelas_sistemas_cadastro_Views' %}">Sistemas</a></li>
+    <li><span><i class="fas fa-list-alt"></i></span><a href="{% url 'boards:boardsTabelas_Sistemas_visualizar_View' %}">Visualizar Sistemas</a></li>
+</ul>
+    </div>
+
+
+
+{% block titudos %}
+{% endblock titudos %}
+{% endblock conteudox %}

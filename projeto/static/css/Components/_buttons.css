@@ -1,0 +1,192 @@
+        /* ========== COMPONENTES: BUTTONS ========== */
+        /* Estilo base para todos os botões */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+            font-weight: 500;
+            font-size: var(--font-size-sm);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Botão primário - para ações principais */
+        .btn-primary {
+            background: var(--glass-bg-light);
+            border-color: var(--glass-border-light);
+            color: var(--text-primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--glass-bg);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Botão secundário - para ações menos importantes */
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--glass-border);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Botão de sucesso - para ações positivas */
+        .btn-success {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: rgba(16, 185, 129, 0.3);
+            color: var(--success-color);
+        }
+
+        .btn-success:hover {
+            background: rgba(16, 185, 129, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Botão de alerta - para ações que requerem atenção */
+        .btn-warning {
+            background: rgba(245, 158, 11, 0.2);
+            border-color: rgba(245, 158, 11, 0.3);
+            color: var(--warning-color);
+        }
+
+        .btn-warning:hover {
+            background: rgba(245, 158, 11, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Botão de erro - para ações destrutivas */
+        .btn-error {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: rgba(239, 68, 68, 0.3);
+            color: var(--error-color);
+        }
+
+        .btn-error:hover {
+            background: rgba(239, 68, 68, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Tamanhos de botões */
+        .btn-sm {
+            padding: var(--spacing-xs) var(--spacing-md);
+            font-size: var(--font-size-xs);
+        }
+
+        .btn-lg {
+            padding: var(--spacing-md) var(--spacing-xl);
+            font-size: var(--font-size-base);
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        /* Estado desabilitado */
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /*=======================================*/
+        .assunto03-form .destaque-botoes {
+            margin-top: 2.5rem;
+            padding: 1.5rem;
+            border-top: 2px solid rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            backdrop-filter: blur(12px);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            animation: fadeIn 1.2s ease;
+        }
+
+        .assunto03-form .btn-glass {
+            font-weight: bold;
+            padding: 0.8rem 1.6rem;
+            font-size: 1rem;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            color: white;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            transition: all 0.35s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+        }
+
+        .assunto03-form .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+        }
+
+        /* Cores personalizadas */
+        .assunto03-form .btn-salvar {
+            background: rgba(78, 205, 196, 0.6);
+            border-color: rgba(78, 205, 196, 0.9);
+        }
+
+        .assunto03-form .btn-salvar:hover {
+            background: rgba(78, 205, 196, 0.9);
+        }
+
+        .assunto03-form .btn-deletar {
+            background: rgba(255, 107, 107, 0.6);
+            border-color: rgba(255, 107, 107, 0.9);
+        }
+
+        .assunto03-form .btn-deletar:hover {
+            background: rgba(255, 107, 107, 0.9);
+        }
+
+        .assunto03-form .btn-novo {
+            background: rgba(255, 195, 113, 0.6);
+            border-color: rgba(255, 195, 113, 0.9);
+        }
+
+        .assunto03-form .btn-novo:hover {
+            background: rgba(255, 195, 113, 0.9);
+        }
+
+        .assunto03-form .btn-limpar {
+            background: rgba(85, 98, 255, 0.5);
+            border-color: rgba(85, 98, 255, 0.9);
+        }
+
+        .assunto03-form .btn-limpar:hover {
+            background: rgba(85, 98, 255, 0.8);
+        }
+
+        /* ========== RESPONSIVIDADE ========== */
+        @media (max-width: 768px) {
+            body {
+                padding: var(--spacing-md);
+            }
+
+            .section {
+                padding: var(--spacing-lg);
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                justify-content: center;
+            }
+        }

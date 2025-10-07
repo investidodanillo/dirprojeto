@@ -1,0 +1,158 @@
+/* ========== RESPONSIVIDADE ========== */
+@media (max-width: 1024px) {
+
+    .headera,
+    .headerb {
+        padding: 5px 25px;
+    }
+
+    .main-content {
+        padding: 30px 30px;
+    }
+
+    .footer {
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .headera {
+        padding: 4px 20px;
+        height: 32px;
+    }
+
+    .headerb {
+        top: 32px;
+        padding: 8px 20px;
+        height: auto;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .sidebar {
+        top: 85px;
+        height: calc(100vh - 110px);
+    }
+
+    .main-content {
+        margin-top: 85px;
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .sidebar:hover~.main-content {
+        margin-left: 0;
+    }
+
+    .main-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .menu-item {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+
+    .submenu {
+        justify-content: center;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 100%;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+    .user-name {
+        display: none;
+    }
+
+    .footer {
+        flex-direction: column;
+        height: auto;
+        padding: 5px 10px;
+        font-size: 0.6rem;
+    }
+
+    .footer-left,
+    .footer-right {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .headera,
+    .headerb {
+        padding: 3px 15px;
+    }
+
+    .main-content {
+        padding: 15px;
+        margin-top: 75px;
+    }
+
+    .dashboard-card {
+        padding: 20px;
+    }
+
+    .card-value {
+        font-size: 2rem;
+    }
+
+    .page-title {
+        font-size: 1.8rem;
+    }
+
+    .main-menu {
+        gap: 3px;
+    }
+
+    .menu-item {
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+
+    .menu-item i {
+        font-size: 12px;
+    }
+
+    .footer {
+        font-size: 0.55rem;
+        padding: 3px 8px;
+    }
+
+    .footer-left,
+    .footer-right {
+        gap: 8px;
+    }
+}
+
+/* ========== RESPONSIVIDADE KAMBAN ========== */
+@media (max-width: 1200px) {
+    .kanban-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .kanban-container {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: var(--spacing-md);
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+    }
+}

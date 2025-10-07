@@ -1,7 +1,7 @@
 #dirprojeto\aplicativo\urls\Assunto01Urls.py
 from django.urls import path
 from aplicativo.views.assunto03.assunto03_capitulo01_View import(
-     assunto03_capitulo01_View_index, 
+     assunto03_index_View, 
      assunto03_capitulo01_View_inicio, 
 
 
@@ -22,7 +22,7 @@ app_name = 'assunto03'
 
 
 urlpatterns = [
-    path('assunto03_capitulo01_View_index/', assunto03_capitulo01_View_index, name='assunto03_capitulo01_View_index'),
+    path('assunto03_index_View/', assunto03_index_View, name='assunto03_index_View'),
     path('assunto03_capitulo01_View_inicio/', assunto03_capitulo01_View_inicio, name='assunto03_capitulo01_View_inicio'),
     #01
 

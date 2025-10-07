@@ -1,0 +1,631 @@
+<!--aplicativo\templates\assunto01\capitulo01\titulos\inicio.html-->
+{% extends 'inicio_desing\capitulo01\titulos\base.html' %}
+{% load static %} <!-- Carregar arquivos estáticos -->
+
+{% block titudos %}
+<main class="main-content">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demonstração de Tipografia - ERP Contábil</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* ========== VARIÁVEIS CSS ========== */
+        :root {
+            /* Cores de texto */
+            --text-primary: #ffffff;
+            --text-secondary: #e2e8f0;
+            --text-muted: #94a3b8;
+            
+            /* Cores de destaque */
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --info-color: #06b6d4;
+            
+            /* Cores de fundo */
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            
+            /* Tipografia */
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            --font-size-4xl: 2.25rem;
+            
+            /* Espaçamento */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            
+            /* Bordas */
+            --border-radius-sm: 0.375rem;
+            --border-radius-md: 0.5rem;
+            --border-radius-lg: 0.75rem;
+            --border-radius-xl: 1rem;
+            
+            /* Sombras */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* ========== RESET E BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Open Sans", sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            padding: var(--spacing-xl);
+        }
+
+        /* ========== LAYOUT ========== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .section-title i {
+            color: var(--info-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-lg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-title {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+        }
+
+        .example {
+            padding: var(--spacing-md);
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: var(--border-radius-sm);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .code {
+            font-family: 'Courier New', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius-sm);
+            font-size: var(--font-size-sm);
+            overflow-x: auto;
+            margin-top: var(--spacing-md);
+            color: var(--text-secondary);
+        }
+
+        .divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: var(--spacing-2xl);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            font-size: var(--font-size-sm);
+        }
+
+        /* ========== TYPOGRAPHY ========== */
+        /* Estilos para todos os cabeçalhos */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+        }
+
+        /* Cabeçalho nível 1 - Título principal */
+        h1 {
+            font-size: var(--font-size-4xl);
+            font-weight: 700;
+        }
+
+        /* Cabeçalho nível 2 - Subtítulo principal */
+        h2 {
+            font-size: var(--font-size-3xl);
+        }
+
+        /* Cabeçalho nível 3 - Subtítulo secundário */
+        h3 {
+            font-size: var(--font-size-2xl);
+        }
+
+        /* Cabeçalho nível 4 - Subtítulo terciário */
+        h4 {
+            font-size: var(--font-size-xl);
+        }
+
+        /* Cabeçalho nível 5 - Subtítulo pequeno */
+        h5 {
+            font-size: var(--font-size-lg);
+        }
+
+        /* Cabeçalho nível 6 - Subtítulo mínimo */
+        h6 {
+            font-size: var(--font-size-base);
+        }
+
+        /* Estilo para parágrafos */
+        p {
+            margin-bottom: var(--spacing-md);
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Texto com destaque (lead) */
+        .text-lead {
+            font-size: var(--font-size-lg);
+            font-weight: 300;
+            color: var(--text-secondary);
+        }
+
+        /* Texto secundário (muted) */
+        .text-muted {
+            color: var(--text-muted);
+            font-size: var(--font-size-sm);
+        }
+
+        /* Alinhamento de texto centralizado */
+        .text-center {
+            text-align: center;
+        }
+
+        /* Alinhamento de texto à direita */
+        .text-right {
+            text-align: right;
+        }
+
+        /* Texto com cor de sucesso */
+        .text-success {
+            color: var(--success-color);
+        }
+
+        /* Texto com cor de alerta */
+        .text-warning {
+            color: var(--warning-color);
+        }
+
+        /* Texto com cor de erro */
+        .text-error {
+            color: var(--error-color);
+        }
+
+        /* Estilo para blocos de código pré-formatados */
+        pre {
+            background-color: #272822;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 5px;
+            overflow: auto;
+            white-space: pre-wrap;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* Estilo para títulos dentro de blocos de código */
+        pre u {
+            text-decoration: none;
+            color: #89ddff;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Estilo para blocos de código inline */
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            padding: 1.5rem;
+            line-height: 1.5;
+            display: block;
+            font-size: 0.9rem;
+        }
+
+        /* ========== RESPONSIVIDADE ========== */
+        @media (max-width: 768px) {
+            body {
+                padding: var(--spacing-md);
+            }
+            
+            .section {
+                padding: var(--spacing-lg);
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Demonstração de Tipografia</h1>
+            <p class="text-lead">Visualize todos os elementos de tipografia disponíveis no sistema ERP Contábil</p>
+        </header>
+
+        <!-- Seção de Cabeçalhos -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-heading"></i> Cabeçalhos (Headings)</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title">Cabeçalho H1</h3>
+                    <div class="example">
+                        <h1>Título Principal - Nível 1</h1>
+                    </div>
+                    <div class="code">
+                        &lt;h1&gt;Título Principal - Nível 1&lt;/h1&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Cabeçalho H2</h3>
+                    <div class="example">
+                        <h2>Subtítulo Principal - Nível 2</h2>
+                    </div>
+                    <div class="code">
+                        &lt;h2&gt;Subtítulo Principal - Nível 2&lt;/h2&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Cabeçalho H3</h3>
+                    <div class="example">
+                        <h3>Subtítulo Secundário - Nível 3</h3>
+                    </div>
+                    <div class="code">
+                        &lt;h3&gt;Subtítulo Secundário - Nível 3&lt;/h3&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Cabeçalho H4</h3>
+                    <div class="example">
+                        <h4>Subtítulo Terciário - Nível 4</h4>
+                    </div>
+                    <div class="code">
+                        &lt;h4&gt;Subtítulo Terciário - Nível 4&lt;/h4&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Cabeçalho H5</h3>
+                    <div class="example">
+                        <h5>Subtítulo Pequeno - Nível 5</h5>
+                    </div>
+                    <div class="code">
+                        &lt;h5&gt;Subtítulo Pequeno - Nível 5&lt;/h5&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Cabeçalho H6</h3>
+                    <div class="example">
+                        <h6>Subtítulo Mínimo - Nível 6</h6>
+                    </div>
+                    <div class="code">
+                        &lt;h6&gt;Subtítulo Mínimo - Nível 6&lt;/h6&gt;
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Parágrafos e Textos -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-paragraph"></i> Parágrafos e Textos</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title">Parágrafo Normal</h3>
+                    <div class="example">
+                        <p>Este é um parágrafo normal. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                    <div class="code">
+                        &lt;p&gt;Este é um parágrafo normal...&lt;/p&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Texto Lead</h3>
+                    <div class="example">
+                        <p class="text-lead">Este é um texto com estilo "lead". É usado para destacar introduções ou textos importantes com tamanho maior e peso mais leve.</p>
+                    </div>
+                    <div class="code">
+                        &lt;p class="text-lead"&gt;Este é um texto com estilo "lead"...&lt;/p&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Texto Muted</h3>
+                    <div class="example">
+                        <p class="text-muted">Este é um texto com estilo "muted". É usado para informações secundárias ou menos importantes.</p>
+                    </div>
+                    <div class="code">
+                        &lt;p class="text-muted"&gt;Este é um texto com estilo "muted"...&lt;/p&gt;
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Alinhamento -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-align-left"></i> Alinhamento de Texto</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title">Alinhamento à Esquerda</h3>
+                    <div class="example">
+                        <p>Este texto está alinhado à esquerda (padrão). É o alinhamento padrão para a maioria dos textos em línguas ocidentais.</p>
+                    </div>
+                    <div class="code">
+                        &lt;p&gt;Este texto está alinhado à esquerda...&lt;/p&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Alinhamento Centralizado</h3>
+                    <div class="example">
+                        <p class="text-center">Este texto está centralizado. É frequentemente usado para títulos, citações ou elementos que precisam de destaque visual.</p>
+                    </div>
+                    <div class="code">
+                        &lt;p class="text-center"&gt;Este texto está centralizado...&lt;/p&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Alinhamento à Direita</h3>
+                    <div class="example">
+                        <p class="text-right">Este texto está alinhado à direita. Pode ser usado para datas, números ou informações complementares.</p>
+                    </div>
+                    <div class="code">
+                        &lt;p class="text-right"&gt;Este texto está alinhado à direita...&lt;/p&gt;
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Cores de Texto -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-palette"></i> Cores de Texto</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title">Texto Success</h3>
+                    <div class="example">
+                        <p class="text-success">Este é um texto com cor de sucesso. Use para indicar ações bem-sucedidas ou estados positivos.</p>
+                    </div>
+                    <div class="code">
+                        &lt;p class="text-success"&gt;Este é um texto com cor de sucesso...&lt;/p&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Texto Warning</h3>
+                    <div class="example">
+                        <p class="text-warning">Este é um texto com cor de alerta. Use para indicar avisos ou estados que requerem atenção.</p>
+                    </div>
+                    <div class="code">
+                        &lt;p class="text-warning"&gt;Este é um texto com cor de alerta...&lt;/p&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Texto Error</h3>
+                    <div class="example">
+                        <p class="text-error">Este é um texto com cor de erro. Use para indicar problemas ou estados críticos.</p>
+                    </div>
+                    <div class="code">
+                        &lt;p class="text-error"&gt;Este é um texto com cor de erro...&lt;/p&gt;
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Código -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-code"></i> Blocos de Código</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title">Bloco de Código com Pre</h3>
+                    <div class="example">
+                        <pre><u>Exemplo de código HTML:</u>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-br"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Exemplo&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Olá Mundo!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                    </div>
+                    <div class="code">
+                        &lt;pre&gt;&lt;u&gt;Exemplo de código HTML:&lt;/u&gt;
+&lt;!DOCTYPE html&gt;
+...
+&lt;/pre&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Bloco de Código com Code</h3>
+                    <div class="example">
+                        <code>// Exemplo de código JavaScript
+function calcularTotal(preco, quantidade) {
+    const subtotal = preco * quantidade;
+    const imposto = subtotal * 0.1;
+    return subtotal + imposto;
+}
+
+const total = calcularTotal(29.90, 3);
+console.log(`Total: R$ ${total.toFixed(2)}`);</code>
+                    </div>
+                    <div class="code">
+                        &lt;code&gt;// Exemplo de código JavaScript
+function calcularTotal(preco, quantidade) {
+...
+&lt;/code&gt;
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Exemplos Práticos -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-laptop-code"></i> Exemplos Práticos</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title">Relatório Financeiro</h3>
+                    <div class="example">
+                        <h4>Relatório Financeiro Mensal</h4>
+                        <p class="text-muted">Gerado em 15 de Dezembro de 2024</p>
+                        <div class="divider"></div>
+                        <p class="text-lead">O desempenho financeiro deste mês mostra um crescimento significativo em comparação com o período anterior.</p>
+                        <p>As receitas totais atingiram <span class="text-success">R$ 245.680,00</span>, representando um aumento de <span class="text-success">12.5%</span> em relação ao mês anterior. Por outro lado, as despesas operacionais totalizaram <span class="text-warning">R$ 128.340,00</span>, com um aumento de <span class="text-warning">8.2%</span>.</p>
+                        <p class="text-right"><small class="text-muted">Fonte: Departamento Financeiro</small></p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Status do Sistema</h3>
+                    <div class="example">
+                        <h4>Status dos Serviços</h4>
+                        <p class="text-muted">Atualizado em 15/12/2024 14:30</p>
+                        <div class="divider"></div>
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li style="margin-bottom: var(--spacing-sm);">
+                                <i class="fas fa-circle text-success" style="margin-right: var(--spacing-sm);"></i>
+                                <span class="text-success">Serviços Principais</span> - Operacionais
+                            </li>
+                            <li style="margin-bottom: var(--spacing-sm);">
+                                <i class="fas fa-circle text-warning" style="margin-right: var(--spacing-sm);"></i>
+                                <span class="text-warning">Sistema de Backup</span> - Em Manutenção
+                            </li>
+                            <li style="margin-bottom: var(--spacing-sm);">
+                                <i class="fas fa-circle text-error" style="margin-right: var(--spacing-sm);"></i>
+                                <span class="text-error">API Externa</span> - Indisponível
+                            </li>
+                        </ul>
+                        <div class="divider"></div>
+                        <pre><u>Log de sistema:</u>
+[INFO] 2024-12-15 14:25: Sistema inicializado
+[WARN] 2024-12-15 14:28: Backup em andamento
+[ERROR] 2024-12-15 14:30: Falha na conexão com API</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>ERP Contábil - Sistema de Demonstração de Tipografia</p>
+            <p class="text-muted">Use esta página como referência para implementar a tipografia em todo o sistema</p>
+        </footer>
+    </div>
+
+    <script>
+        // Adicionando interatividade básica para melhorar a experiência
+        document.addEventListener('DOMContentLoaded', function() {
+            // Adiciona classe de destaque quando o mouse passa sobre os cards
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Adiciona tooltip para os códigos
+            const codeElements = document.querySelectorAll('.code');
+            codeElements.forEach(code => {
+                code.addEventListener('click', function() {
+                    const textArea = document.createElement('textarea');
+                    textArea.value = this.textContent;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    
+                    // Feedback visual
+                    const originalText = this.textContent;
+                    this.textContent = 'Código copiado!';
+                    this.style.background = 'rgba(16, 185, 129, 0.2)';
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.background = 'rgba(0, 0, 0, 0.3)';
+                    }, 1500);
+                });
+                
+                code.title = 'Clique para copiar o código';
+            });
+        });
+    </script>
+</body>
+</html>
+</main>
+{% endblock titudos %}

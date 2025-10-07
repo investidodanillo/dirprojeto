@@ -1,0 +1,690 @@
+<!--aplicativo\templates\assunto01\capitulo01\titulos\inicio.html-->
+{% extends 'inicio_desing\capitulo01\titulos\base.html' %}
+{% load static %} <!-- Carregar arquivos estáticos -->
+
+{% block titudos %}
+
+<!-- conteúdo da página -->
+<main class="main-content">
+    <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demonstração de Cards - ERP Contábil</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* ========== VARIÁVEIS CSS ========== */
+        :root {
+            /* Cores principais */
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-bg-light: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-border-light: rgba(255, 255, 255, 0.3);
+            
+            /* Cores de texto */
+            --text-primary: #ffffff;
+            --text-secondary: #e2e8f0;
+            --text-muted: #94a3b8;
+            
+            /* Cores de destaque */
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --info-color: #06b6d4;
+            
+            /* Cores de fundo */
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            
+            /* Tipografia */
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            --font-size-4xl: 2.25rem;
+            
+            /* Espaçamento */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            
+            /* Bordas */
+            --border-radius-sm: 0.375rem;
+            --border-radius-md: 0.5rem;
+            --border-radius-lg: 0.75rem;
+            --border-radius-xl: 1rem;
+            
+            /* Sombras */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* ========== RESET E BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Open Sans", sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            padding: var(--spacing-xl);
+        }
+
+        /* ========== LAYOUT ========== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .page-title {
+            font-size: var(--font-size-4xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .page-subtitle {
+            color: var(--text-secondary);
+            font-size: var(--font-size-lg);
+            font-weight: 300;
+        }
+
+        .section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+            border: 1px solid var(--glass-border);
+        }
+
+        .section-title {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .section-title i {
+            color: var(--info-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .example-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .code {
+            font-family: 'Courier New', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius-sm);
+            font-size: var(--font-size-sm);
+            overflow-x: auto;
+            margin-top: var(--spacing-md);
+            color: var(--text-secondary);
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--glass-border);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: var(--spacing-2xl);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            font-size: var(--font-size-sm);
+        }
+
+        /* ========== COMPONENTES: CARDS ========== */
+        /* Card tamanho pequeno - para informações compactas */
+        .card-sm {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        /* Card tamanho médio (padrão) - para a maioria dos conteúdos */
+        .card-md {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        /* Card tamanho grande - para conteúdos detalhados */
+        .card-lg {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius-xl);
+            padding: var(--spacing-2xl);
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        /* Card tamanho extra grande - para dashboards e visualizações completas */
+        .card-xl {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius-xl);
+            padding: var(--spacing-2xl) var(--spacing-2xl);
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        /* Efeito hover para cards interativos */
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--glass-border-light);
+        }
+
+        /* Cabeçalho do card - contém título e ações */
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        /* Título do card */
+        .card-title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        /* Corpo do card - conteúdo principal */
+        .card-body {
+            color: var(--text-secondary);
+        }
+
+        /* Rodapé do card - ações adicionais */
+        .card-footer {
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--glass-border);
+        }
+
+        /* ========== BOTÕES PARA COMPLEMENTAR ========== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+            font-weight: 500;
+            font-size: var(--font-size-sm);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-primary {
+            background: var(--glass-bg-light);
+            border-color: var(--glass-border-light);
+            color: var(--text-primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--glass-bg);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-sm {
+            padding: var(--spacing-xs) var(--spacing-md);
+            font-size: var(--font-size-xs);
+        }
+
+        /* ========== RESPONSIVIDADE ========== */
+        @media (max-width: 768px) {
+            body {
+                padding: var(--spacing-md);
+            }
+            
+            .section {
+                padding: var(--spacing-lg);
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="page-title">Demonstração de Cards</h1>
+            <p class="page-subtitle">Visualize todos os tamanhos e estilos de cards disponíveis no sistema ERP Contábil</p>
+        </header>
+
+        <!-- Seção de Cards por Tamanho -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-arrows-alt"></i> Cards por Tamanho</h2>
+            
+            <div class="example-container">
+                <div class="card-sm">
+                    <div class="card-header">
+                        <h3 class="card-title">Card Pequeno</h3>
+                        <i class="fas fa-info-circle" style="color: var(--info-color);"></i>
+                    </div>
+                    <div class="card-body">
+                        <p>Este é um card de tamanho pequeno, ideal para informações compactas e resumos rápidos.</p>
+                    </div>
+                </div>
+                <div class="code">
+&lt;div class="card-sm"&gt;
+  &lt;div class="card-header"&gt;
+    &lt;h3 class="card-title"&gt;Card Pequeno&lt;/h3&gt;
+    &lt;i class="fas fa-info-circle"&gt;&lt;/i&gt;
+  &lt;/div&gt;
+  &lt;div class="card-body"&gt;
+    &lt;p&gt;Este é um card de tamanho pequeno...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+                </div>
+                
+                <div class="card-md">
+                    <div class="card-header">
+                        <h3 class="card-title">Card Médio</h3>
+                        <div>
+                            <button class="btn btn-primary btn-sm">
+                                <i class="fas fa-edit"></i>
+                                Editar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p>Este é um card de tamanho médio, perfeito para a maioria dos conteúdos do sistema. Oferece espaço adequado para informações detalhadas sem ocupar muito espaço na tela.</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Última atualização: 15/12/2024</small>
+                    </div>
+                </div>
+                <div class="code">
+&lt;div class="card-md"&gt;
+  &lt;div class="card-header"&gt;
+    &lt;h3 class="card-title"&gt;Card Médio&lt;/h3&gt;
+    &lt;div&gt;
+      &lt;button class="btn btn-primary btn-sm"&gt;
+        &lt;i class="fas fa-edit"&gt;&lt;/i&gt;
+        Editar
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="card-body"&gt;
+    &lt;p&gt;Este é um card de tamanho médio...&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="card-footer"&gt;
+    &lt;small class="text-muted"&gt;Última atualização: 15/12/2024&lt;/small&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+                </div>
+                
+                <div class="card-lg">
+                    <div class="card-header">
+                        <h3 class="card-title">Card Grande</h3>
+                        <div>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-cog"></i>
+                                Configurar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p>Este é um card de tamanho grande, com bastante espaço para conteúdo detalhado. Ideal para formulários, listas extensas ou informações complexas que necessitam de mais espaço para uma boa apresentação.</p>
+                        <div class="divider"></div>
+                        <p>Pode conter múltiplas seções, tabelas ou outros elementos de interface que requeiram mais espaço vertical.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-save"></i>
+                            Salvar Alterações
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-times"></i>
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+                <div class="code">
+&lt;div class="card-lg"&gt;
+  &lt;div class="card-header"&gt;
+    &lt;h3 class="card-title"&gt;Card Grande&lt;/h3&gt;
+    &lt;div&gt;
+      &lt;button class="btn btn-primary"&gt;
+        &lt;i class="fas fa-cog"&gt;&lt;/i&gt;
+        Configurar
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="card-body"&gt;
+    &lt;p&gt;Este é um card de tamanho grande...&lt;/p&gt;
+    &lt;div class="divider"&gt;&lt;/div&gt;
+    &lt;p&gt;Pode conter múltiplas seções...&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="card-footer"&gt;
+    &lt;button class="btn btn-primary"&gt;
+      &lt;i class="fas fa-save"&gt;&lt;/i&gt;
+      Salvar Alterações
+    &lt;/button&gt;
+    &lt;button class="btn btn-primary"&gt;
+      &lt;i class="fas fa-times"&gt;&lt;/i&gt;
+      Cancelar
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+                </div>
+                
+                <div class="card-xl">
+                    <div class="card-header">
+                        <h3 class="card-title">Card Extra Grande</h3>
+                        <div>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-download"></i>
+                                Exportar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p>Este é um card de tamanho extra grande, perfeito para dashboards e visualizações completas. Oferece máximo espaço para conteúdo rico e complexo, permitindo a apresentação de informações detalhadas em um único container.</p>
+                        <div class="divider"></div>
+                        <p>Ideal para:</p>
+                        <ul>
+                            <li>Relatórios financeiros completos</li>
+                            <li>Dashboards com múltiplos gráficos</li>
+                            <li>Visualizações de dados complexos</li>
+                            <li>Formulários extensos com múltiplas seções</li>
+                        </ul>
+                        <div class="divider"></div>
+                        <p>Com este tamanho, é possível organizar informações de maneira clara e hierárquica, facilitando a compreensão dos dados apresentados.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-chart-bar"></i>
+                            Gerar Relatório
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-print"></i>
+                            Imprimir
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-share"></i>
+                            Compartilhar
+                        </button>
+                    </div>
+                </div>
+                <div class="code">
+&lt;div class="card-xl"&gt;
+  &lt;div class="card-header"&gt;
+    &lt;h3 class="card-title"&gt;Card Extra Grande&lt;/h3&gt;
+    &lt;div&gt;
+      &lt;button class="btn btn-primary"&gt;
+        &lt;i class="fas fa-download"&gt;&lt;/i&gt;
+        Exportar
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="card-body"&gt;
+    &lt;p&gt;Este é um card de tamanho extra grande...&lt;/p&gt;
+    &lt;div class="divider"&gt;&lt;/div&gt;
+    &lt;p&gt;Ideal para:&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Relatórios financeiros completos&lt;/li&gt;
+      &lt;li&gt;Dashboards com múltiplos gráficos&lt;/li&gt;
+      &lt;li&gt;Visualizações de dados complexos&lt;/li&gt;
+      &lt;li&gt;Formulários extensos com múltiplas seções&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div class="divider"&gt;&lt;/div&gt;
+    &lt;p&gt;Com este tamanho...&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="card-footer"&gt;
+    &lt;button class="btn btn-primary"&gt;
+      &lt;i class="fas fa-chart-bar"&gt;&lt;/i&gt;
+      Gerar Relatório
+    &lt;/button&gt;
+    &lt;button class="btn btn-primary"&gt;
+      &lt;i class="fas fa-print"&gt;&lt;/i&gt;
+      Imprimir
+    &lt;/button&gt;
+    &lt;button class="btn btn-primary"&gt;
+      &lt;i class="fas fa-share"&gt;&lt;/i&gt;
+      Compartilhar
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Cards com Efeito Hover -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-magic"></i> Cards com Efeito Hover</h2>
+            
+            <div class="grid">
+                <div class="card-md card-hover">
+                    <div class="card-header">
+                        <h3 class="card-title">Card Interativo</h3>
+                        <i class="fas fa-star" style="color: var(--warning-color);"></i>
+                    </div>
+                    <div class="card-body">
+                        <p>Este card possui efeito hover. Passe o mouse sobre ele para ver a animação de elevação e sombra.</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Passe o mouse sobre mim!</small>
+                    </div>
+                </div>
+                
+                <div class="card-md card-hover">
+                    <div class="card-header">
+                        <h3 class="card-title">Card de Estatísticas</h3>
+                        <i class="fas fa-chart-line" style="color: var(--success-color);"></i>
+                    </div>
+                    <div class="card-body">
+                        <p>Cards com hover são perfeitos para dashboards, pois proporcionam feedback visual quando o usuário interage com eles.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye"></i>
+                            Ver Detalhes
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="code" style="margin-top: var(--spacing-lg);">
+&lt;div class="card-md card-hover"&gt;
+  &lt;div class="card-header"&gt;
+    &lt;h3 class="card-title"&gt;Card Interativo&lt;/h3&gt;
+    &lt;i class="fas fa-star"&gt;&lt;/i&gt;
+  &lt;/div&gt;
+  &lt;div class="card-body"&gt;
+    &lt;p&gt;Este card possui efeito hover...&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="card-footer"&gt;
+    &lt;small class="text-muted"&gt;Passe o mouse sobre mim!&lt;/small&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+            </div>
+        </section>
+
+        <!-- Seção de Exemplos Práticos -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-laptop-code"></i> Exemplos Práticos</h2>
+            
+            <div class="grid">
+                <div class="card-sm card-hover">
+                    <div class="card-header">
+                        <h3 class="card-title">Resumo Financeiro</h3>
+                        <i class="fas fa-dollar-sign" style="color: var(--success-color);"></i>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Receita Total:</strong> R$ 245.680,00</p>
+                        <p><strong>Despesas:</strong> R$ 128.340,00</p>
+                        <p><strong>Lucro:</strong> R$ 117.340,00</p>
+                    </div>
+                </div>
+                
+                <div class="card-md card-hover">
+                    <div class="card-header">
+                        <h3 class="card-title">Relatório de Vendas</h3>
+                        <div>
+                            <button class="btn btn-primary btn-sm">
+                                <i class="fas fa-download"></i>
+                                Exportar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p>Análise detalhada do desempenho de vendas no último trimestre, com comparações mensais e projeções para o próximo período.</p>
+                        <div class="divider"></div>
+                        <p><strong>Período:</strong> Out-Dez 2024</p>
+                        <p><strong>Crescimento:</strong> +12.5% vs trimestre anterior</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Atualizado em 15/12/2024</small>
+                    </div>
+                </div>
+                
+                <div class="card-lg card-hover">
+                    <div class="card-header">
+                        <h3 class="card-title">Configurações do Sistema</h3>
+                        <div>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-save"></i>
+                                Salvar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p>Configurações gerais do sistema ERP Contábil. Altere as preferências conforme necessário para sua empresa.</p>
+                        <div class="divider"></div>
+                        <p><strong>Configurações de Notificação:</strong></p>
+                        <ul>
+                            <li>Alertas por e-mail: Ativado</li>
+                            <li>Notificações push: Desativado</li>
+                            <li>Relatórios automáticos: Semanal</li>
+                        </ul>
+                        <div class="divider"></div>
+                        <p><strong>Preferências de Relatório:</strong></p>
+                        <ul>
+                            <li>Formato padrão: PDF</li>
+                            <li>Incluir anexos: Sim</li>
+                            <li>Enviar automaticamente: Não</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-check"></i>
+                            Aplicar
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-undo"></i>
+                            Restaurar Padrões
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>ERP Contábil - Sistema de Demonstração de Cards</p>
+            <p class="text-muted">Use esta página como referência para implementar cards em todo o sistema</p>
+        </footer>
+    </div>
+
+    <script>
+        // Adicionando interatividade básica para melhorar a experiência
+        document.addEventListener('DOMContentLoaded', function() {
+            // Adiciona tooltip para os códigos
+            const codeElements = document.querySelectorAll('.code');
+            codeElements.forEach(code => {
+                code.addEventListener('click', function() {
+                    const textArea = document.createElement('textarea');
+                    textArea.value = this.textContent;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    
+                    // Feedback visual
+                    const originalText = this.textContent;
+                    this.textContent = 'Código copiado!';
+                    this.style.background = 'rgba(16, 185, 129, 0.2)';
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.background = 'rgba(0, 0, 0, 0.3)';
+                    }, 1500);
+                });
+                
+                code.title = 'Clique para copiar o código';
+            });
+            
+            // Adiciona funcionalidade aos botões de exemplo
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Simula ação do botão
+                    if (this.querySelector('.fa-save')) {
+                        alert('Configurações salvas com sucesso!');
+                    } else if (this.querySelector('.fa-download')) {
+                        alert('Relatório exportado com sucesso!');
+                    } else if (this.querySelector('.fa-eye')) {
+                        alert('Abrindo detalhes...');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+</main>
+
+{% endblock titudos %}

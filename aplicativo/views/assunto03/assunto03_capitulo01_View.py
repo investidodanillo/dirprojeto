@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 
-def assunto03_capitulo01_View_index(request):
+def assunto03_index_View(request):
     return render(request, 'assunto03/index.html')
 
 def assunto03_capitulo01_View_inicio(request):

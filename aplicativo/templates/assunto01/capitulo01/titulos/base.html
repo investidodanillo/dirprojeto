@@ -1,65 +1,116 @@
-<!-- aplicativo/templates/assunto01/capitulo01/titulos/base.html -->
-{% extends 'assunto01/base.html' %}
+<!--aplicativo\templates\assunto01\capitulo01\titulos\base.html-->
+{% extends 'assunto01\base.html' %}
 {% load static %}
 
 {% block conteudox %}
-<!-- Sidebar (Menu Lateral) -->
-<div class="leftSide sidebar">
-  <ul class="links">
-    <li><span><i class="fas fa-home"></i></span><a href="{% url 'assunto01:capitulo01_inicio' %}">capitulo01_inicio</a></li>
+    <!-- Sidebar - Menu Lateral -->
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fas fa-bars"></i>
+            <h2>Menu Principal</h2>
+        </div>
+        <ul class="links">
+    <!-- TECNOLOGIA E COMPUTAÇÃO -->
+    <h4>Inicio</h4>
+    <li><span><i class="fas fa-laptop-code"></i></span><a href="{% url 'assunto01:assunto01_Capítulo01_inicio' %}">Inicio</a></li>
+    <h4>Tecnologia e Computação</h4>
+    <li><span><i class="fas fa-tachometer-alt"></i></span><a href="#">Dashboard</a></li>
+    <li><span><i class="fas fa-laptop-code"></i></span><a href="#">Desenvolvimento</a></li>
+    <li><span><i class="fas fa-database"></i></span><a href="#">Banco de Dados</a></li>
+    <li><span><i class="fas fa-server"></i></span><a href="#">Servidores</a></li>
+    <li><span><i class="fas fa-network-wired"></i></span><a href="#">Rede</a></li>
+    <li><span><i class="fas fa-code"></i></span><a href="#">Programação</a></li>
+    <li><span><i class="fas fa-microchip"></i></span><a href="#">Hardware</a></li>    
+    <li><span><i class="fa fa-table"></i></span><a href="#">table</a></li>
 
-    <li><span><i class="fas fa-file-alt"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-list"></i></span><a href="#">Título 02</a></li>
-    <li><span><i class="fas fa-home"></i></span><a href="#">Título 03</a></li>
-    <li><span><i class="fas fa-file-alt"></i></span><a href="#">Título 04</a></li>
-    <li><span><i class="fas fa-pen"></i></span><a href="#">Título 05</a></li>
-    <li><span><i class="fas fa-pencil-alt"></i></span><a href="#">Título 06</a></li>
-    <li><span><i class="fas fa-edit"></i></span><a href="#">Título 06</a></li>
-    <li><span><i class="fas fa-clipboard"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-clipboard-list"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-check-square"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-paper-plane"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-user-edit"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-list-alt"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-pencil-alt"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-user"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-envelope"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-phone"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-lock"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-key"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-search"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-bell"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-star"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-heart"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-arrow-left"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-arrow-right"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-arrow-up"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-arrow-down"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-bars"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-times"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-laptop"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-desktop"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-wifi"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-globe"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-cloud"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-file"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-folder"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-camera"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-music"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fas fa-video"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fab fa-facebook"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fab fa-twitter"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fab fa-instagram"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fab fa-linkedin"></i></span><a href="#">Título 01</a></li>
-    <li><span><i class="fab fa-youtube"></i></span><a href="#">Título 01</a></li>
 
-    <hr>
+    <!-- COMUNICAÇÃO -->
+    <h4>Comunicação</h4>
+    <li><span><i class="fas fa-envelope"></i></span><a href="#">E-mail</a></li>
+    <li><span><i class="fas fa-comments"></i></span><a href="#">Mensagens</a></li>
+    <li><span><i class="fas fa-phone-alt"></i></span><a href="#">Telefone</a></li>
+    <li><span><i class="fas fa-video"></i></span><a href="#">Videoconferência</a></li>
 
-    <li class="logout-link">
-      <span><i class="fas fa-sign-out-alt"></i></span><a href="#">Sair</a>
-    </li>
-  </ul>
-</div>
+    <!-- EDUCAÇÃO -->
+    <h4>Educação</h4>
+    <li><span><i class="fas fa-book"></i></span><a href="#">Biblioteca</a></li>
+    <li><span><i class="fas fa-graduation-cap"></i></span><a href="#">Formação</a></li>
+    <li><span><i class="fas fa-pencil-alt"></i></span><a href="#">Exercícios</a></li>
+    <li><span><i class="fas fa-chalkboard-teacher"></i></span><a href="#">Aulas</a></li>
+    <li><span><i class="fas fa-edit"></i></span><a href="#">Editar</a></li>
+
+
+    <!-- FINANÇAS -->
+    <h4>Finanças</h4>
+    <li><span><i class="fas fa-chart-line"></i></span><a href="#">Investimentos</a></li>
+    <li><span><i class="fas fa-calculator"></i></span><a href="#">Cálculos</a></li>
+    <li><span><i class="fas fa-money-bill-wave"></i></span><a href="#">Transações</a></li>
+    <li><span><i class="fas fa-piggy-bank"></i></span><a href="#">Economias</a></li>
+
+    <!-- SAÚDE -->
+    <h4>Saúde</h4>
+    <li><span><i class="fas fa-heartbeat"></i></span><a href="#">Cardiologia</a></li>
+    <li><span><i class="fas fa-stethoscope"></i></span><a href="#">Consulta</a></li>
+    <li><span><i class="fas fa-pills"></i></span><a href="#">Medicamentos</a></li>
+    <li><span><i class="fas fa-hospital"></i></span><a href="#">Instituição</a></li>
+
+    <!-- TRANSPORTE -->
+    <h4>Transporte</h4>
+    <li><span><i class="fas fa-car"></i></span><a href="#">Automóvel</a></li>
+    <li><span><i class="fas fa-plane"></i></span><a href="#">Avião</a></li>
+    <li><span><i class="fas fa-ship"></i></span><a href="#">Navio</a></li>
+    <li><span><i class="fas fa-bicycle"></i></span><a href="#">Bicicleta</a></li>
+
+    <!-- COMÉRCIO -->
+    <h4>Comércio</h4>
+    <li><span><i class="fas fa-shopping-cart"></i></span><a href="#">Carrinho</a></li>
+    <li><span><i class="fas fa-tags"></i></span><a href="#">Promoções</a></li>
+    <li><span><i class="fas fa-box-open"></i></span><a href="#">Produtos</a></li>
+    <li><span><i class="fas fa-store"></i></span><a href="#">Loja</a></li>
+
+    <!-- SEGURANÇA -->
+    <h4>Segurança</h4>
+    <li><span><i class="fas fa-shield-alt"></i></span><a href="#">Proteção</a></li>
+    <li><span><i class="fas fa-lock"></i></span><a href="#">Criptografia</a></li>
+    <li><span><i class="fas fa-fingerprint"></i></span><a href="#">Biometria</a></li>
+    <li><span><i class="fas fa-user-shield"></i></span><a href="#">Privacidade</a></li>
+
+    <!-- MÍDIA -->
+    <h4>Mídia e Entretenimento</h4>
+    <li><span><i class="fas fa-camera"></i></span><a href="#">Fotografia</a></li>
+    <li><span><i class="fas fa-music"></i></span><a href="#">Música</a></li>
+    <li><span><i class="fas fa-film"></i></span><a href="#">Vídeo</a></li>
+    <li><span><i class="fas fa-gamepad"></i></span><a href="#">Games</a></li>
+
+    <!-- FERRAMENTAS -->
+    <h4>Ferramentas</h4>
+    <li><span><i class="fas fa-wrench"></i></span><a href="#">Configurações</a></li>
+    <li><span><i class="fas fa-search"></i></span><a href="#">Pesquisa</a></li>
+    <li><span><i class="fas fa-filter"></i></span><a href="#">Filtros</a></li>
+    <li><span><i class="fas fa-cog"></i></span><a href="#">Preferências</a></li>
+	<!-- REDES SOCIAIS -->
+<h4>Redes Sociais</h4>
+<li><span><i class="fas fa-hashtag"></i></span><a href="#">Trending</a></li>
+<li><span><i class="fas fa-share-alt"></i></span><a href="#">Compartilhar</a></li>
+
+<!-- ESCRITÓRIO -->
+<h4>Escritório</h4>
+<li><span><i class="fas fa-file-alt"></i></span><a href="#">Documentos</a></li>
+<li><span><i class="fas fa-print"></i></span><a href="#">Impressão</a></li>
+
+<!-- MAPAS E LOCALIZAÇÃO -->
+<h4>Localização</h4>
+<li><span><i class="fas fa-map-marker-alt"></i></span><a href="#">GPS</a></li>
+<li><span><i class="fas fa-globe-americas"></i></span><a href="#">Global</a></li>
+
+<!-- CLIMA -->
+<h4>Clima</h4>
+<li><span><i class="fas fa-sun"></i></span><a href="#">Tempo</a></li>
+<li><span><i class="fas fa-cloud"></i></span><a href="#">Nuvem</a></li>
+</ul>
+    </div>
+
+
 
 {% block titudos %}
 {% endblock titudos %}

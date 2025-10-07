@@ -1,0 +1,336 @@
+<!-- desenvolvimento\templates\boards\principal\titulos\BoardsPrincial_Quadro.html -->
+{% extends 'boards/principal/titulos/base.html' %}
+{% load static %}
+
+{% block titudos %}
+<div class="main-content">
+    <div class="assunto03-form">
+        <div class="button-group destaque-botoes">
+            <h1>Boards - Quadro de Tarefas</h1>
+            <a href="{% url 'boards:boardsPrincipal_ItemEvolucao_cadastro_View' %}" class="btn btn-glass btn-novo"
+                aria-label="Criar Novo Registro">
+                <i class="fas fa-plus"></i> NOVO
+            </a>
+        </div>
+    </div>
+
+    <!-- Container principal com as colunas do Kanban -->
+    <div class="kanban-container">
+        <!-- Coluna "Pendente" -->
+        <div class="column">
+            <div class="column-header">
+                <h2 class="column-title">Pendente</h2>
+                <span class="task-count">{{ pendente_count }} tarefas</span>
+            </div>
+            <div class="tasks">
+                {% for item in pendente %}
+                <div class="task" draggable="true" data-item-id="{{ item.id }}">
+                    <div class="task-header">
+                        <h3 class="task-title">{{ item.id }} {{ item.titulo }}</h3>
+                        {% if item.prioridade %}
+
+
+                        <div class="task-priority 
+                            {% if item.prioridade|lower == 'critica' %}critica
+                            {% elif item.prioridade|lower == 'alta' %}alta
+                            {% elif item.prioridade|lower == 'media' %}media
+                            {% elif item.prioridade|lower == 'baixa' %}baixa
+                            {% endif %}">
+                            {{ item.prioridade }}
+                        </div>
+                        <a href="{% url 'boards:boardsPrincipal_ItemEvolucao_UpdateDelete_View' item.pk %}"
+                            class="btn btn-warning btn-sm" title="Editar item">
+                            <i class="fas fa-edit"></i></a>
+                        {% endif %}
+                        
+                    </div>
+                    <hr />
+                    <div class="task-type">{{ item.get_tipo_display }}</div>
+                    {% if item.sistema %}
+                    <span class="task-system">{{ item.sistema.nome }}</span>
+                    {% endif %}
+                    <p class="task-description">{{ item.descricao|truncatewords:20 }}</p>
+                    <div class="task-footer">
+                        <div class="task-assignee">
+                            {% if item.responsavel %}
+                            {{ item.responsavel.get_full_name|default:item.responsavel.username }}
+                            {% else %}
+                            Não atribuído
+                            {% endif %}
+                        </div>
+
+                        <div class="task-date">
+                            {% if item.data_conclusao %}
+                            {{ item.data_conclusao|date:"d M" }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="empty-state">Nenhum item pendente</div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Coluna "Em Andamento" -->
+        <div class="column">
+            <div class="column-header">
+                <h2 class="column-title">Em Andamento</h2>
+                <span class="task-count">{{ andamento_count }} tarefas</span>
+            </div>
+            <div class="tasks">
+                {% for item in andamento %}
+                <div class="task" draggable="true" data-item-id="{{ item.id }}">
+                    <div class="task-header">
+                        <h3 class="task-title">{{ item.id }} {{ item.titulo }}</h3>
+                        {% if item.prioridade %}
+                        <div class="task-priority 
+                            {% if item.prioridade|lower == 'critica' %}critica
+                            {% elif item.prioridade|lower == 'alta' %}alta
+                            {% elif item.prioridade|lower == 'media' %}media
+                            {% elif item.prioridade|lower == 'baixa' %}baixa
+                            {% endif %}">
+                            {{ item.prioridade }}
+                        </div>
+                        <a href="{% url 'boards:boardsPrincipal_ItemEvolucao_UpdateDelete_View' item.pk %}"
+                            class="btn btn-warning btn-sm" title="Editar item">
+                            <i class="fas fa-edit"></i></a>
+                        {% endif %}
+                    </div>
+                    <hr />
+                    <div class="task-type">{{ item.get_tipo_display }}</div>
+                    {% if item.sistema %}
+                    <span class="task-system">{{ item.sistema.nome }}</span>
+                    {% endif %}
+                    <p class="task-description">{{ item.descricao|truncatewords:20 }}</p>
+                    <div class="task-footer">
+                        <div class="task-assignee">
+                            {% if item.responsavel %}
+                            {{ item.responsavel.get_full_name|default:item.responsavel.username }}
+                            {% else %}
+                            Não atribuído
+                            {% endif %}
+                        </div>
+                        <div class="task-date">
+                            {% if item.data_conclusao %}
+                            {{ item.data_conclusao|date:"d M" }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="empty-state">Nenhum item em andamento</div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Coluna "Revisão" -->
+        <div class="column">
+            <div class="column-header">
+                <h2 class="column-title">Revisão</h2>
+                <span class="task-count">{{ revisao_count }} tarefas</span>
+            </div>
+            <div class="tasks">
+                {% for item in revisao %}
+                <div class="task" draggable="true" data-item-id="{{ item.id }}">
+                    <div class="task-header">
+                        <h3 class="task-title">{{ item.id }} {{ item.titulo }}</h3>
+                        {% if item.prioridade %}
+                        <div class="task-priority 
+                            {% if item.prioridade|lower == 'critica' %}critica
+                            {% elif item.prioridade|lower == 'alta' %}alta
+                            {% elif item.prioridade|lower == 'media' %}media
+                            {% elif item.prioridade|lower == 'baixa' %}baixa
+                            {% endif %}">
+                            {{ item.prioridade }}
+                        </div>
+                        <a href="{% url 'boards:boardsPrincipal_ItemEvolucao_UpdateDelete_View' item.pk %}"
+                            class="btn btn-warning btn-sm" title="Editar item">
+                            <i class="fas fa-edit"></i></a>
+                        {% endif %}
+                    </div>
+                    <hr />
+                    <div class="task-type">{{ item.get_tipo_display }}</div>
+                    {% if item.sistema %}
+                    <span class="task-system">{{ item.sistema.nome }}</span>
+                    {% endif %}
+                    <p class="task-description">{{ item.descricao|truncatewords:20 }}</p>
+                    <div class="task-footer">
+                        <div class="task-assignee">
+                            {% if item.responsavel %}
+                            {{ item.responsavel.get_full_name|default:item.responsavel.username }}
+                            {% else %}
+                            Não atribuído
+                            {% endif %}
+                        </div>
+                        <div class="task-date">
+                            {% if item.data_conclusao %}
+                            {{ item.data_conclusao|date:"d M" }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="empty-state">Nenhum item em revisão</div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Coluna "Concluído" -->
+        <div class="column completed">
+            <div class="column-header">
+                <h2 class="column-title">Concluído</h2>
+                <span class="task-count">{{ concluido_count }} tarefas</span>
+            </div>
+            <div class="tasks">
+                {% for item in concluido %}
+                <div class="task" draggable="true" data-item-id="{{ item.id }}">
+                    <div class="task-header">
+                        <h3 class="task-title">{{ item.id }} {{ item.titulo }}</h3>
+                        {% if item.prioridade %}
+                        <div class="task-priority 
+                            {% if item.prioridade|lower == 'critica' %}critica
+                            {% elif item.prioridade|lower == 'alta' %}alta
+                            {% elif item.prioridade|lower == 'media' %}media
+                            {% elif item.prioridade|lower == 'baixa' %}baixa
+                            {% endif %}">
+                            {{ item.prioridade }}
+                        </div>
+                        <a href="{% url 'boards:boardsPrincipal_ItemEvolucao_UpdateDelete_View' item.pk %}"
+                            class="btn btn-warning btn-sm" title="Editar item">
+                            <i class="fas fa-edit"></i></a>
+                        {% endif %}
+                        
+                    </div>
+                    <hr />
+                    <div class="task-type">{{ item.get_tipo_display }}</div>
+                    {% if item.sistema %}
+                    <span class="task-system">{{ item.sistema.nome }}</span>
+                    {% endif %}
+                    <p class="task-description">{{ item.descricao|truncatewords:20 }}</p>
+                    <div class="task-footer">
+                        <div class="task-assignee">
+                            {% if item.responsavel %}
+                            {{ item.responsavel.get_full_name|default:item.responsavel.username }}
+                            {% else %}
+                            Não atribuído
+                            {% endif %}
+                        </div>
+                        <div class="task-date">
+                            {% if item.data_conclusao %}
+                            {{ item.data_conclusao|date:"d M" }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="empty-state">Nenhum item concluído</div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Script para funcionalidade de arrastar e soltar (drag and drop)
+    document.addEventListener('DOMContentLoaded', function () {
+        const tasks = document.querySelectorAll('.task');
+        const columns = document.querySelectorAll('.tasks');
+
+        tasks.forEach(task => {
+            task.addEventListener('dragstart', () => {
+                task.classList.add('dragging');
+            });
+
+            task.addEventListener('dragend', () => {
+                task.classList.remove('dragging');
+                // Aqui você pode adicionar uma chamada AJAX para atualizar o status do item no backend
+                // Exemplo: atualizarStatusItem(task.dataset.itemId, novaColuna);
+            });
+        });
+
+        columns.forEach(column => {
+            column.addEventListener('dragover', e => {
+                e.preventDefault();
+                const afterElement = getDragAfterElement(column, e.clientY);
+                const draggable = document.querySelector('.dragging');
+                if (afterElement == null) {
+                    column.appendChild(draggable);
+                } else {
+                    column.insertBefore(draggable, afterElement);
+                }
+            });
+
+            // Opcional: adicionar evento para quando soltar o item
+            column.addEventListener('drop', (e) => {
+                e.preventDefault();
+                // Aqui você pode determinar a nova coluna e atualizar o status
+                const taskId = e.dataTransfer.getData('text/plain');
+                const newStatus = getStatusFromColumn(column);
+                // Chamar função para atualizar no backend
+                updateTaskStatus(taskId, newStatus);
+            });
+        });
+
+        function getDragAfterElement(container, y) {
+            const draggableElements = [...container.querySelectorAll('.task:not(.dragging)')];
+
+            return draggableElements.reduce((closest, child) => {
+                const box = child.getBoundingClientRect();
+                const offset = y - box.top - box.height / 2;
+                if (offset < 0 && offset > closest.offset) {
+                    return { offset: offset, element: child };
+                } else {
+                    return closest;
+                }
+            }, { offset: Number.NEGATIVE_INFINITY }).element;
+        }
+
+        // Função para determinar o status com base na coluna
+        function getStatusFromColumn(column) {
+            const columnTitle = column.closest('.column').querySelector('.column-title').textContent;
+            switch (columnTitle) {
+                case 'Pendente': return 'pendente';
+                case 'Em Andamento': return 'andamento';
+                case 'Revisão': return 'revisao';
+                case 'Concluído': return 'concluido';
+                default: return 'pendente';
+            }
+        }
+
+        // Função para atualizar o status da tarefa no backend
+        function updateTaskStatus(taskId, newStatus) {
+            // Fazer uma requisição AJAX para atualizar o status
+            fetch(`/api/items/${taskId}/update_status/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify({ status: newStatus })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Status atualizado:', data);
+                })
+                .catch(error => console.error('Erro:', error));
+        }
+
+        // Função para obter o token CSRF
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    });
+</script>
+{% endblock titudos %}

@@ -1,0 +1,44 @@
+{% extends 'boards/base.html' %}
+{% load static %}
+
+{% block conteudox %}
+<!-- Sidebar - Menu Lateral -->
+<div class="sidebar">  
+  <ul class="links">
+    <!-- TECNOLOGIA E COMPUTAÇÃO -->    
+    <li><span><i class="fas fa-chalkboard-teacher"></i></span><a
+        href="{% url 'boards:boards_principal_inicio_Views' %}">Principal</a></li>
+    <h4>QUADRO</h4>
+    <li><span><i class="fas fa-laptop-code"></i></span><a
+        href="{% url 'boards:boardsPrincial_kanban_view' %}">Kamban</a></li>
+    <h4>ITEM EVOLUÇÃO</h4>
+    <li><span><i class="fas fa-edit"></i></span><a
+        href="{% url 'boards:boardsPrincipal_ItemEvolucao_cadastro_View' %}">Item Evolução</a></li>    
+    <li><span><i class="fas fa-list-alt"></i></span><a
+        href="{% url 'boards:boardsPrincipal_ItemEvolucao_TabListView' %}">Item Evolução Visualizar</a></li>
+
+    <h4>RELEASE</h4>
+    <li><span><i class="fas fa-edit"></i></span><a
+        href="{% url 'boards:boardsPrincipal_Release_cadastro_View' %}">Release</a></li>
+    <li><span><i class="fas fa-list-alt"></i></span><a
+        href="{% url 'boards:boardsPrincipal_Release_TabListView' %}">Visualizar Release</a></li>
+    <h4>CHECKLIST SISTEMA</h4>
+    <li><span><i class="fas fa-edit"></i></span><a
+        href="{% url 'boards:boardsPrincipal_ChecklistSistema_cadastro_View' %}">Checklist Sistema</a></li>
+    <li><span><i class="fas fa-list-alt"></i></span><a
+        href="{% url 'boards:boardsPrincipal_ChecklistSistema_TabListView' %}">Visualizar Checklist Sistema</a></li>
+    
+        <h4>CHECKLIST ITEM</h4>
+    <li><span><i class="fas fa-edit"></i></span><a
+        href="{% url 'boards:boardsPrincipal_ChecklistItem_TabListView' %}">Checklist Item</a></li>
+    <li><span><i class="fas fa-list-alt"></i></span><a
+        href="{% url 'boards:boardsPrincipal_ChecklistItem_TabListView' %}">Visualizar Checklist Item</a></li>
+
+  </ul>
+</div>
+
+
+
+{% block titudos %}
+{% endblock titudos %}
+{% endblock conteudox %}

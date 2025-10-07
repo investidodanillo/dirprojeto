@@ -1,0 +1,71 @@
+<!--aplicativo\templates\assunto01\capitulo01\titulos\base.html-->
+{% extends 'inicio_desing\base.html' %}
+{% load static %}
+
+{% block conteudox %}
+    <!-- Sidebar - Menu Lateral -->
+    <div class="sidebar">        
+        <ul class="links">
+            <h4>Modelo</h4>
+            <li class="active"><span><i class="fas fa-tachometer-alt"></i></span><a href="{% url 'desing:desing_capitulo01_View_inicio' %}">Modelo</a></li>
+            <h4>Base</h4>
+            <li><span><i class="fas fa-book"></i></span><a href="{% url 'desing:desing_Typography_View' %}">Typography</a></li>
+            <h4>Componentes</h4>
+            <li><span><i class="fas fa-book"></i></span><a href="{% url 'desing:desing_Forms_View' %}">Forms</a></li>
+            <li><span><i class="fas fa-book"></i></span><a href="{% url 'desing:desing_Buttons_View' %}">Buttons</a></li>
+            <li><span><i class="fas fa-book"></i></span><a href="{% url 'desing:desing_Cards_View' %}">Cards</a></li>
+            <li><span><i class="fas fa-book"></i></span><a href="{% url 'desing:desing_Tables_View' %}">Tables</a></li>
+            <li><span><i class="fas fa-book"></i></span><a href="{% url 'desing:desing_Badges_View' %}">Badges</a></li>
+            <h4>Layouts</h4>
+            <li><span><i class="fas fa-file-invoice-dollar"></i></span><a href="#">Lan&ccedil;amentos</a></li>
+            <li><span><i class="fas fa-balance-scale"></i></span><a href="#">Balan&ccedil;o</a></li>
+            <h4>Fiscal</h4>
+            <li><span><i class="fas fa-file-invoice"></i></span><a href="#">Notas Fiscais</a></li><li>
+                <span><i class="fas fa-receipt"></i></span>
+                <a href="#">Impostos</a>
+            </li>
+            <li>
+                <span><i class="fas fa-database"></i></span>
+                <a href="#">SPED</a>
+            </li>
+            
+            <h4>Pessoal</h4>
+            <li>
+                <span><i class="fas fa-user-tie"></i></span>
+                <a href="#">Funcion&aacute;rios</a>
+            </li>
+            <li>
+                <span><i class="fas fa-file-invoice-dollar"></i></span>
+                <a href="#">Folha Pagamento</a>
+            </li>
+            <li>
+                <span><i class="fas fa-file-alt"></i></span>
+                <a href="#">eSocial</a>
+            </li>
+            
+            <h4>Relat&oacute;rios</h4>
+            <li>
+                <span><i class="fas fa-chart-line"></i></span>
+                <a href="#">Financeiro</a>
+            </li>
+            <li>
+                <span><i class="fas fa-chart-pie"></i></span>
+                <a href="#">Anal&iacute;ticos</a>
+            </li>
+            <li>
+                <span><i class="fas fa-chart-bar"></i></span>
+                <a href="#">Desempenho</a>
+            </li>
+            
+            <li class="logout-link">
+                <span><i class="fas fa-sign-out-alt"></i></span>
+                <a href="#">Sair do Sistema</a>
+            </li>
+        </ul>
+    </div>
+
+
+
+{% block titudos %}
+{% endblock titudos %}
+{% endblock conteudox %}

@@ -1,0 +1,664 @@
+<!--aplicativo\templates\assunto01\capitulo01\titulos\inicio.html-->
+{% extends 'inicio_desing\capitulo01\titulos\base.html' %}
+
+{% load static %} <!-- Carregar arquivos estáticos -->
+
+{% block titudos %}
+
+<!-- conteúdo da página -->
+<main class="main-content">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demonstração de Badges - ERP Contábil</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* ========== VARIÁVEIS CSS ========== */
+        :root {
+            /* Cores de destaque */
+            --primary-color: #3b82f6;
+            --secondary-color: #64748b;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --info-color: #06b6d4;
+            
+            /* Cores de texto */
+            --text-primary: #ffffff;
+            --text-secondary: #e2e8f0;
+            --text-muted: #94a3b8;
+            
+            /* Cores de fundo */
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            
+            /* Tipografia */
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            
+            /* Espaçamento */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            
+            /* Bordas */
+            --border-radius-sm: 0.375rem;
+            --border-radius-md: 0.5rem;
+            --border-radius-lg: 0.75rem;
+            --border-radius-xl: 1rem;
+        }
+
+        /* ========== RESET E BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Open Sans", sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            padding: var(--spacing-xl);
+        }
+
+        /* ========== LAYOUT ========== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .page-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .page-subtitle {
+            color: var(--text-secondary);
+            font-size: var(--font-size-lg);
+            font-weight: 300;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .section-title i {
+            color: var(--info-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-lg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-title {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+        }
+
+        .badge-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .badge-group.vertical {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .code {
+            font-family: 'Courier New', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius-sm);
+            font-size: var(--font-size-sm);
+            overflow-x: auto;
+            margin-top: var(--spacing-md);
+            color: var(--text-secondary);
+        }
+
+        .divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: var(--spacing-2xl);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            font-size: var(--font-size-sm);
+        }
+
+        /* ========== COMPONENTES: BADGES ========== */
+        /* Estilo base para todos os badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            border-radius: var(--border-radius-sm);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Badge primário - para informações principais */
+        .badge-primary {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: var(--primary-color);
+        }
+
+        /* Badge secundário - para informações menos importantes */
+        .badge-secondary {
+            background: rgba(100, 116, 139, 0.2);
+            border: 1px solid rgba(100, 116, 139, 0.3);
+            color: var(--secondary-color);
+        }
+
+        /* Badge de sucesso - para estados positivos */
+        .badge-success {
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--success-color);
+        }
+
+        /* Badge de alerta - para estados que requerem atenção */
+        .badge-warning {
+            background: rgba(245, 158, 11, 0.2);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            color: var(--warning-color);
+        }
+
+        /* Badge de erro - para estados críticos ou problemas */
+        .badge-error {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: var(--error-color);
+        }
+
+        /* Badge com bordas arredondadas (pill) */
+        .badge-pill {
+            border-radius: 50px;
+        }
+
+        /* ========== COMPONENTES ADICIONAIS ========== */
+        /* Tabelas para exemplos */
+        .table-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th {
+            background: rgba(255, 255, 255, 0.05);
+            padding: var(--spacing-md);
+            text-align: left;
+            font-weight: 600;
+            font-size: var(--font-size-sm);
+            color: var(--text-primary);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .table td {
+            padding: var(--spacing-md);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+
+        .table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* ========== RESPONSIVIDADE ========== */
+        @media (max-width: 768px) {
+            body {
+                padding: var(--spacing-md);
+            }
+            
+            .section {
+                padding: var(--spacing-lg);
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .badge-group {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="page-title">Demonstração de Badges</h1>
+            <p class="page-subtitle">Visualize todos os tipos de badges disponíveis no sistema ERP Contábil</p>
+        </header>
+
+        <!-- Seção de Badges por Tipo -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-tags"></i> Badges por Tipo</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title">Badge Primário</h3>
+                    <p class="text-muted">Para informações principais e destaque</p>
+                    <div class="badge-group">
+                        <span class="badge badge-primary">Primário</span>
+                        <span class="badge badge-primary">Informação</span>
+                        <span class="badge badge-primary">Destaque</span>
+                    </div>
+                    <div class="code">
+&lt;span class="badge badge-primary"&gt;Primário&lt;/span&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Badge Secundário</h3>
+                    <p class="text-muted">Para informações menos importantes</p>
+                    <div class="badge-group">
+                        <span class="badge badge-secondary">Secundário</span>
+                        <span class="badge badge-secondary">Padrão</span>
+                        <span class="badge badge-secondary">Básico</span>
+                    </div>
+                    <div class="code">
+&lt;span class="badge badge-secondary"&gt;Secundário&lt;/span&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Badge Success</h3>
+                    <p class="text-muted">Para estados positivos e bem-sucedidos</p>
+                    <div class="badge-group">
+                        <span class="badge badge-success">Sucesso</span>
+                        <span class="badge badge-success">Ativo</span>
+                        <span class="badge badge-success">Concluído</span>
+                    </div>
+                    <div class="code">
+&lt;span class="badge badge-success"&gt;Sucesso&lt;/span&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Badge Warning</h3>
+                    <p class="text-muted">Para estados que requerem atenção</p>
+                    <div class="badge-group">
+                        <span class="badge badge-warning">Alerta</span>
+                        <span class="badge badge-warning">Pendente</span>
+                        <span class="badge badge-warning">Atenção</span>
+                    </div>
+                    <div class="code">
+&lt;span class="badge badge-warning"&gt;Alerta&lt;/span&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Badge Error</h3>
+                    <p class="text-muted">Para estados críticos ou problemas</p>
+                    <div class="badge-group">
+                        <span class="badge badge-error">Erro</span>
+                        <span class="badge badge-error">Crítico</span>
+                        <span class="badge badge-error">Falha</span>
+                    </div>
+                    <div class="code">
+&lt;span class="badge badge-error"&gt;Erro&lt;/span&gt;
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Badges Pill -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-capsules"></i> Badges Pill</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title">Badges com Bordas Arredondadas</h3>
+                    <p class="text-muted">Badges com estilo "pill" - bordas completamente arredondadas</p>
+                    <div class="badge-group">
+                        <span class="badge badge-primary badge-pill">Primário</span>
+                        <span class="badge badge-secondary badge-pill">Secundário</span>
+                        <span class="badge badge-success badge-pill">Sucesso</span>
+                        <span class="badge badge-warning badge-pill">Alerta</span>
+                        <span class="badge badge-error badge-pill">Erro</span>
+                    </div>
+                    <div class="code">
+&lt;span class="badge badge-primary badge-pill"&gt;Primário&lt;/span&gt;
+&lt;span class="badge badge-secondary badge-pill"&gt;Secundário&lt;/span&gt;
+&lt;span class="badge badge-success badge-pill"&gt;Sucesso&lt;/span&gt;
+&lt;span class="badge badge-warning badge-pill"&gt;Alerta&lt;/span&gt;
+&lt;span class="badge badge-error badge-pill"&gt;Erro&lt;/span&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Badges Pill com Números</h3>
+                    <p class="text-muted">Ideal para contadores e indicadores numéricos</p>
+                    <div class="badge-group">
+                        <span class="badge badge-primary badge-pill">12</span>
+                        <span class="badge badge-secondary badge-pill">45</span>
+                        <span class="badge badge-success badge-pill">7</span>
+                        <span class="badge badge-warning badge-pill">3</span>
+                        <span class="badge badge-error badge-pill">9</span>
+                    </div>
+                    <div class="code">
+&lt;span class="badge badge-primary badge-pill"&gt;12&lt;/span&gt;
+&lt;span class="badge badge-secondary badge-pill"&gt;45&lt;/span&gt;
+&lt;span class="badge badge-success badge-pill"&gt;7&lt;/span&gt;
+&lt;span class="badge badge-warning badge-pill"&gt;3&lt;/span&gt;
+&lt;span class="badge badge-error badge-pill"&gt;9&lt;/span&gt;
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Exemplos Práticos -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-laptop-code"></i> Exemplos Práticos</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title">Tabela de Pedidos</h3>
+                    <p class="text-muted">Badges em contexto de tabela para status</p>
+                    
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Pedido</th>
+                                    <th>Cliente</th>
+                                    <th>Valor</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#001</td>
+                                    <td>João Silva</td>
+                                    <td>R$ 1.250,00</td>
+                                    <td><span class="badge badge-success">Pago</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#002</td>
+                                    <td>Maria Santos</td>
+                                    <td>R$ 2.580,00</td>
+                                    <td><span class="badge badge-warning">Pendente</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#003</td>
+                                    <td>Pedro Oliveira</td>
+                                    <td>R$ 3.750,00</td>
+                                    <td><span class="badge badge-success">Pago</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#004</td>
+                                    <td>Ana Costa</td>
+                                    <td>R$ 890,00</td>
+                                    <td><span class="badge badge-error">Cancelado</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="code">
+&lt;table class="table"&gt;
+  &lt;tr&gt;
+    &lt;td&gt;#001&lt;/td&gt;
+    &lt;td&gt;João Silva&lt;/td&gt;
+    &lt;td&gt;R$ 1.250,00&lt;/td&gt;
+    &lt;td&gt;&lt;span class="badge badge-success"&gt;Pago&lt;/span&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;!-- Mais linhas --&gt;
+&lt;/table&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Lista de Usuários</h3>
+                    <p class="text-muted">Badges em listas para indicar status e categorias</p>
+                    
+                    <div class="badge-group vertical">
+                        <div>
+                            <span class="badge badge-primary badge-pill">5</span>
+                            <span>Administradores do sistema</span>
+                        </div>
+                        <div>
+                            <span class="badge badge-success badge-pill">12</span>
+                            <span>Usuários ativos</span>
+                        </div>
+                        <div>
+                            <span class="badge badge-warning badge-pill">3</span>
+                            <span>Usuários pendentes</span>
+                        </div>
+                        <div>
+                            <span class="badge badge-secondary badge-pill">8</span>
+                            <span>Usuários inativos</span>
+                        </div>
+                    </div>
+                    
+                    <div class="divider"></div>
+                    
+                    <h4 class="card-title" style="margin-top: var(--spacing-lg);">Status do Sistema</h4>
+                    <div class="badge-group">
+                        <span class="badge badge-success">
+                            <i class="fas fa-check-circle"></i>
+                            Online
+                        </span>
+                        <span class="badge badge-primary">
+                            <i class="fas fa-database"></i>
+                            Banco: Ativo
+                        </span>
+                        <span class="badge badge-warning">
+                            <i class="fas fa-sync-alt"></i>
+                            Backup: Em andamento
+                        </span>
+                    </div>
+                    
+                    <div class="code">
+&lt;div class="badge-group vertical"&gt;
+  &lt;div&gt;
+    &lt;span class="badge badge-primary badge-pill"&gt;5&lt;/span&gt;
+    &lt;span&gt;Administradores do sistema&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;!-- Mais itens --&gt;
+&lt;/div&gt;
+
+&lt;div class="badge-group"&gt;
+  &lt;span class="badge badge-success"&gt;
+    &lt;i class="fas fa-check-circle"&gt;&lt;/i&gt;
+    Online
+  &lt;/span&gt;
+  &lt;!-- Mais badges --&gt;
+&lt;/div&gt;
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Cards com Badges -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-id-card"></i> Badges em Cards</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <div class="badge-group" style="margin-bottom: var(--spacing-md);">
+                        <span class="badge badge-primary">Financeiro</span>
+                        <span class="badge badge-success badge-pill">Novo</span>
+                    </div>
+                    <h3 class="card-title">Relatório Mensal</h3>
+                    <p class="text-muted">Análise completa do desempenho financeiro do último mês com comparações e projeções.</p>
+                    <div class="divider"></div>
+                    <div class="badge-group">
+                        <span class="badge badge-secondary">
+                            <i class="fas fa-calendar"></i>
+                            Dez 2024
+                        </span>
+                        <span class="badge badge-success">
+                            <i class="fas fa-chart-line"></i>
+                            +12.5%
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="badge-group" style="margin-bottom: var(--spacing-md);">
+                        <span class="badge badge-warning">Manutenção</span>
+                        <span class="badge badge-error badge-pill">Urgente</span>
+                    </div>
+                    <h3 class="card-title">Servidor Principal</h3>
+                    <p class="text-muted">Servidor necessita de atualização crítica de segurança. Agende a manutenção o mais breve possível.</p>
+                    <div class="divider"></div>
+                    <div class="badge-group">
+                        <span class="badge badge-error">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            Alta Prioridade
+                        </span>
+                        <span class="badge badge-secondary">
+                            <i class="fas fa-clock"></i>
+                            48h restantes
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="badge-group" style="margin-bottom: var(--spacing-md);">
+                        <span class="badge badge-success">Recursos Humanos</span>
+                        <span class="badge badge-primary badge-pill">3</span>
+                    </div>
+                    <h3 class="card-title">Novos Funcionários</h3>
+                    <p class="text-muted">Três novos colaboradores foram integrados este mês. Documentação pendente de finalização.</p>
+                    <div class="divider"></div>
+                    <div class="badge-group">
+                        <span class="badge badge-warning">
+                            <i class="fas fa-file-alt"></i>
+                            Docs Pendentes
+                        </span>
+                        <span class="badge badge-success">
+                            <i class="fas fa-user-check"></i>
+                            Ativos
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="code" style="margin-top: var(--spacing-lg);">
+&lt;div class="card"&gt;
+  &lt;div class="badge-group"&gt;
+    &lt;span class="badge badge-primary"&gt;Financeiro&lt;/span&gt;
+    &lt;span class="badge badge-success badge-pill"&gt;Novo&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;h3 class="card-title"&gt;Relatório Mensal&lt;/h3&gt;
+  &lt;p class="text-muted"&gt;Análise completa...&lt;/p&gt;
+  &lt;div class="divider"&gt;&lt;/div&gt;
+  &lt;div class="badge-group"&gt;
+    &lt;span class="badge badge-secondary"&gt;
+      &lt;i class="fas fa-calendar"&gt;&lt;/i&gt;
+      Dez 2024
+    &lt;/span&gt;
+    &lt;span class="badge badge-success"&gt;
+      &lt;i class="fas fa-chart-line"&gt;&lt;/i&gt;
+      +12.5%
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>ERP Contábil - Sistema de Demonstração de Badges</p>
+            <p class="text-muted">Use esta página como referência para implementar badges em todo o sistema</p>
+        </footer>
+    </div>
+
+    <script>
+        // Adicionando interatividade básica para melhorar a experiência
+        document.addEventListener('DOMContentLoaded', function() {
+            // Adiciona tooltip para os códigos
+            const codeElements = document.querySelectorAll('.code');
+            codeElements.forEach(code => {
+                code.addEventListener('click', function() {
+                    const textArea = document.createElement('textarea');
+                    textArea.value = this.textContent;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    
+                    // Feedback visual
+                    const originalText = this.textContent;
+                    this.textContent = 'Código copiado!';
+                    this.style.background = 'rgba(16, 185, 129, 0.2)';
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.background = 'rgba(0, 0, 0, 0.3)';
+                    }, 1500);
+                });
+                
+                code.title = 'Clique para copiar o código';
+            });
+        });
+    </script>
+</body>
+</html>
+</main>
+
+{% endblock titudos %}

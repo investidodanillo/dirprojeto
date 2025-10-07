@@ -10,9 +10,20 @@ urlpatterns = [
     path('', include('principal.urls.HomeUrls')), 
     # Auth
     path('', include('principal.urls.auth')),
-
+    #controles
+    path('', include('controles.urls.Controles_IndexUrls')),
+    
     #index aplicativo
     path('', include('aplicativo.urls.Aplicativo_IndexUrls')),
+    path('', include('controles.urls.UsuariosUrls')),
+
+    #desing
+    path('', include('desing.urls.Desing_IndexUrls')),
+    path('', include('desing.urls.DesingUrls')),
+
+    #desenvolvimento
+    path('', include('desenvolvimento.urls.Desenvolvimento_IndexUrls')),
+    path('', include('desenvolvimento.urls.BoardsUrls')),
      
 
     path('', include('aplicativo.urls.Assunto01Urls')),

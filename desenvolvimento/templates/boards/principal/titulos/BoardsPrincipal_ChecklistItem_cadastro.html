@@ -1,0 +1,95 @@
+<!--aplicativo\templates\assunto02\capitulo01\titulos\assunto02_cadastro.html-->
+{% extends 'boards/principal/titulos/base.html' %}
+{% load static %}
+
+{% block titudos %}
+<main class="main-content">
+ <h1>Boards: ChecklistItem</h1>
+        <div>
+            <h3 data-end="191" data-start="172">
+                ChecklistItem</h3>
+            <p data-end="330" data-start="192">
+                Representa um <strong data-end="259" data-start="206">item individual pertencente a um
+                    ChecklistSistema</strong>, ou seja, uma etapa espec&iacute;fica que deve ser verificada ou
+                executada.</p>
+            <ul data-end="514" data-start="332">
+                <li data-end="403" data-start="332">
+                    <p data-end="403" data-start="334">
+                        <strong data-end="346" data-start="334">Objetivo</strong>: detalhar cada a&ccedil;&atilde;o
+                        necess&aacute;ria para validar a entrega.
+                    </p>
+                </li>
+                <li data-end="514" data-start="404">
+                    <p data-end="428" data-start="406">
+                        <strong data-end="425" data-start="406">Exemplos de uso</strong>:
+                    </p>
+                    <ul data-end="514" data-start="431">
+                        <li data-end="454" data-start="431">
+                            <p data-end="454" data-start="433">
+                                <em data-end="452" data-start="433">&quot;Rodar migra&ccedil;&otilde;es&quot;</em>
+                            </p>
+                        </li>
+                        <li data-end="478" data-start="457">
+                            <p data-end="478" data-start="459">
+                                <em data-end="476" data-start="459">&quot;Validar login&quot;</em>
+                            </p>
+                        </li>
+                        <li data-end="514" data-start="481">
+                            <p data-end="514" data-start="483">
+                                <em data-end="512" data-start="483">&quot;Executar testes unit&aacute;rios&quot;</em>
+                            </p>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+    <div class="card-xl">
+        <div class="">
+            <form method="post">
+
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <!-- Botões -->
+                <!-- Botões -->
+                <div class="assunto03-form">
+                    <div class="button-group destaque-botoes">
+                        <button type="submit" name="action" value="salvar" class="btn btn-glass btn-salvar"
+                            aria-label="Salvar Formulário">
+                            <i class="fas fa-save"></i> SALVAR
+                        </button>
+
+                        <button type="submit" name="action" value="novo" class="btn btn-glass btn-novo"
+                            aria-label="Criar Novo Registro">
+                            <i class="fas fa-plus"></i> NOVO
+                        </button>
+
+                        <button type="button" id="btn-limpar" class="btn btn-glass btn-limpar"
+                            aria-label="Limpar Formulário">
+                            <i class="fas fa-undo"></i> LIMPAR
+                        </button>
+                    </div>
+                </div>
+                <!-- Botões -->
+                <!-- Botões -->
+
+            </form>
+
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block js %}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector('form');
+            const btnLimpar = document.getElementById('btn-limpar');
+
+            if (btnLimpar) {
+                btnLimpar.addEventListener('click', function () {
+                    form.reset();
+                });
+            }
+        });
+    </script>
+    {% endblock %}

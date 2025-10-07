@@ -1,0 +1,172 @@
+<!--desenvolvimento\templates\boards\principal\titulos\inicio.html-->
+{% extends 'boards/principal/titulos/base.html' %}
+{% load static %}
+
+{% block titudos %}
+<main class="main-content">
+    <!-- Títulos principais -->
+    <h1>Boards Principal - Início</h1>
+    
+    <p class="text-lead">
+        Boards principal - Sistema de gestão de desenvolvimento.
+    </p>
+
+    <div class="content-section">
+        <h2>Tutorial Conceitual – Gestão de Desenvolvimento com o App "Desenvolvimento"</h2>
+        
+        <p class="text-lead">
+            O aplicativo <strong>Desenvolvimento</strong> tem como objetivo sistematizar e organizar o processo de evolução dos sistemas criados a partir do <strong>MOLDE</strong>, permitindo o registro, acompanhamento e controle de tudo que envolve o ciclo de desenvolvimento.
+        </p>
+
+        <h3>1. Estrutura da Metodologia</h3>
+        <p>
+            O app é baseado em quatro pilares principais:
+        </p>
+
+        <h4>Sistema</h4>
+        <p>
+            Representa cada sistema/aplicativo que será gerenciado. Exemplo: MOLDE, Contabilidade, RH, Financeiro. É a unidade organizacional central, onde todos os itens de evolução, releases e checklists se conectam.
+        </p>
+
+        <h4>Item de Evolução</h4>
+        <p>
+            Representa uma demanda de desenvolvimento. Pode ser:
+        </p>
+        <ul>
+            <li>Nova Funcionalidade (Feature)</li>
+            <li>Correção de Bug</li>
+            <li>Melhoria</li>
+            <li>Documentação</li>
+            <li>Tarefa Técnica</li>
+        </ul>
+        <p>
+            Está sempre vinculado a um <strong>Sistema</strong> e pode, opcionalmente, estar associado a uma <strong>Categoria</strong>. Possui ciclo de vida com status (Pendente → Em Andamento → Bloqueado → Concluído).
+        </p>
+
+        <h4>Release</h4>
+        <p>
+            Representa uma versão de entrega de um sistema. Agrupa múltiplos Itens de Evolução concluídos em um marco único de entrega e documenta o que foi desenvolvido, corrigido ou melhorado em determinada versão.
+        </p>
+
+        <h4>Checklist</h4>
+        <p>
+            Conjunto de verificações para garantir a qualidade de uma entrega:
+        </p>
+        <ul>
+            <li><strong>ChecklistSistema</strong>: lista de verificação completa (por exemplo, "Checklist de Publicação").</li>
+            <li><strong>ChecklistItem</strong>: etapa individual (por exemplo, "Rodar migrações", "Executar testes unitários").</li>
+        </ul>
+
+        <h3>2. Fluxo de Trabalho</h3>
+        <p class="text-muted">
+            O fluxo recomendado segue etapas simples e organizadas:
+        </p>
+        <ol>
+            <li>
+                <strong>Registrar Sistemas</strong><br>
+                <span class="text-muted">Crie registros para cada sistema que será acompanhado (ex.: MOLDE, Contabilidade, Financeiro).</span>
+            </li>
+            <li>
+                <strong>Criar Itens de Evolução</strong><br>
+                <span class="text-muted">Toda nova demanda deve ser registrada como um Item de Evolução. Informe tipo, categoria (opcional), prioridade, e mantenha o status inicial como <em>Pendente</em>.</span>
+            </li>
+            <li>
+                <strong>Acompanhar Status</strong><br>
+                <span class="text-muted">Atualize o status conforme o item avança: Pendente → Em Andamento → Bloqueado → Concluído.</span>
+            </li>
+            <li>
+                <strong>Agrupar em Releases</strong><br>
+                <span class="text-muted">Quando várias demandas estiverem prontas, organize-as em uma Release (ex.: "v1.1 – relatório de centro de custos e correções").</span>
+            </li>
+            <li>
+                <strong>Validar com Checklists</strong><br>
+                <span class="text-muted">Antes de publicar a Release, execute os Checklists associados e marque cada ChecklistItem concluído.</span>
+            </li>
+        </ol>
+
+        <h3>3. Classificações Auxiliares</h3>
+        <p>
+            Para facilitar a organização, o app traz classificações auxiliares:
+        </p>
+        <ul>
+            <li><strong>Categoria</strong>: agrupa os itens por área (ex.: Backend, Frontend, Banco de Dados).</li>
+            <li><strong>TipoItem</strong>: define o tipo da demanda (FEATURE, BUG, MELHORIA, DOCUMENTACAO, TAREFA).</li>
+            <li><strong>Prioridade</strong>: indica impacto/urgência (Baixa, Média, Alta, Crítica).</li>
+            <li><strong>Status</strong>: mostra em que fase está o item (Pendente, Em Andamento, Bloqueado, Concluído).</li>
+        </ul>
+        <p class="text-muted">
+            Essas classificações permitem filtrar, priorizar e acompanhar o desenvolvimento de forma estruturada.
+        </p>
+
+        <h3>4. Cenários de Uso (Exemplos Práticos)</h3>
+
+        <h4>Cenário 1 — Nova Funcionalidade</h4>
+        <p><strong>Demanda:</strong> Relatório de Lançamentos Contábeis por Centro de Custos</p>
+        <ul>
+            <li>Criar um Item de Evolução do tipo <em>Feature</em>.</li>
+            <li>Categoria: Relatórios / Frontend (se aplicável).</li>
+            <li>Sistema: Contabilidade.</li>
+            <li>Prioridade: Alta.</li>
+            <li>Versão Prevista: v1.1.</li>
+            <li>Acompanhar até Concluído e incluir na Release v1.1.</li>
+            <li>Executar Checklist de Publicação antes do deploy.</li>
+        </ul>
+
+        <h4>Cenário 2 — Correção de Erro</h4>
+        <p><strong>Demanda:</strong> Correção no cálculo de saldo acumulado</p>
+        <ul>
+            <li>Criar um Item de Evolução do tipo <em>Bug</em>.</li>
+            <li>Categoria: Cálculos e Regras de Negócio.</li>
+            <li>Prioridade: Crítica.</li>
+            <li>Versão Prevista: v1.1 (ou Release emergencial v1.0.1 se necessário).</li>
+            <li>Executar Checklist de Testes de Segurança/QA.</li>
+        </ul>
+
+        <h4>Cenário 3 — Melhoria Contínua</h4>
+        <p><strong>Demanda:</strong> Otimização de consulta SQL lenta</p>
+        <ul>
+            <li>Criar um Item de Evolução do tipo <em>Melhoria</em>.</li>
+            <li>Categoria: Backend / Performance.</li>
+            <li>Prioridade: Alta.</li>
+            <li>Planejar para a próxima Release e validar com checklist de performance.</li>
+        </ul>
+
+        <h3>5. Benefícios da Metodologia</h3>
+        <ul>
+            <li><strong>Padronização</strong>: todos os desenvolvimentos seguem o mesmo fluxo.</li>
+            <li><strong>Organização</strong>: demandas agrupadas por sistema, categoria e tipo.</li>
+            <li><strong>Qualidade</strong>: uso de checklists antes de cada release.</li>
+            <li><strong>Visibilidade</strong>: fácil acompanhamento do que está pendente, em andamento ou entregue.</li>
+            <li><strong>Escalabilidade</strong>: aplicável a múltiplos sistemas derivados do MOLDE.</li>
+        </ul>
+
+        <h3>6. Recomendações Práticas</h3>
+        <ul>
+            <li>Comece com um <strong>Kanban simples</strong> (colunas: Pendente, Em Andamento, Bloqueado, Concluído).</li>
+            <li>Use <strong>Releases</strong> para agrupar entregas e gerar changelogs automáticos.</li>
+            <li>Crie <strong>Checklists</strong> padrão para tipos de entrega (publicação, segurança, performance).</li>
+            <li>Mantenha as <strong>enums (TipoItem, Prioridade, Status)</strong> no código para preservar regras de negócio.</li>
+            <li>Registre <strong>quem criou</strong> e <strong>quem executou</strong> cada Item de Evolução para rastreabilidade.</li>
+        </ul>
+
+        <h3>7. Como incluir este tutorial na documentação do MOLDE</h3>
+        <ol>
+            <li>Adicione uma seção "Gestão de Desenvolvimento" no manual do MOLDE contendo este tutorial.</li>
+            <li>Inclua exemplos concretos (cenários) e prints ou links para o Kanban e telas do app quando disponíveis.</li>
+            <li>Mantenha o tutorial atualizado conforme o processo evolui (novas regras, novos checklists).</li>
+        </ol>
+
+        <h3>8. Próximos passos sugeridos</h3>
+        <ul>
+            <li>Implementar o <strong>Kanban</strong> no app (views + templates) para acompanhamento visual.</li>
+            <li>Adicionar filtros por Sistema, Categoria, Responsável e Versão Prevista.</li>
+            <li>Integrar (no futuro) com repositório Git para vincular commits/tags a Itens de Evolução.</li>
+            <li>Gerar relatórios: tempo médio de resolução, número de itens por categoria/versão, itens críticos abertos.</li>
+        </ul>
+
+        <hr>
+
+        
+    </div>
+</main>
+{% endblock titudos %}

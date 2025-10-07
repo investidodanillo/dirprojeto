@@ -1,0 +1,673 @@
+<!--aplicativo\templates\assunto01\capitulo01\titulos\inicio.html-->
+{% extends 'inicio_desing\capitulo01\titulos\base.html' %}
+{% load static %} <!-- Carregar arquivos estáticos -->
+
+{% block titudos %}
+
+<!-- conteúdo da página -->
+<main class="main-content">
+  <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demonstração de Formulários - ERP Contábil</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* ========== VARIÁVEIS CSS ========== */
+        :root {
+            /* Cores principais */
+            --glass-bg-light: rgba(255, 255, 255, 0.15);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-bg-dark: rgba(255, 255, 255, 0.05);
+            --glass-border-light: rgba(255, 255, 255, 0.3);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            
+            /* Cores de texto */
+            --text-primary: #ffffff;
+            --text-secondary: #e2e8f0;
+            --text-muted: #94a3b8;
+            
+            /* Cores de destaque */
+            --primary-color: #3b82f6;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --info-color: #06b6d4;
+            
+            /* Cores de fundo */
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            
+            /* Tipografia */
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            
+            /* Espaçamento */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            
+            /* Bordas */
+            --border-radius-sm: 0.375rem;
+            --border-radius-md: 0.5rem;
+            --border-radius-lg: 0.75rem;
+            --border-radius-xl: 1rem;
+            
+            /* Sombras */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* ========== RESET E BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Open Sans", sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            padding: var(--spacing-xl);
+        }
+
+        /* ========== LAYOUT ========== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .page-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .page-subtitle {
+            color: var(--text-secondary);
+            font-size: var(--font-size-lg);
+            font-weight: 300;
+        }
+
+        .section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+            border: 1px solid var(--glass-border);
+        }
+
+        .section-title {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .section-title i {
+            color: var(--info-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-lg);
+            border: 1px solid var(--glass-border);
+        }
+
+        .card-title {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+        }
+
+        .code {
+            font-family: 'Courier New', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius-sm);
+            font-size: var(--font-size-sm);
+            overflow-x: auto;
+            margin-top: var(--spacing-md);
+            color: var(--text-secondary);
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--glass-border);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: var(--spacing-2xl);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            font-size: var(--font-size-sm);
+        }
+
+        /* ========== COMPONENTES: FORMS ========== */
+        /* Grupo de formulário - contém label e controle */
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        /* Label do formulário */
+        .form-label {
+            display: block;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 500;
+            color: var(--text-primary);
+            font-size: var(--font-size-sm);
+        }
+
+        /* Controle de formulário base (inputs, textareas) */
+        .form-control {
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: var(--glass-bg-dark);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-md);
+            color: var(--text-primary);
+            font-size: var(--font-size-sm);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Estado de foco para controles de formulário */
+        .form-control:focus {
+            outline: none;
+            border-color: var(--glass-border-light);
+            background: var(--glass-bg);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Placeholder para controles de formulário */
+        .form-control::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* Texto de ajuda abaixo dos controles */
+        .form-text {
+            display: block;
+            margin-top: var(--spacing-xs);
+            font-size: var(--font-size-xs);
+            color: var(--text-muted);
+        }
+
+        /* Estilo específico para selects */
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ffffff'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right var(--spacing-md) center;
+            background-size: 16px;
+            padding-right: var(--spacing-2xl);
+        }
+
+        /* Container para checkboxes e radios */
+        .form-check {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Inputs para checkboxes e radios */
+        .form-check-input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary-color);
+        }
+
+        /* Labels para checkboxes e radios */
+        .form-check-label {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+
+        /* ========== BOTÕES PARA COMPLEMENTAR ========== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+            font-weight: 500;
+            font-size: var(--font-size-sm);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-primary {
+            background: var(--glass-bg-light);
+            border-color: var(--glass-border-light);
+            color: var(--text-primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--glass-bg);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        /* ========== RESPONSIVIDADE ========== */
+        @media (max-width: 768px) {
+            body {
+                padding: var(--spacing-md);
+            }
+            
+            .section {
+                padding: var(--spacing-lg);
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="page-title">Demonstração de Formulários</h1>
+            <p class="page-subtitle">Visualize todos os componentes de formulário disponíveis no sistema ERP Contábil</p>
+        </header>
+
+        <!-- Seção de Campos de Texto -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-font"></i> Campos de Texto</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title">Campo de Texto Simples</h3>
+                    <div class="form-group">
+                        <label class="form-label" for="nome">Nome Completo</label>
+                        <input class="form-control" id="nome" type="text" placeholder="Digite seu nome completo">
+                        <div class="form-text">Este campo é obrigatório</div>
+                    </div>
+                    <div class="code">
+&lt;div class="form-group"&gt;
+  &lt;label class="form-label" for="nome"&gt;Nome Completo&lt;/label&gt;
+  &lt;input class="form-control" id="nome" type="text" placeholder="Digite seu nome completo"&gt;
+  &lt;div class="form-text"&gt;Este campo é obrigatório&lt;/div&gt;
+&lt;/div&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Campo de E-mail</h3>
+                    <div class="form-group">
+                        <label class="form-label" for="email">E-mail</label>
+                        <input class="form-control" id="email" type="email" placeholder="seu@email.com">
+                        <div class="form-text">Utilize um e-mail válido</div>
+                    </div>
+                    <div class="code">
+&lt;div class="form-group"&gt;
+  &lt;label class="form-label" for="email"&gt;E-mail&lt;/label&gt;
+  &lt;input class="form-control" id="email" type="email" placeholder="seu@email.com"&gt;
+  &lt;div class="form-text"&gt;Utilize um e-mail válido&lt;/div&gt;
+&lt;/div&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Campo de Senha</h3>
+                    <div class="form-group">
+                        <label class="form-label" for="senha">Senha</label>
+                        <input class="form-control" id="senha" type="password" placeholder="Digite sua senha">
+                        <div class="form-text">Mínimo de 8 caracteres</div>
+                    </div>
+                    <div class="code">
+&lt;div class="form-group"&gt;
+  &lt;label class="form-label" for="senha"&gt;Senha&lt;/label&gt;
+  &lt;input class="form-control" id="senha" type="password" placeholder="Digite sua senha"&gt;
+  &lt;div class="form-text"&gt;Mínimo de 8 caracteres&lt;/div&gt;
+&lt;/div&gt;
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Seleção e Textarea -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-list"></i> Seleção e Área de Texto</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title">Select (Dropdown)</h3>
+                    <div class="form-group">
+                        <label class="form-label" for="empresa">Empresa</label>
+                        <select class="form-control form-select" id="empresa">
+                            <option value="">Selecione uma empresa</option>
+                            <option value="1">Empresa A</option>
+                            <option value="2">Empresa B</option>
+                            <option value="3">Empresa C</option>
+                        </select>
+                        <div class="form-text">Selecione a empresa correspondente</div>
+                    </div>
+                    <div class="code">
+&lt;div class="form-group"&gt;
+  &lt;label class="form-label" for="empresa"&gt;Empresa&lt;/label&gt;
+  &lt;select class="form-control form-select" id="empresa"&gt;
+    &lt;option value=""&gt;Selecione uma empresa&lt;/option&gt;
+    &lt;option value="1"&gt;Empresa A&lt;/option&gt;
+    &lt;option value="2"&gt;Empresa B&lt;/option&gt;
+    &lt;option value="3"&gt;Empresa C&lt;/option&gt;
+  &lt;/select&gt;
+  &lt;div class="form-text"&gt;Selecione a empresa correspondente&lt;/div&gt;
+&lt;/div&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Área de Texto (Textarea)</h3>
+                    <div class="form-group">
+                        <label class="form-label" for="mensagem">Mensagem</label>
+                        <textarea class="form-control" id="mensagem" rows="4" placeholder="Digite sua mensagem"></textarea>
+                        <div class="form-text">Máximo de 500 caracteres</div>
+                    </div>
+                    <div class="code">
+&lt;div class="form-group"&gt;
+  &lt;label class="form-label" for="mensagem"&gt;Mensagem&lt;/label&gt;
+  &lt;textarea class="form-control" id="mensagem" rows="4" placeholder="Digite sua mensagem"&gt;&lt;/textarea&gt;
+  &lt;div class="form-text"&gt;Máximo de 500 caracteres&lt;/div&gt;
+&lt;/div&gt;
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Checkboxes e Radios -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-check-square"></i> Checkboxes e Radios</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title">Checkboxes</h3>
+                    <div class="form-group">
+                        <label class="form-label">Interesses</label>
+                        <div class="form-check">
+                            <input class="form-check-input" id="tecnologia" type="checkbox">
+                            <label class="form-check-label" for="tecnologia">Tecnologia</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" id="financas" type="checkbox">
+                            <label class="form-check-label" for="financas">Finanças</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" id="marketing" type="checkbox">
+                            <label class="form-check-label" for="marketing">Marketing</label>
+                        </div>
+                    </div>
+                    <div class="code">
+&lt;div class="form-group"&gt;
+  &lt;label class="form-label"&gt;Interesses&lt;/label&gt;
+  &lt;div class="form-check"&gt;
+    &lt;input class="form-check-input" id="tecnologia" type="checkbox"&gt;
+    &lt;label class="form-check-label" for="tecnologia"&gt;Tecnologia&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="form-check"&gt;
+    &lt;input class="form-check-input" id="financas" type="checkbox"&gt;
+    &lt;label class="form-check-label" for="financas"&gt;Finanças&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="form-check"&gt;
+    &lt;input class="form-check-input" id="marketing" type="checkbox"&gt;
+    &lt;label class="form-check-label" for="marketing"&gt;Marketing&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Radio Buttons</h3>
+                    <div class="form-group">
+                        <label class="form-label">Tipo de Conta</label>
+                        <div class="form-check">
+                            <input class="form-check-input" id="pessoal" name="tipo-conta" type="radio">
+                            <label class="form-check-label" for="pessoal">Pessoal</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" id="empresarial" name="tipo-conta" type="radio">
+                            <label class="form-check-label" for="empresarial">Empresarial</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" id="governo" name="tipo-conta" type="radio">
+                            <label class="form-check-label" for="governo">Governo</label>
+                        </div>
+                    </div>
+                    <div class="code">
+&lt;div class="form-group"&gt;
+  &lt;label class="form-label"&gt;Tipo de Conta&lt;/label&gt;
+  &lt;div class="form-check"&gt;
+    &lt;input class="form-check-input" id="pessoal" name="tipo-conta" type="radio"&gt;
+    &lt;label class="form-check-label" for="pessoal"&gt;Pessoal&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="form-check"&gt;
+    &lt;input class="form-check-input" id="empresarial" name="tipo-conta" type="radio"&gt;
+    &lt;label class="form-check-label" for="empresarial"&gt;Empresarial&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="form-check"&gt;
+    &lt;input class="form-check-input" id="governo" name="tipo-conta" type="radio"&gt;
+    &lt;label class="form-check-label" for="governo"&gt;Governo&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Exemplos Práticos -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-laptop-code"></i> Exemplos Práticos</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title">Formulário de Cadastro</h3>
+                    <form id="cadastro-form">
+                        <div class="form-group">
+                            <label class="form-label" for="cadastro-nome">Nome Completo</label>
+                            <input class="form-control" id="cadastro-nome" type="text" placeholder="Digite seu nome completo" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="cadastro-email">E-mail</label>
+                            <input class="form-control" id="cadastro-email" type="email" placeholder="seu@email.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="cadastro-empresa">Empresa</label>
+                            <select class="form-control form-select" id="cadastro-empresa" required>
+                                <option value="">Selecione uma empresa</option>
+                                <option value="1">Empresa A</option>
+                                <option value="2">Empresa B</option>
+                                <option value="3">Empresa C</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Departamento</label>
+                            <div class="form-check">
+                                <input class="form-check-input" id="dept-financeiro" name="departamento" type="radio" required>
+                                <label class="form-check-label" for="dept-financeiro">Financeiro</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" id="dept-vendas" name="departamento" type="radio">
+                                <label class="form-check-label" for="dept-vendas">Vendas</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" id="dept-rh" name="departamento" type="radio">
+                                <label class="form-check-label" for="dept-rh">Recursos Humanos</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Permissões de Acesso</label>
+                            <div class="form-check">
+                                <input class="form-check-input" id="perm-leitura" type="checkbox">
+                                <label class="form-check-label" for="perm-leitura">Leitura</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" id="perm-escrita" type="checkbox">
+                                <label class="form-check-label" for="perm-escrita">Escrita</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" id="perm-exclusao" type="checkbox">
+                                <label class="form-check-label" for="perm-exclusao">Exclusão</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="cadastro-observacoes">Observações</label>
+                            <textarea class="form-control" id="cadastro-observacoes" rows="3" placeholder="Observações adicionais"></textarea>
+                            <div class="form-text">Campo opcional</div>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-block" type="submit">
+                            <i class="fas fa-user-plus"></i>
+                            Cadastrar Usuário
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Formulário de Contato</h3>
+                    <form id="contato-form">
+                        <div class="form-group">
+                            <label class="form-label" for="contato-assunto">Assunto</label>
+                            <input class="form-control" id="contato-assunto" type="text" placeholder="Assunto do contato" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="contato-categoria">Categoria</label>
+                            <select class="form-control form-select" id="contato-categoria" required>
+                                <option value="">Selecione uma categoria</option>
+                                <option value="suporte">Suporte Técnico</option>
+                                <option value="vendas">Dúvidas sobre Vendas</option>
+                                <option value="financeiro">Assuntos Financeiros</option>
+                                <option value="outros">Outros</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="contato-mensagem">Mensagem</label>
+                            <textarea class="form-control" id="contato-mensagem" rows="5" placeholder="Descreva sua solicitação" required></textarea>
+                            <div class="form-text">Descreva detalhadamente sua solicitação</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" id="contato-copia" type="checkbox">
+                                <label class="form-check-label" for="contato-copia">Enviar uma cópia para meu e-mail</label>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-block" type="submit">
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>ERP Contábil - Sistema de Demonstração de Formulários</p>
+            <p class="text-muted">Use esta página como referência para implementar formulários em todo o sistema</p>
+        </footer>
+    </div>
+
+    <script>
+        // Adicionando interatividade básica para melhorar a experiência
+        document.addEventListener('DOMContentLoaded', function() {
+            // Adiciona classe de destaque quando o mouse passa sobre os cards
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Adiciona tooltip para os códigos
+            const codeElements = document.querySelectorAll('.code');
+            codeElements.forEach(code => {
+                code.addEventListener('click', function() {
+                    const textArea = document.createElement('textarea');
+                    textArea.value = this.textContent;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    
+                    // Feedback visual
+                    const originalText = this.textContent;
+                    this.textContent = 'Código copiado!';
+                    this.style.background = 'rgba(16, 185, 129, 0.2)';
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.background = 'rgba(0, 0, 0, 0.3)';
+                    }, 1500);
+                });
+                
+                code.title = 'Clique para copiar o código';
+            });
+            
+            // Previne o envio dos formulários de exemplo
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Formulário enviado com sucesso! (Esta é apenas uma demonstração)');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+</main>
+
+{% endblock titudos %}

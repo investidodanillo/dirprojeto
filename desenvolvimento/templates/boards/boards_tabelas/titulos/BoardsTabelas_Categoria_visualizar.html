@@ -1,0 +1,78 @@
+<!-- dirprojeto/aplicativo/templates/assunto02/capitulo01/titulos/assunto02_visualizar.html -->
+{% extends 'boards\boards_tabelas\titulos\base.html' %}
+{% load static %}
+
+{% block titudos %}
+<main class="main-content">
+<h2>Cadastro de Categoria</h2>
+			<p data-end="257" data-start="103">
+				Representa uma <strong data-end="144" data-start="118">classifica&ccedil;&atilde;o auxiliar</strong> utilizada para <strong data-end="201" data-start="160">organizar e agrupar Itens de Evolu&ccedil;&atilde;o</strong> de acordo com sua &aacute;rea ou natureza dentro do sistema.</p>
+			<ul>
+				<li data-end="345" data-start="261">
+					<strong data-end="273" data-start="261">Objetivo</strong>: facilitar a categoriza&ccedil;&atilde;o e an&aacute;lise das demandas de desenvolvimento.</li>
+				<li data-end="363" data-start="348">
+					<strong data-end="360" data-start="348">Exemplos</strong>:
+					<ul>
+						<li data-end="379" data-start="368">
+							<em data-end="377" data-start="368">Backend</em></li>
+						<li data-end="396" data-start="384">
+							<em data-end="394" data-start="384">Frontend</em></li>
+						<li data-end="419" data-start="401">
+							<em data-end="417" data-start="401">Banco de Dados</em></li>
+						<li data-end="439" data-start="424">
+							<em data-end="437" data-start="424">Performance</em></li>
+					</ul>
+				</li>
+			</ul>
+    <h1>CATEGORIA</h1>
+    <p>{{ mensagem }}</p>
+
+    <div class="table-container">
+        <table class="table table-striped table-hover">
+            <thead class="table-header">
+                <tr class="table-row">
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for Campo in Categoria_list %}
+                <tr>
+                    <td data-label="ID">{{ Campo.id }}</td>
+                    <td data-label="Campo 1">{{ Campo.nome }}</td>
+                    <td data-label="Campo 2">{{ Campo.descricao }}</td>
+
+                    <td data-label="Editar">
+                        <a href="{% url 'boards:boardsTabelas_Categoria_UpdateDelete_View' Campo.id %}"
+                           target="_blank" rel="noopener noreferrer" class="btn btn-warning btn-sm">
+                           <i class="fas fa-edit"></i>Editar
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="no-data">Nenhum produto encontrado.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Paginação -->
+        {% if is_paginated %}
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+            {% endif %}
+
+            <span>Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Próxima</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</main>
+{% endblock titudos %}

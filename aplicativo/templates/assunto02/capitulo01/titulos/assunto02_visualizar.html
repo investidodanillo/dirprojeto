@@ -1,25 +1,23 @@
-<!--dirprojeto\aplicativo\templates\assunto02\capitulo01\titulos\assunto02_visualizar.html-->
+<!-- dirprojeto/aplicativo/templates/assunto02/capitulo01/titulos/assunto02_visualizar.html -->
 {% extends 'assunto02/capitulo01/titulos/base.html' %}
-{% load static %} <!-- Carregar arquivos estáticos -->
+{% load static %}
 
 {% block titudos %}
-<!-- Link para o arquivo CSS externo -->
-<link rel="stylesheet" type="text/css" href="{% static 'css/tables.css' %}">
-<div class="body">
-    <div class="container">   
-        <h1>TABELA1</h1>
-        <p>{{ mensagem }}</p>
-        <!-- Tabela de Produtos -->
-        <table class="tabela-form">
-            <thead>
-                <tr>
+<main class="main-content">
+
+    <h1>TABELA1</h1>
+    <p>{{ mensagem }}</p>
+
+    <div class="table-container">
+        <table class="table table-striped table-hover">
+            <thead class="table-header">
+                <tr class="table-row">
                     <th>ID</th>
                     <th>Campo 1</th>
                     <th>Campo 2</th>
                     <th>Campo 3</th>
-                    <th>Campo 4</th>                    
+                    <th>Campo 4</th>
                     <th>Editar</th>
-                    
                 </tr>
             </thead>
             <tbody>
@@ -29,38 +27,36 @@
                     <td data-label="Campo 1">{{ Campo.campo1 }}</td>
                     <td data-label="Campo 2">{{ Campo.campo2 }}</td>
                     <td data-label="Campo 3">{{ Campo.campo3 }}</td>
-                    <td data-label="Campo 4">{{ Campo.campo4 }}</td>                                        
-                    <td data-label="Editar"><a href="{% url 'assunto02:assunto02_Capitulo01_Update_View' Campo.id %}"target="_blank" rel="noopener noreferrer" class="glass-button"><i class="fas fa-edit"></i></a></td>
+                    <td data-label="Campo 4">{{ Campo.campo4 }}</td>
+                    <td data-label="Editar">
+                        <a href="{% url 'assunto02:assunto02_Capitulo01_Update_View' Campo.id %}"
+                           target="_blank" rel="noopener noreferrer" class="btn btn-warning btn-sm">
+                           <i class="fas fa-edit"></i>Editar
+                        </a>
+                    </td>
                 </tr>
                 {% empty %}
                 <tr>
-                    <td colspan="4" class="no-data">Nenhum produto encontrado.</td>
+                    <td colspan="6" class="no-data">Nenhum produto encontrado.</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-    
+
         <!-- Paginação -->
+        {% if is_paginated %}
         <div class="pagination">
-            {% if is_paginated %}
-                {% if page_obj.has_previous %}
-                    <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
-                {% endif %}
-                
-                <span>Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
-                
-                {% if page_obj.has_next %}
-                    <a href="?page={{ page_obj.next_page_number }}">Próxima</a>
-                {% endif %}
+            {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+            {% endif %}
+
+            <span>Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Próxima</a>
             {% endif %}
         </div>
-
-
+        {% endif %}
     </div>
-
-</div>
-<!-- Fim do conteúdo -->
-
-
-    {% endblock titudos %}
-
+</main>
+{% endblock titudos %}
