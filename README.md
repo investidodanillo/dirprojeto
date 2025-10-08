@@ -25,7 +25,7 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io
 
 # 5 Verifique a instalação do Docker:
 sudo docker --version
-Instalar Docker Compose
+
 
 # 6 Baixe a versão estável do Docker Compose (exemplo 2.20.2):
 sudo curl -L "https://github.com/docker/compose/releases/download/v2.20.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -47,5 +47,7 @@ docker compose up -d --build
 # 12 migrações
 docker compose exec web python manage.py makemigrations
 docker compose exec web python manage.py migrate
+# criar user
 
+docker compose exec web python manage.py createsuperuser
 # v2 30/08/2025
