@@ -7,6 +7,13 @@ from controles.forms.usuarios.Usuarios_ModelForm import UserRegisterForm
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
+from django_tables2.views import SingleTableMixin
+from django_filters.views import FilterView
+from controles.filters.usuarios_filters import UsuariosFilter
+from controles.tables.usuarios_tables import UsuariosTable
+
+
+
 
 def controles_usuarios_View_index(request):
     return render(request, 'usuarios/index.html')
@@ -45,7 +52,7 @@ class controles_usuarios_Update_View(UpdateView):
 
         elif action == "deletar":
             self.object.delete()
-            return HttpResponseRedirect(reverse_lazy('usuarios:controles_usuarios_visualizar_View'))
+            return HttpResponseRedirect(reverse_lazy('usuarios:Controles_Usuarios_ListViewTab'))
 
         elif action == "novo":
             return HttpResponseRedirect(reverse('usuarios:controles_usuarios_cadastro_View'))       
@@ -53,11 +60,23 @@ class controles_usuarios_Update_View(UpdateView):
         return super().post(request, *args, **kwargs)
 
 
-#essa view é para visualizar os dados da tabela User  
-class controles_usuarios_visualizar_View(ListView):
+#essa view é para visualizar os dados da tabela User
+# controles\views\usuarios\Controles_Usuarios_View.py  
+
+class Controles_Usuarios_ListViewTab(SingleTableMixin, FilterView):
+    """
+    View que exibe os usuários com tabela e filtros.
+    """
     model = User
-    template_name = 'controles/usuarios/titulos/usuarios_visualizar.html'
-    paginate_by = 20
-    context_object_name = 'User_list'
-    def get_queryset(self):
-        return User.objects.all()  
+    table_class = UsuariosTable
+    template_name = "usuarios/titulos/usuarios_VisualizarTab.html"
+    filterset_class = UsuariosFilter
+    paginate_by = 10
+
+    mensagem = "mensagem: mensagem"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["mensagem"] = self.mensagem
+        return context
+    

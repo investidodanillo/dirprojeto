@@ -1,0 +1,57 @@
+<!-- aplicativo\templates\assunto03\capitulo01\titulos\assunto03_cadastro.html -->
+{% extends 'assunto04/capitulo01/titulos/base.html' %}
+{% load static %}
+
+{% block titudos %}
+<main class="main-content">
+    <h1>Assunto 03 - Capítulo 01 Cadastro</h1>
+    <p>Cadastro 02</p>
+
+    <div class="card-xl">
+        <div>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <!-- Botões -->
+                <div class="assunto03-form">
+                    <div class="button-group destaque-botoes">
+                        <button type="submit" name="action" value="salvar" class="btn btn-glass btn-salvar" aria-label="Salvar Formulário">
+                            <i class="fas fa-save"></i> Salvar
+                        </button>
+
+                        <button type="submit" name="action" value="novo" class="btn btn-glass btn-novo" aria-label="Criar Novo Registro">
+                            <i class="fas fa-plus"></i> Novo
+                        </button>
+
+                        <button type="submit" name="action" value="deletar" class="btn btn-glass btn-deletar" aria-label="Deletar Registro"
+                            onclick="return confirm('Tem certeza que deseja deletar este registro?');">
+                            <i class="fas fa-trash"></i> Deletar
+                        </button>
+                    </div>
+                </div>
+                <!-- Fim Botões -->
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block js %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        'use strict';
+        const form = document.querySelector('form.needs-validation') || document.querySelector('form');
+
+        if (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        }
+    });
+</script>
+{% endblock %}

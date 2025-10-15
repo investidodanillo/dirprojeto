@@ -1,0 +1,30 @@
+<!--aplicativo\templates\assunto01\base.html-->
+{% extends 'aplicativo_base.html' %}
+{% load static %}  <!-- Carregar arquivos estáticos -->
+
+{% block content %}
+<!-- Header B - Navbar de Navegação -->
+    <header class="headerb">
+        <nav class="main-menu">
+            <a class="menu-item active" href="{% url 'assunto04:assunto04_capitulo01_inicio' %}"><i class="fas fa-book"></i>Produtos</a>
+            <a class="menu-item" href="#"><i class="fas fa-users"></i>--</a>
+            <a class="menu-item" href="#"><i class="fas fa-boxes"></i>--</a>
+            <a class="menu-item" href="{% url 'home:home_inicio_View' %}"><i class="fas fa-chart-bar"></i>--</a>
+
+        </nav>
+        <div class="submenu">
+           
+            <a class="submenu-item" href="#">
+                <i class="fas fa-headset"></i>
+                Suporte
+            </a>
+            
+        </div>
+    </header>
+
+{% block conteudox %}
+
+
+{% endblock conteudox %}
+
+{% endblock content %}

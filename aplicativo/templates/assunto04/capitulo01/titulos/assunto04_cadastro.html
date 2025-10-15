@@ -1,0 +1,59 @@
+<!--aplicativo\templates\assunto02\capitulo01\titulos\assunto02_cadastro.html-->
+{% extends 'assunto04/capitulo01/titulos/base.html' %}
+{% load static %}
+
+{% block titudos %}
+<main class="main-content">
+    <h1>Assunto 04 - Produtos</h1>
+  
+    <div class="card-xl">
+        <div class="">
+            <form method="post">
+
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <!-- Botões -->
+                <!-- Botões -->
+                <div class="assunto03-form">
+                    <div class="button-group destaque-botoes">
+                        <button type="submit" name="action" value="salvar" class="btn btn-glass btn-salvar"
+                            aria-label="Salvar Formulário">
+                            <i class="fas fa-save"></i> SALVAR
+                        </button>
+
+                        <button type="submit" name="action" value="novo" class="btn btn-glass btn-novo"
+                            aria-label="Criar Novo Registro">
+                            <i class="fas fa-plus"></i> NOVO
+                        </button>
+
+                        <button type="button" id="btn-limpar" class="btn btn-glass btn-limpar"
+                            aria-label="Limpar Formulário">
+                            <i class="fas fa-undo"></i> LIMPAR
+                        </button>
+                    </div>
+                </div>
+                <!-- Botões -->
+                <!-- Botões -->
+
+            </form>
+
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block js %}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector('form');
+            const btnLimpar = document.getElementById('btn-limpar');
+
+            if (btnLimpar) {
+                btnLimpar.addEventListener('click', function () {
+                    form.reset();
+                });
+            }
+        });
+    </script>
+    {% endblock %}

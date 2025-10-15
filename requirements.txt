@@ -1,4 +1,5 @@
 # requirements.txt
+
 asgiref==3.8.1
 certifi==2025.6.15
 cffi==1.17.1
@@ -26,16 +27,5 @@ typing_extensions==4.13.1
 tzdata==2025.2
 urllib3==2.2
 whitenoise==6.6.0
-django-tables2==2
+django-tables2
 django-filter
-
-# COMANDOS:
-# apt install python3-pip
-
-# pip install -r requirements.txt
-# apt install docker.io
-# apt install docker-compose
-# pip freeze > requirements.txt
-# pip install --upgrade pip setuptools wheel
-# pip install --upgrade pip
-

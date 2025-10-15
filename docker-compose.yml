@@ -1,3 +1,5 @@
+version: '3.9'
+
 services:
   psql:
     image: postgres:13-alpine
@@ -14,13 +16,10 @@ services:
     ports:
       - "5432:5432"
     networks:
-    - django-net
-    
+      - django-net
+
   web:
     build: .
-    environment:
-      - DJANGO_ENV=production
-      - DATABASE_URL=postgres://${DB_USER}:${DB_PASSWORD}@psql:5432/${DB_NAME}
     image: projeto:latest
     container_name: container_projeto
     restart: always
@@ -28,13 +27,22 @@ services:
       - .env
     depends_on:
       - psql
+    environment:
+      - DJANGO_ENV=production
+      # Mantive DATABASE_URL, importante para Django reconhecer o Postgres
+      - DATABASE_URL=postgres://${DB_USER}:${DB_PASSWORD}@psql:5432/${DB_NAME}
     command: gunicorn projeto.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/app
-      - ./staticfiles:/app/staticfiles     
+      - ./staticfiles:/app/staticfiles
     networks:
       - django-net
       - nginx-net
+
+    # 🔹 Sugestão mínima para build CSS automático (opcional)
+    # Você poderia adicionar um volume com o script build_css.py
+    # e rodar o build antes do Gunicorn se quiser automatizar:
+    # entrypoint: sh -c "python build_css.py && gunicorn projeto.wsgi:application --bind 0.0.0.0:8000"
 
   nginx:
     image: nginx:stable-alpine
@@ -50,6 +58,7 @@ services:
       - web
     networks:
       - nginx-net
+
 volumes:
   postgres_data:
 
@@ -58,4 +67,3 @@ networks:
     driver: bridge
   nginx-net:
     driver: bridge
-    

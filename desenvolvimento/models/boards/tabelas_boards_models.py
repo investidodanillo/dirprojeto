@@ -54,3 +54,4 @@ class Status(models.TextChoices):
     BLOQUEADO = 'Bloqueado', 'Bloqueado'
     CONCLUIDO = 'Concluído', 'Concluído'
     CANCELADO = 'Cancelado', 'Cancelado'
+    PUBLICADO = 'Publicado', 'Publicado'

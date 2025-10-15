@@ -13,9 +13,12 @@ urlpatterns = [
     #controles
     path('', include('controles.urls.Controles_IndexUrls')),
     
+    
     #index aplicativo
     path('', include('aplicativo.urls.Aplicativo_IndexUrls')),
     path('', include('controles.urls.UsuariosUrls')),
+    path('', include('controles.urls.EmpresasUrls')),
+    
 
     #desing
     path('', include('desing.urls.Desing_IndexUrls')),
@@ -28,7 +31,8 @@ urlpatterns = [
 
     path('', include('aplicativo.urls.Assunto01Urls')),
     path('', include('aplicativo.urls.Assunto02Urls')),
-    path('', include('aplicativo.urls.Assunto03Urls')),   
+    path('', include('aplicativo.urls.Assunto03Urls')),
+    path('', include('aplicativo.urls.Assunto04Urls')),   
    
 
 ]

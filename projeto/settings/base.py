@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django_filters',
 
     #meus aplicativos
+    'core',
     'projeto',
     'aplicativo',
     'principal',
@@ -41,9 +42,10 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'projeto.middleware.login_required.LoginRequiredMiddleware',  # Vírgula adicionada
+    'projeto.middleware.login_required.LoginRequiredMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'core.middleware.TenantMiddleware',  # Middleware para multi-tenant
 ]
 
 

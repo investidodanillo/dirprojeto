@@ -1,0 +1,24 @@
+<!--aplicativo\templates\assunto01\capitulo01\titulos\base.html-->
+{% extends 'assunto04/base.html' %}
+{% load static %}
+
+{% block conteudox %}
+<!-- Sidebar - Menu Lateral -->
+<div class="sidebar">
+
+    <ul class="links">
+        <!-- TECNOLOGIA E COMPUTAÇÃO -->
+        <h4>Inicio</h4>
+        <li><span><i class="fas fa-laptop-code"></i></span><a href="{% url 'assunto04:assunto04_capitulo01_inicio' %}">Inicio</a></li>
+        <h4>CADASTRO 01</h4>
+        <li><span><i class="fas fa-edit"></i></span><a href="{% url 'assunto04:assunto04_capitulo01_cadastro' %}">Cadastro</a></li>
+        <li><span><i class="fas fa-list-alt"></i></span><a href="{% url 'assunto04:assunto04_capitulo01_ProdutoListViewTab' %}">ProdutoListViewTab</a></li>
+        
+    </ul>
+</div>
+
+
+
+{% block titudos %}
+{% endblock titudos %}
+{% endblock conteudox %}

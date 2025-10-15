@@ -59,6 +59,141 @@
 
         </div>
     </div>
+
+
+    <h1>O que é <em>Release</em>?</h1>
+    <p>Em gestão de projeto, ciclo de vida de produto e desenvolvimento de software, <strong>release</strong> é o termo usado para indicar uma versão liberada de um produto, sistema ou componente — pronta para ser entregue aos usuários, clientes ou stakeholders.</p>
+    <section>
+      <h2>1. Conceito geral de “Release”</h2>
+      <p>Em linhas gerais, um <strong>release</strong> é uma <strong>versão liberada</strong> de um produto, sistema ou componente, pronta para ser disponibilizada para uso, testes ou produção.</p>
+      <p>Em outras palavras:</p>
+      <blockquote>
+        <p><em>Release</em> é o momento (ou artefato) em que uma parte do produto está suficientemente pronta e estável para ser disponibilizada para uso, testes ou produção.</p>
+      </blockquote>
+    </section>
+
+    <section>
+      <h2>2. No Ciclo de Vida de Projeto</h2>
+      <p>No contexto de gestão de projetos (PMBOK, PRINCE2 etc.), o <em>release</em> representa:</p>
+      <ul>
+        <li>Uma entrega planejada dentro do cronograma do projeto;</li>
+        <li>Um marco de entrega de uma versão funcional ou parcial do produto;</li>
+        <li>Pode ocorrer várias vezes durante o projeto (ex.: entregas parciais, protótipos, versões beta).</li>
+      </ul>
+      <p><strong>Exemplo:</strong> Em um projeto de desenvolvimento de um sistema ERP, o release 1.0 pode conter os módulos “Financeiro” e “Contábil”. O release 2.0 pode incluir “Recursos Humanos” e “Compras”.</p>
+    </section>
+
+    <section>
+      <h2>3. No Ciclo de Vida de Produto</h2>
+      <p>No ciclo de vida de produto, o <em>release</em> marca as versões sucessivas do produto ao longo de sua existência:</p>
+      <ul>
+        <li>Cada release adiciona novas funcionalidades, melhorias ou correções;</li>
+        <li>São comuns denominações como versão 1.0, 1.1, 2.0, etc.;</li>
+        <li>Cada release tem um ciclo de suporte (atualizações, manutenção, patches).</li>
+      </ul>
+      <p><strong>Exemplo:</strong> O produto “Django ERP” pode ter releases:</p>
+      <ol>
+        <li>1.0 – Lançamento inicial com módulos básicos;</li>
+        <li>1.5 – Inclusão de relatórios customizados;</li>
+        <li>2.0 – Nova interface e integração com APIs externas.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>4. No Desenvolvimento de Software</h2>
+      <p>Em engenharia de software, <em>release</em> é o pacote de software gerado a partir do código-fonte, que foi testado e validado e está pronto para distribuição (produção, homologação ou usuários finais).</p>
+
+      <h3>Tipos de releases</h3>
+      <table border="1" cellpadding="6" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Tipo de release</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Alpha release</td>
+            <td>Primeira versão funcional, ainda instável, usada para testes internos.</td>
+          </tr>
+          <tr>
+            <td>Beta release</td>
+            <td>Versão mais madura, distribuída a um grupo restrito de usuários para testes.</td>
+          </tr>
+          <tr>
+            <td>Release candidate (RC)</td>
+            <td>Candidata à versão final, com foco em correção de bugs.</td>
+          </tr>
+          <tr>
+            <td>Stable release</td>
+            <td>Versão final liberada oficialmente.</td>
+          </tr>
+          <tr>
+            <td>Patch release</td>
+            <td>Pequena atualização corretiva (ex: 1.0.1, 1.0.2).</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Ferramentas comuns</h3>
+      <ul>
+        <li>Versionamento: Git, GitHub, GitLab</li>
+        <li>CI/CD: pipelines de integração e deploy contínuo</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>5. Relação com o Ciclo de Vida do Projeto e do Produto</h2>
+      <table border="1" cellpadding="6" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Fase</th>
+            <th>Projeto</th>
+            <th>Produto</th>
+            <th>Papel do release</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Iniciação</td>
+            <td>Definição do escopo</td>
+            <td>Ideia do produto</td>
+            <td>Release ainda não existe</td>
+          </tr>
+          <tr>
+            <td>Planejamento</td>
+            <td>Planeja entregas</td>
+            <td>Planeja roadmap</td>
+            <td>Planeja os releases</td>
+          </tr>
+          <tr>
+            <td>Execução</td>
+            <td>Desenvolvimento</td>
+            <td>Desenvolvimento e melhorias</td>
+            <td>Gera releases intermediários</td>
+          </tr>
+          <tr>
+            <td>Encerramento</td>
+            <td>Entrega final</td>
+            <td>Manutenção e evolução</td>
+            <td>Continuação dos releases futuros</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Resumo rápido</h2>
+      <p>
+        <strong>Gestão de projeto:</strong> Entrega planejada de uma parte do projeto.<br>
+        <strong>Ciclo de vida de produto:</strong> Nova versão do produto em seu ciclo evolutivo.<br>
+        <strong>Desenvolvimento de software:</strong> Versão compilada, testada e pronta para uso.<br>
+        <strong>DevOps / CI/CD:</strong> Etapa de entrega contínua de código pronto para produção.
+      </p>
+    </section>
+
+
+    </div>
     {% endblock %}
 
     {% block js %}
@@ -75,4 +210,5 @@
             }
         });
     </script>
+</main>
     {% endblock %}

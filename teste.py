@@ -1,7 +1,7 @@
 import os
 
 # Caminho base da pasta
-base_path = r"projeto\static"  # ou use os.path.join para compatibilidade multiplataforma
+base_path = r"???"  # ou use os.path.join para compatibilidade multiplataforma
 
 for root, dirs, files in os.walk(base_path):
     # Calcula nível de profundidade (para identação)
