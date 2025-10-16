@@ -17,28 +17,28 @@ class ProdutoFilter(django_filters.FilterSet):
     
     nome = django_filters.CharFilter(
         lookup_expr="icontains",
-        label="Pesquisar Campo 2",
+        label="NOME",
         widget=forms.TextInput(attrs={
             "class": "form-control", 
-            "placeholder": "Digite parte do Campo 2"
+            "placeholder": "Digite parte do NOME"
         })
     )
     
     quantidade = django_filters.NumberFilter(
         lookup_expr="icontains",
-        label="Número Inteiro",
+        label="QUANTIDADE",
         widget=forms.NumberInput(attrs={
             "class": "form-control", 
-            "placeholder": "Digite o Número Inteiro"
+            "placeholder": "Digite a QUANTIDADE"
         })
     )
     
     preco = django_filters.NumberFilter(
         lookup_expr="icontains",
-        label="Número Decimal",
+        label="PREÇO",
         widget=forms.NumberInput(attrs={
             "class": "form-control", 
-            "placeholder": "Digite o Número Decimal"
+            "placeholder": "Digite o PREÇO"
         })
     )
     

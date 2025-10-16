@@ -4,7 +4,7 @@ from .managers import TenantManager
 
 class ModeloBaseTenant(models.Model):
     empresa = models.ForeignKey(
-        'controles.Empresa',  # Use string para evitar import circular
+        'controles.Empresas',  # Use string para evitar import circular
         on_delete=models.CASCADE,
         editable=False
     )

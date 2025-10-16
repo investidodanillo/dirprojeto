@@ -1,4 +1,4 @@
-# controles\models\empresas\Empresas_models.py
+# controles/models/empresas/Empresas_models.py
 from django.db import models
 
 class Empresas(models.Model):

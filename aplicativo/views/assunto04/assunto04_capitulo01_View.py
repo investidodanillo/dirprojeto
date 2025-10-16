@@ -24,7 +24,7 @@ class assunto04_capitulo01_cadastro_View(CreateView):
     form_class = ProdutoForm
     template_name = 'assunto04/capitulo01/titulos/assunto04_cadastro.html'
     def get_success_url(self):
-        return reverse('assunto04:assunto04_Capitulo01_Update_View', kwargs={'pk': self.object.pk})
+        return reverse('assunto04:assunto04_Capitulo01_Update', kwargs={'pk': self.object.pk})
 
 
 

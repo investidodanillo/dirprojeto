@@ -12,21 +12,21 @@ class ProdutoForm(forms.ModelForm):
         widgets = {
             'nome': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Digite o Campo 1, texto curto'
+                'placeholder': 'nome do produto'
             }),
             'descricao': forms.Textarea(attrs={
-                'placeholder': 'Campo de Texto Longo. TextField.',
+                'placeholder': 'descrição do produto',
                 'class': 'form-control form-textarea',
                 'rows': 4
             }),
             
             'quantidade': forms.NumberInput(attrs={
-                'placeholder': 'Número Inteiro. IntegerField.',
+                'placeholder': 'quantidade do produto',
                 'class': 'form-control'
             }),
 
             'preco': forms.NumberInput(attrs={
-                'placeholder': 'Número Decimal. FloatField.',
+                'placeholder': 'preço do produto',
                 'class': 'form-control',
                 'step': '0.01'
             }),
