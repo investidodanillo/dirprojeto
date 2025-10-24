@@ -1,24 +1,21 @@
-# dirprojeto\aplicativo\forms\assunto02\ModelForm.py
 # dirprojeto/aplicativo/forms/assunto02/ModelForm.py
 from django import forms
-from controles.models.empresas.Empresas_models import Empresas
+from controles.models.empresas.Empresas_models import ControlesEmpresas
 
 class EmpresasForm(forms.ModelForm):
     class Meta:
-        model = Empresas
+        model = ControlesEmpresas
         fields = '__all__'
+        exclude = ['created_by', 'created_at']
         widgets = {
             'nome': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Digite o Campo 1, texto curto'
+                'placeholder': 'nome da empresa.',
+                'class': 'form-control'
             }),
+
             'cnpj': forms.NumberInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Digite o Campo 2, texto curto'
-            }),
-            'data_criacao': forms.DateInput(attrs={
-                'class': 'form-control',
-                'type': 'date'
+                'placeholder': 'CNPJ da empresa, 14 dígitos.',
+                'class': 'form-control'
             }),
             'ativa': forms.CheckboxInput(attrs={
                 'class': 'form-check-input'

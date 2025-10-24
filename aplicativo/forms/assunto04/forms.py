@@ -1,5 +1,4 @@
 # dirprojeto\aplicativo\forms\assunto02\ModelForm.py
-# dirprojeto/aplicativo/forms/assunto02/ModelForm.py
 from django import forms
 from aplicativo.models.assunto04.models import (
     Produto,
@@ -9,26 +8,38 @@ class ProdutoForm(forms.ModelForm):
     class Meta:
         model = Produto
         fields = '__all__'
+        
+        
         widgets = {
-            'nome': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'nome do produto'
+            'Empresa': forms.Select(attrs={
+                'placeholder': 'Selecione a Empresa.',
+                'class': 'form-control form-select'              
             }),
-            'descricao': forms.Textarea(attrs={
-                'placeholder': 'descrição do produto',
+
+            'sku': forms.TextInput(attrs={
+                'placeholder': 'SKU do Produto. CharField.',
                 'class': 'form-control form-textarea',
                 'rows': 4
             }),
-            
-            'quantidade': forms.NumberInput(attrs={
-                'placeholder': 'quantidade do produto',
+            'nome': forms.TextInput(attrs={
+                'placeholder': 'Campo de Texto Curto. CharField.',
                 'class': 'form-control'
             }),
-
-            'preco': forms.NumberInput(attrs={
-                'placeholder': 'preço do produto',
-                'class': 'form-control',
-                'step': '0.01'
+            'description': forms.Textarea(attrs={
+                'placeholder': 'Descrição do Produto. TextField.',
+                'class': 'form-control form-textarea',
+                'rows': 4
             }),
-        }
-
+            'quantity': forms.NumberInput(attrs={
+                'placeholder': 'Quantidade do Produto. DecimalField.',
+                'class': 'form-control'
+            }),            
+        }       
+    def form_valid(self, form):
+        if form.is_valid():
+            print("Formulário válido")
+            return super().form_valid(form)
+        else:
+            print("Formulário inválido")
+            print(form.errors)
+            return self.form_invalid(form)

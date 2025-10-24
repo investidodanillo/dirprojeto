@@ -1,7 +1,7 @@
 # controles\filters\usuarios_filters.py
 import django_filters
 from django import forms
-from controles.models.empresas.Empresas_models import Empresas
+from controles.models.empresas.Empresas_models import ControlesEmpresas
 
 
 class EmpresasFilter(django_filters.FilterSet):
@@ -52,7 +52,7 @@ class EmpresasFilter(django_filters.FilterSet):
 
 
     class Meta:
-        model = Empresas
+        model = ControlesEmpresas
         fields = ["id", "nome", "cnpj", "data_criacao", "ativa"]
         order_by = ['id']  # Ordenação padrão por ID
         per_page = 10  # Paginação: 10 registros por página

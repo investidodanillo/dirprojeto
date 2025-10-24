@@ -1,0 +1,17 @@
+<!-- controles/templates/products/create.html -->
+
+<div class="container">
+    <h1>Criar Produto</h1>
+
+    {% if current_company %}
+        <p><strong>Empresa atual:</strong> {{ current_company.name }}</p>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+        <a href="{% url 'products:product_list_view' %}">Cancelar</a>
+    </form>
+</div>
+

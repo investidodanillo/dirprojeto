@@ -1,12 +1,6 @@
-<!-- dirprojeto\aplicativo\templates\assunto01\index.html-->
-{% extends 'assunto04/base.html' %}
-{% load static %} <!-- Carregar arquivos estáticos -->
+<!--controles\templates\templates2\companies\select.html-->
 
-
-{% block conteudox %}
-
-<main class="main-content">
-  <h1>Selecionar empresa</h1>
+<h1>Selecionar empresa</h1>
 
 {% if current %}
   <p>Empresa atual: {{ current }}</p>
@@ -25,7 +19,3 @@
   <button type="submit">Selecionar</button>
 </form>
 
-
-</main>
-
-{% endblock %}

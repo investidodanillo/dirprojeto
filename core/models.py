@@ -1,18 +1,16 @@
 # core/models.py
 from django.db import models
-from .managers import TenantManager
+from django.contrib.auth.models import User
 
-class ModeloBaseTenant(models.Model):
-    empresa = models.ForeignKey(
-        'controles.Empresas',  # Use string para evitar import circular
-        on_delete=models.CASCADE,
-        editable=False
-    )
-    criado_em = models.DateTimeField(auto_now_add=True)
-    atualizado_em = models.DateTimeField(auto_now=True)
-    
-    objects = TenantManager()
-    all_objects = models.Manager()
+class Company(models.Model):
+    name = models.CharField(max_length=255)
+    cnpj = models.CharField(max_length=18, blank=True, null=True)
+    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        abstract = True
+        verbose_name = "Empresa"
+        verbose_name_plural = "Empresas"
+
+    def __str__(self):
+        return self.name

@@ -1,9 +1,10 @@
 # dirprojeto\controles\views\Controles_Index\Controles_empresas_View.py
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.urls import reverse
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView
 from controles.forms.empresas.Empresas_ModelForm import EmpresasForm
-from controles.models.empresas.Empresas_models import Empresas
+from controles.models.empresas.Empresas_models import ControlesEmpresas
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
@@ -13,8 +14,10 @@ from controles.tables.empresas_tables import EmpresasTable
 from django_tables2.views import SingleTableMixin
 
 
+from django.contrib.auth.decorators import login_required
 
-
+#
+#
 def controles_empresas_View_index(request):
     return render(request, 'empresas/index.html')
 
@@ -23,22 +26,20 @@ def controles_empresas_View_inicio(request):
 
 # cadastro de empresas
 class controles_empresas_cadastro_View(CreateView):
-    model = Empresas
+    model = ControlesEmpresas
     form_class = EmpresasForm
     template_name = 'empresas/titulos/empresas_cadastro.html'
     def get_success_url(self):
         return reverse('empresas:controles_empresas_Update', kwargs={'pk': self.object.pk})
 
-
-
 # #essa view é para editar e deletar os dados da tabela
 class controles_empresas_Update_View(UpdateView):
-    model = Empresas
+    model = ControlesEmpresas
     form_class = EmpresasForm
     template_name = 'empresas/titulos/empresas_update_delete.html'
 
     def get_object(self, queryset=None):
-        return get_object_or_404(Empresas, pk=self.kwargs.get("pk"))
+        return get_object_or_404(ControlesEmpresas, pk=self.kwargs.get("pk"))
 
     def get_success_url(self):
         return reverse('empresas:controles_empresas_Update', kwargs={'pk': self.object.pk})
@@ -61,13 +62,11 @@ class controles_empresas_Update_View(UpdateView):
 
 
 #essa view é para visualizar os dados da tabela User
-# controles\views\empresas\Controles_empresas_View.py  
-
 class Controles_empresas_ListViewTab(SingleTableMixin, FilterView):
     """
     View que exibe os usuários com tabela e filtros.
     """
-    model = Empresas
+    model = ControlesEmpresas
     table_class = EmpresasTable
     template_name = "empresas/titulos/empresas_visualizarTab.html"
     filterset_class = EmpresasFilter

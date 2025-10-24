@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Empresas Cadastradas</title>
+</head>
+<body>
+    <h1>Lista de Empresas</h1>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if companies %}
+        <table border="1" cellspacing="0" cellpadding="5">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>CNPJ</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for company in companies %}
+                    <tr>
+                        <td>{{ company.id }}</td>
+                        <td>{{ company.name }}</td>
+                        <td>{{ company.cnpj }}</td>
+                        <td>
+                            <a href="{% url 'companies:select_company_view' %}">Selecionar</a> |
+                            <a href="">Editar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Nenhuma empresa cadastrada.</p>
+    {% endif %}
+
+    <p>
+        <a href="{% url 'companies:company_create_view' %}">Cadastrar nova empresa</a>
+        |
+        <a href="{% url 'home:home_inicio_View' %}">Voltar à Home</a>
+    </p>
+</body>
+</html>

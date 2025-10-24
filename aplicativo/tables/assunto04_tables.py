@@ -13,9 +13,9 @@ class ProdutoTable(tables.Table):
     Tabela para exibir os registros de Tabela1 com design glassmorphism.
     """
     id = tables.Column(verbose_name="ID", orderable=True)
-    nome = tables.Column(verbose_name="NOME", orderable=True)
-    quantidade = tables.Column(verbose_name="QUANTIDADE", orderable=True)
-    preco = tables.Column(verbose_name="PREÇO", orderable=True)
+    Empresa = tables.Column(verbose_name="EMPRESA", orderable=True)
+    name = tables.Column(verbose_name="NOME", orderable=True)
+    quantidade = tables.Column(verbose_name="QUANTIDADE", orderable=True)    
 
     acao = tables.Column(empty_values=(), verbose_name="AÇÕES", orderable=False)
 
@@ -33,9 +33,9 @@ class ProdutoTable(tables.Table):
     
     class Meta:
         model = Produto
-        fields = ('id', 'nome', 'quantidade', 'preco', 'acao')
+        fields = ('id', 'Empresa', 'name', 'quantidade', 'acao')
         attrs = {
             "class": "table table-striped table-hover",
             "id": "tabela1"
         }
-        sequence = ("id", "nome", "quantidade", "preco", "acao")
+        sequence = ("id", "Empresa", "name", "quantidade", "acao")

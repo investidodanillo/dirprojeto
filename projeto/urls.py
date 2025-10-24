@@ -5,6 +5,14 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #core
+    #path('', include('core.urls')),  # Adiciona URLs do core
+
+    # companiesUrls
+    path('', include('controles.urls.companies.companiesUrls')),
+    # productsUrls
+    path('', include('controles.urls.products.productsUrls')),
+
     #public
     path('', include('principal.urls.InicioUrls')),
     path('', include('principal.urls.HomeUrls')), 

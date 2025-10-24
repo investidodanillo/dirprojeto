@@ -3,7 +3,7 @@
 from django.urls import reverse
 from django.utils.html import format_html
 import django_tables2 as tables
-from controles.models.empresas.Empresas_models import Empresas
+from controles.models.empresas.Empresas_models import ControlesEmpresas
 
 
 class EmpresasTable(tables.Table):
@@ -13,7 +13,8 @@ class EmpresasTable(tables.Table):
     id = tables.Column(verbose_name="ID", orderable=True)
     nome = tables.Column(verbose_name="Nome", orderable=True)
     cnpj = tables.Column(verbose_name="CNPJ", orderable=True)
-    data_criacao = tables.Column(verbose_name="criação", orderable=True)
+    data_criacao = tables.Column(verbose_name="Criação", orderable=True)
+    created_at = tables.DateTimeColumn(verbose_name="Data de Criação", format="d/m/Y H:i", orderable=True)
     ativa = tables.Column(verbose_name="Status", orderable=True)
 
     acao = tables.Column(empty_values=(), verbose_name="Ações", orderable=False)
@@ -42,7 +43,7 @@ class EmpresasTable(tables.Table):
         )    
 
     class Meta:
-        model = Empresas
+        model = ControlesEmpresas
         fields = ("id","nome", "cnpj", "data_criacao", "ativa")
         attrs = {
             "class": "table table-striped table-hover",

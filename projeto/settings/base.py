@@ -43,12 +43,14 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'projeto.middleware.login_required.LoginRequiredMiddleware',
+    'core.middleware.CompanySessionMiddleware', # Middleware para multi-tenant
+    #'core.middleware.TenantMiddleware',  # Middleware para multi-tenant
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'core.middleware.TenantMiddleware',  # Middleware para multi-tenant
+    #'core.middleware.TenantMiddleware',  # Middleware para multi-tenant
 ]
 
-
+#AUTH_USER_MODEL = 'controles.Usuario'  # Modelo de usuário personalizado
 LOGIN_URL = "auth:login"
 LOGIN_REDIRECT_URL = "/home_inicio_View/"  # Para onde vai após login
 LOGOUT_REDIRECT_URL = "/"  # Para onde vai após logout
